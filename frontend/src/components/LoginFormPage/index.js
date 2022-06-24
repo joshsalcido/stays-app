@@ -28,7 +28,6 @@ function LoginFormPage() {
   return (
 
       <form onSubmit={handleSubmit}>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="LoginForm.css"></link>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
