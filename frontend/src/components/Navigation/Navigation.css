@@ -1,0 +1,25 @@
+.profile-icon {
+    font-size:x-large
+}
+
+.navBar {
+    overflow: hidden;
+    border-bottom: 1px solid #e2e2e2;
+}
+li {
+
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
+}
+
+li .login, .signup{
+    color: #77aa97;
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+li .home {
+    color: #77aa97;
+    float: left;
+}
