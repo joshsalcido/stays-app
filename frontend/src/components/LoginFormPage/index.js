@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Link, Redirect, useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +24,11 @@ function LoginFormPage() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
+  }
+  const demoSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}))
+    //history.push('/');
   }
 
   return (
@@ -50,6 +56,8 @@ function LoginFormPage() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={demoSubmit}>Demo</button>
+      <Link onClick={demoSubmit} >Log in as Guest</Link>
     </form>
   );
 }
