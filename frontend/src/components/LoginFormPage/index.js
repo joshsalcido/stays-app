@@ -28,7 +28,6 @@ function LoginFormPage() {
   const demoSubmit = async (e) => {
     e.preventDefault();
     dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}))
-    //history.push('/');
   }
 
   return (

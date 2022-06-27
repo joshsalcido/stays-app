@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -27,6 +27,11 @@ function SignupFormPage() {
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
+  const demoSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}))
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -70,6 +75,7 @@ function SignupFormPage() {
         />
       </label>
       <button type="submit">Sign Up</button>
+      <Link onClick={demoSubmit}>Log in as Guest</Link>
     </form>
   );
 }
