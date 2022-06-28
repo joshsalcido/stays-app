@@ -4,10 +4,12 @@ const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async(req, res) => {
-    console.log('BEFORE FINDALL ******')
-    const spots = await Spot.findAll();
-    console.log(spots, "<----");
+router.get('/user/:id', asyncHandler(async(req, res) => {
+    const userId = req.params.id
+    const spots = await Spot.findAll({
+        where: { userId: userId}
+    });
+    // console.log(spots, "<----");
     return res.json(spots);
 }))
 
