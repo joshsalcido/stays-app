@@ -10,8 +10,8 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Reviews', [
         {
-        userId: 13,
-        spotId: 21,
+        userId: 20,
+        spotId: 31,
         review: "Such a great stay! The kids loved the dragon shape of the house!",
         rating: 5,
         createdAt: new Date(),
