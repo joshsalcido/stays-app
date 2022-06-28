@@ -4,10 +4,14 @@ const { Spot } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/spots', asyncHandler(async(req, res) => {
+router.get('/user/:id', asyncHandler(async(req, res) => {
+    const userId = req.params.id
     const spots = await Spot.findAll({
-        include: ['images'],
+        where: { userId: userId}
     });
-    console.log(res.json(spots));
+    // console.log(spots, "<----");
     return res.json(spots);
 }))
+
+
+module.exports = router;
