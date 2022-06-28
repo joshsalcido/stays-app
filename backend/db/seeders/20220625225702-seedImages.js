@@ -10,7 +10,7 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Images', [
         {
-        spotId: 31,
+        spotId: 1,
         url: "https://a0.muscache.com/im/pictures/miso/Hosting-28254684/original/99bd44d1-abca-4b1c-b5da-eb05eaac9193.jpeg?im_w=1200",
         createdAt: new Date(),
         updatedAt: new Date(),

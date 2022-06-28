@@ -9,7 +9,7 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
     const spots = await Spot.findAll({
         where: { userId: userId}
     });
-    // console.log(spots, "<----");
+    // console.log(spots, "<---- BACKENDSPOTS");
     return res.json(spots);
 }))
 

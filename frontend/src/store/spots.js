@@ -3,7 +3,7 @@ import { csrfFetch } from "./csrf";
 // Action Types
 const CREATE_SPOT = 'spots/createSpot'
 
-const GET_SPOT = 'spots/getSpot'
+const GET_SPOTS = 'spots/getSpots'
 
 const UPDATE_SPOT = 'spots/updateSpot'
 
@@ -17,10 +17,10 @@ const actionCreateSpot = (spot) => {
         spot
     }
 }
-const actionGetSpot = (spot) => {
+const actionGetSpots = (spots) => {
     return {
-        type: GET_SPOT,
-        spot
+        type: GET_SPOTS,
+        spots
     }
 }
 const actionUpdateSpot = (spot) => {
@@ -38,9 +38,47 @@ const actionDeleteSpot = (spotId) => {
 
 // THUNKS
 
-export const thunkGetAllSpots = (spots) => async (dispatch) => {
-    const response = await csrfFetch('/api/session');
-    const data = await response.json();
-    dispatch(setUser(data.user));
-    return response;
+export const thunkGetUserSpots = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/user/${userId}`);
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(actionGetSpots(data));
+        return response;
+    }
   };
+
+  // REDUCERS
+
+const userSpots = (state = {}, action) => {
+  let newState = {...state};
+  switch (action.type) {
+
+    case CREATE_SPOT:
+    //   newState = Object.assign({}, state);
+    //   newState.user = action.payload;
+    //   return newState;
+        break
+
+    case GET_SPOTS:
+      action.spots.forEach(spot => {
+          console.log(spot, "$$***REDUCERRRRRRRRR**$$")
+        newState[spot.id] = spot
+      });
+      return newState;
+
+    case UPDATE_SPOT:
+      newState = Object.assign({}, state);
+      newState.user = null;
+      return newState;
+
+    case DELETE_SPOT:
+
+      delete newState[action.spotId]
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+export default userSpots

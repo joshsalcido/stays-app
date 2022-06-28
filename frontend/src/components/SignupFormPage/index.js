@@ -30,7 +30,7 @@ function SignupFormPage() {
 
   const demoSubmit = async (e) => {
     e.preventDefault();
-    dispatch(sessionActions.login({credential: "Demo-lition", password: "password"}))
+    dispatch(sessionActions.login({credential: "Demo-User", password: "password"}))
   }
 
   return (

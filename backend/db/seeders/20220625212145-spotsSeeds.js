@@ -10,7 +10,7 @@ module.exports = {
       */
       return queryInterface.bulkInsert('Spots', [
         {
-          userId: 18,
+          userId: 1,
           address: "43 Ridgecrest Dr.",
           city: "Austin",
           state: "Texas",
@@ -21,7 +21,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 19,
+          userId: 2,
           address:"578 N Lemuria St.",
           city: "El Prado",
           state:"New Mexico",
@@ -32,7 +32,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 20,
+          userId: 3,
           address: "58 Antler Dr",
           city: "Boulder",
           state: "Colorado",
@@ -43,7 +43,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 18,
+          userId: 1,
           address: "789 Cascade Rd",
           city: "Joshua Tree",
           state: "California",
@@ -54,7 +54,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 18,
+          userId: 1,
           address: "3794 Sun Loma Rd",
           city: "Joshua Tree",
           state: "California",

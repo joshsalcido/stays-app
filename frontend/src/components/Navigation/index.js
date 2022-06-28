@@ -24,10 +24,10 @@ function Navigation({ isLoaded }){
   return (
     <div className='navBar'>
       <ul>
-        <li>
+        <p>
             <NavLink exact to="/" className="home">Home</NavLink>
             {isLoaded && sessionLinks}
-        </li>
+        </p>
       </ul>
     </div>
   );
