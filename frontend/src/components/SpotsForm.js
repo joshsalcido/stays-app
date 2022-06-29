@@ -123,9 +123,13 @@ export default function SpotForm(){
             <div>
                 {spot.userId === userId && spot.userId && (
                     <div key={spot.id}>
-                       <span>Spot Id: {spot.id}</span>
+                       <h4 class="span-name">{spot.name}</h4>
+                       <span class="span-address">Address: {spot.address}</span>
                        <br/>
-                       <span>Name: {spot.name}</span>
+                       <span class="span-city">City: {spot.city}</span>
+                       <br/>
+                       <span class="span-state">State: {spot.state}, {spot.country}</span>
+                       <h4 class="span-price">Price: ${spot.price}/ Night</h4>
                        <button type='button' onClick={()=> onDelete(spot.id)}>Delete Spot {spot.id}</button>
                        <br/>
                    </div>
