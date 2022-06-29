@@ -10,7 +10,7 @@ export default function SpotForm(){
     const userSpotsSelector = useSelector(state => state.userSpots)
     // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
     const spot = useSelector(state => state.userSpots)
-    console.log(spot, "<---- Spot")
+    // console.log(spot, "<---- Spot")
     // let values = Object.values(userSpotsSelector)
     // let userSpots =values.map((spot)=> {
     //     if (spot.userId === userId) return spot
@@ -55,8 +55,6 @@ export default function SpotForm(){
 
     async function onDelete(spot){
         dispatch(thunkDeleteSpot(spot))
-        dispatch()
-
     }
     async function revealCreateForm(e) {
         e.preventDefault()
@@ -80,15 +78,7 @@ export default function SpotForm(){
             setSpots(Object.values(userSpotsSelector))
         }
     }, [userSpotsSelector])
-    let editContent = null;
-    if (showEditSpotForm) {
-        editContent= (
-            <EditSpotForm
-            spot={spot}
-            hideForm={()=> setShowEditSpotForm(false)}
-            />
-        )
-    }
+
 
     let buttonName = "Create a New Listing!"
     if (showForm){

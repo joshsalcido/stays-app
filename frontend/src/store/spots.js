@@ -50,13 +50,13 @@ export const thunkGetUserSpots = (userId) => async (dispatch) => {
 
 export const thunkCreateSpot = (newSpot) => async (dispatch) => {
   const userId = newSpot.userId
-  console.log(userId, "<--- CREATE THUNK")
+  // console.log(userId, "<--- CREATE THUNK")
     const response = await csrfFetch(`/api/spots/${userId}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newSpot)
     })
-    console.log("<--- INSIDE THUNK")
+    // console.log("<--- INSIDE THUNK")
     if (response.ok) {
       const data = await response.json();
       dispatch(actionCreateSpot(data))
@@ -65,7 +65,7 @@ export const thunkCreateSpot = (newSpot) => async (dispatch) => {
 }
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-  console.log(spot, "<-----thunk UPDATE SPOT")
+  // console.log(spot, "<-----thunk UPDATE SPOT")
   const response = await csrfFetch(`/api/spots/${spot.spotId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
@@ -86,7 +86,6 @@ export const thunkDeleteSpot = (spot) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(actionDeleteSpot(data))
-    return data
   }
 }
 
