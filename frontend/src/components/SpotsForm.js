@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
-import { thunkGetUserSpots, thunkCreateSpot, thunkUpdateSpot } from "../store/spots";
+import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 
 export default function SpotForm(){
@@ -53,9 +53,10 @@ export default function SpotForm(){
     }
 
 
-    async function onDelete(spotId){
+    async function onDelete(spot){
+        dispatch(thunkDeleteSpot(spot))
+        dispatch()
 
-        console.log("Hi DELETE EEEEE HERE")
     }
     async function revealCreateForm(e) {
         e.preventDefault()
@@ -63,10 +64,9 @@ export default function SpotForm(){
     }
     useEffect(()=> {
         setShowEditSpotForm(false);
-
     }, [userId])
     useEffect(()=> {
-        dispatch(thunkGetUserSpots(userId))
+       dispatch(thunkGetUserSpots(userId))
         // console.log('sent dispatch')
     }, [dispatch])
 
@@ -156,7 +156,7 @@ export default function SpotForm(){
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
                        <div className="edit/delete">
-                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
+                            <button type='button' onClick={()=> onDelete(spot)}>Delete Stay</button>
                             <button type='button' onClick={()=> {
                                 setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
                        </div>
