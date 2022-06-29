@@ -27,6 +27,7 @@ export default function SpotForm(){
 
     const [showForm, setShowForm] = useState(false);
     const [showEditSpotForm, setShowEditSpotForm] = useState(false);
+    const [selectedSpot, setSelectedSpot] = useState(null);
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -39,9 +40,9 @@ export default function SpotForm(){
             price,
             userId: userId
         }
-        console.log(newSpot.name)
+        // console.log(newSpot.name)
         dispatch(thunkCreateSpot(newSpot))
-        console.log("DISPATCHED")
+        // console.log("DISPATCHED")
 
         setName('')
         setAddress('')
@@ -136,18 +137,27 @@ export default function SpotForm(){
         <br/>
         {userId && spots.map(spot => (
             <div>
+                {selectedSpot === spot.id && showEditSpotForm && (
+                <div>
+                    <EditSpotForm
+                    spot={spot}
+                    hideform={()=> setShowEditSpotForm(false)}
+                    />
+                </div>
+                )}
                 {spot.userId === userId && spot.userId && (
                     <div key={spot.id}>
-                       <h4 class="span-name">{spot.name}</h4>
-                       <span class="span-address">Address: {spot.address}</span>
+                       <h4 className="span-name">{spot.name}</h4>
+                       <span className="span-address">Address: {spot.address}</span>
                        <br/>
-                       <span class="span-city">City: {spot.city}</span>
+                       <span className="span-city">City: {spot.city}</span>
                        <br/>
-                       <span class="span-state">State: {spot.state}, {spot.country}</span>
-                       <h4 class="span-price">Price: ${spot.price}/ Night</h4>
-                       <div class="edit/delete">
+                       <span className="span-state">State: {spot.state}, {spot.country}</span>
+                       <h4 className="span-price">Price: ${spot.price}/ Night</h4>
+                       <div className="edit/delete">
                             <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
-                            <button type='button' onClick={()=> setShowEditSpotForm(true)}>Edit Stay</button>
+                            <button type='button' onClick={()=> {
+                                setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
                        </div>
                        <br/>
                    </div>

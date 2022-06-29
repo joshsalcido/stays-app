@@ -22,6 +22,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     const updateCountry = (e) => setCountry(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
 
+    // const [hideForm, setHideForm] = useState(true);
     useEffect(()=> {
         dispatch(thunkGetUserSpots())
     }, [dispatch]);
@@ -31,17 +32,18 @@ const EditSpotForm = ({ spot, hideform}) => {
 
         let updateSpot;
         if (updateSpot) {
-            // hideForm();
+            hideform();
         }
     };
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        // hideForm();
+        hideform();
     }
 
     return (
-        <section className="edit-form">
+        <>
+        { (<section className="edit-form">
             <form onSubmit={handleSubmit}>
                 <label>Title:</label>
                 <input
@@ -76,7 +78,8 @@ const EditSpotForm = ({ spot, hideform}) => {
                 <button type="submit">Update Stay!</button>
                 <button type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
-        </section>
+        </section>)}
+        </>
     )
 }
 
