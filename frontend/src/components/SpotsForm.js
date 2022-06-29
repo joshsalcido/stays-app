@@ -22,7 +22,7 @@ export default function SpotForm(){
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState('')
     const [spots, setSpots] = useState([])
 
     const [showForm, setShowForm] = useState(false);
@@ -43,7 +43,7 @@ export default function SpotForm(){
         // console.log(newSpot.name)
         dispatch(thunkCreateSpot(newSpot))
         // console.log("DISPATCHED")
-
+        setShowForm(false);
         setName('')
         setAddress('')
         setCity('')
