@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
-import { thunkGetUserSpots, thunkCreateSpot } from "../store/spots";
+import { thunkGetUserSpots, thunkCreateSpot, thunkUpdateSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 
 export default function SpotForm(){
@@ -22,7 +22,7 @@ export default function SpotForm(){
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState('')
     const [spots, setSpots] = useState([])
 
     const [showForm, setShowForm] = useState(false);
@@ -43,14 +43,15 @@ export default function SpotForm(){
         // console.log(newSpot.name)
         dispatch(thunkCreateSpot(newSpot))
         // console.log("DISPATCHED")
-
+        setShowForm(false);
         setName('')
         setAddress('')
         setCity('')
         setState('')
         setCountry('')
-        setPrice(0)
+        setPrice('')
     }
+
 
     async function onDelete(spotId){
 
@@ -69,9 +70,9 @@ export default function SpotForm(){
         // console.log('sent dispatch')
     }, [dispatch])
 
-    useEffect(()=> {
-        // console.log('effect spots ***:: ', spots)
-    }, [spots])
+    // useEffect(()=> {
+    //     // console.log('effect spots ***:: ', spots)
+    // }, [spots])
 
 
     useEffect(()=> {

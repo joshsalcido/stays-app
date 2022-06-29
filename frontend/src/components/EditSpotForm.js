@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetUserSpots } from "../store/spots";
+import { thunkGetUserSpots, thunkUpdateSpot } from "../store/spots";
 
 
 const EditSpotForm = ({ spot, hideform}) => {
     // const spots = useSelector(state => state.spots);
     const dispatch = useDispatch();
-
+    const userId = useSelector(state => state.session?.user?.id)
+    const updatedSpots = useSelector(state => state)
+    console.log(updatedSpots, "<----- Updated STATE")
     const [name, setName] = useState(spot.name)
     const [address, setAddress] = useState(spot.address)
     const [city, setCity] = useState(spot.city)
     const [state, setState] = useState(spot.state)
     const [country, setCountry] = useState(spot.country)
     const [price, setPrice] = useState(spot.price)
-    // const [spots, setSpots] = useState([])
+    const [spots, setSpots] = useState([])
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
@@ -23,23 +25,54 @@ const EditSpotForm = ({ spot, hideform}) => {
     const updatePrice = (e) => setPrice(e.target.value);
 
     // const [hideForm, setHideForm] = useState(true);
-    useEffect(()=> {
-        dispatch(thunkGetUserSpots())
-    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const updatedSpot = {
+            name,
+            address,
+            city,
+            state,
+            country,
+            price,
+            spotId: spot.id
+        }
 
-        let updateSpot;
+        // dispatch(thunkUpdateSpot(updatedSpot));
+    dispatch(thunkUpdateSpot(updatedSpot))
+    dispatch(thunkGetUserSpots(userId))
+
+        let updateSpot = true;
         if (updateSpot) {
             hideform();
         }
+
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setCountry('')
+        setPrice(0)
+        setSpots([])
     };
 
     const handleCancelClick = (e) => {
         e.preventDefault();
         hideform();
     }
+    useEffect(()=> {
+        dispatch(thunkGetUserSpots(userId))
+    }, [dispatch]);
+    // useEffect(()=> {
+    //     dispatch(thunkUpdateSpot(spot))
+    // }, [dispatch])
+
+
+    useEffect(()=> {
+        if(updatedSpots){
+            setSpots(Object.values(updatedSpots))
+        }
+    }, [updatedSpots])
 
     return (
         <>
