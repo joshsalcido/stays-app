@@ -29,10 +29,10 @@ const actionUpdateSpot = (spot) => {
         spot
     }
 }
-const actionDeleteSpot = (spotId) => {
+const actionDeleteSpot = (spot) => {
     return {
         type: DELETE_SPOT,
-        spotId
+        spot
     }
 }
 
@@ -50,13 +50,13 @@ export const thunkGetUserSpots = (userId) => async (dispatch) => {
 
 export const thunkCreateSpot = (newSpot) => async (dispatch) => {
   const userId = newSpot.userId
-  console.log(userId, "<--- CREATE THUNK")
+  // console.log(userId, "<--- CREATE THUNK")
     const response = await csrfFetch(`/api/spots/${userId}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newSpot)
     })
-    console.log("<--- INSIDE THUNK")
+    // console.log("<--- INSIDE THUNK")
     if (response.ok) {
       const data = await response.json();
       dispatch(actionCreateSpot(data))
@@ -65,7 +65,7 @@ export const thunkCreateSpot = (newSpot) => async (dispatch) => {
 }
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-  console.log(spot, "<-----thunk UPDATE SPOT")
+  // console.log(spot, "<-----thunk UPDATE SPOT")
   const response = await csrfFetch(`/api/spots/${spot.spotId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
@@ -75,6 +75,17 @@ export const thunkUpdateSpot = (spot) => async (dispatch) => {
     const data = await response.json();
     dispatch(actionUpdateSpot(data))
     return data
+  }
+}
+
+export const thunkDeleteSpot = (spot) => async (dispatch) => {
+  // console.log(spot, "<--- THUNK DELETE")
+  const response = await csrfFetch(`/api/spots/${spot.id}`, {
+    method: 'DELETE'
+  })
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(actionDeleteSpot(data))
   }
 }
 
@@ -104,8 +115,8 @@ const userSpots = (state = {}, action) => {
       return updateState;
 
     case DELETE_SPOT:
-
-      delete newState[action.spotId]
+      const deleteState = {...state}
+      delete deleteState[action.spot.id]
       return newState;
 
     default:

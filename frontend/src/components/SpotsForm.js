@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
-import { thunkGetUserSpots, thunkCreateSpot, thunkUpdateSpot } from "../store/spots";
+import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 
 export default function SpotForm(){
@@ -10,7 +10,7 @@ export default function SpotForm(){
     const userSpotsSelector = useSelector(state => state.userSpots)
     // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
     const spot = useSelector(state => state.userSpots)
-    console.log(spot, "<---- Spot")
+    // console.log(spot, "<---- Spot")
     // let values = Object.values(userSpotsSelector)
     // let userSpots =values.map((spot)=> {
     //     if (spot.userId === userId) return spot
@@ -53,9 +53,8 @@ export default function SpotForm(){
     }
 
 
-    async function onDelete(spotId){
-
-        console.log("Hi DELETE EEEEE HERE")
+    async function onDelete(spot){
+        dispatch(thunkDeleteSpot(spot))
     }
     async function revealCreateForm(e) {
         e.preventDefault()
@@ -63,10 +62,9 @@ export default function SpotForm(){
     }
     useEffect(()=> {
         setShowEditSpotForm(false);
-
     }, [userId])
     useEffect(()=> {
-        dispatch(thunkGetUserSpots(userId))
+       dispatch(thunkGetUserSpots(userId))
         // console.log('sent dispatch')
     }, [dispatch])
 
@@ -80,15 +78,7 @@ export default function SpotForm(){
             setSpots(Object.values(userSpotsSelector))
         }
     }, [userSpotsSelector])
-    let editContent = null;
-    if (showEditSpotForm) {
-        editContent= (
-            <EditSpotForm
-            spot={spot}
-            hideForm={()=> setShowEditSpotForm(false)}
-            />
-        )
-    }
+
 
     let buttonName = "Create a New Listing!"
     if (showForm){
@@ -156,7 +146,7 @@ export default function SpotForm(){
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
                        <div className="edit/delete">
-                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
+                            <button type='button' onClick={()=> onDelete(spot)}>Delete Stay</button>
                             <button type='button' onClick={()=> {
                                 setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
                        </div>
