@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
-import { thunkGetUserSpots } from "../store/spots";
+import { thunkGetUserSpots, thunkCreateSpot } from "../store/spots";
 
 export default function SpotForm(){
     const currState = useSelector(state => state)
@@ -9,7 +9,7 @@ export default function SpotForm(){
     const userSpotsSelector = useSelector(state => state.userSpots)
     // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
 
-    console.log(userSpotsSelector, "<---- CURRENT STATE")
+    // console.log(userSpotsSelector, "<---- CURRENT STATE")
     // let values = Object.values(userSpotsSelector)
     // let userSpots =values.map((spot)=> {
     //     if (spot.userId === userId) return spot
@@ -20,13 +20,33 @@ export default function SpotForm(){
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
+    const [country, setCountry] = useState('')
+    const [price, setPrice] = useState(0)
     const [spots, setSpots] = useState([])
 
     const [showForm, setShowForm] = useState(false);
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log("Hi SUbmit HERE")
+        const newSpot = {
+            name,
+            address,
+            city,
+            state,
+            country,
+            price,
+            userId: userId
+        }
+        console.log(newSpot.name)
+        dispatch(thunkCreateSpot(newSpot))
+        console.log("DISPATCHED")
+
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setCountry('')
+        setPrice(0)
     }
 
     async function onDelete(spotId){
@@ -39,11 +59,11 @@ export default function SpotForm(){
     }
     useEffect(()=> {
         dispatch(thunkGetUserSpots(userId))
-        console.log('sent dispatch')
+        // console.log('sent dispatch')
     }, [dispatch])
 
     useEffect(()=> {
-        console.log('effect spots ***:: ', spots)
+        // console.log('effect spots ***:: ', spots)
     }, [spots])
 
 
@@ -83,7 +103,17 @@ export default function SpotForm(){
                 onChange={(e)=> setState(e.target.value)}
                 value={state}
                 />
-                <button>Create Spot</button>
+                <label>Country:</label>
+                <input
+                onChange={(e)=> setCountry(e.target.value)}
+                value={country}
+                />
+                <label>Price:</label>
+                <input
+                onChange={(e)=> setPrice(e.target.value)}
+                value={price}
+                />
+                <button type="submit">Create Spot</button>
             </form>)
          }
 
