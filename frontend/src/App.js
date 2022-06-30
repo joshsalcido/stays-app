@@ -29,13 +29,11 @@ function App() {
           <Route path="/user/:id">
             <SpotForm/>
           </Route>
-        </Switch>
-      )}
-      <Switch>
-        <Route exact path="/main">
+        <Route path="/">
           <MainPage />
         </Route>
-      </Switch>
+        </Switch>
+      )}
     </>
   );
 }

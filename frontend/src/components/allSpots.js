@@ -5,12 +5,13 @@ import { csrfFetch } from "../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 import { thunkGetAllSpots } from "../store/main";
+import { Link } from "react-router-dom";
 
 export default function MainPage(){
     const dispatch = useDispatch();
 
-    const allSpots = useSelector(state => state)
-
+    const allSpots = useSelector(state => state.allSpots)
+    console.log(allSpots, "<--MAIN ALLSPOTs")
     const [spots, setSpots] = useState([]);
 
     async function onSelect(spotId) {
@@ -27,10 +28,23 @@ export default function MainPage(){
         }
     }, [allSpots])
 
-    return (
-        <div>{allSpots && spots.map((spot)=> (
-            <div key={spot.id}>{spot.name}</div>
-        ))}</div>
+    
 
+    return (
+        <div>{spots.map((spot)=> (
+            <div key={spot.id}>
+                <Link style={{textDecoration: 'none', color: 'black'}}>
+                 <h4 className="span-name">{spot.name}</h4>
+                       <span className="span-address">Address: {spot.address}</span>
+                       <br/>
+                       <span className="span-city">City: {spot.city}</span>
+                       <br/>
+                       <span className="span-state">State: {spot.state}, {spot.country}</span>
+                       <h4 className="span-price">Price: ${spot.price}/ Night</h4>
+                       <button>Leave a Review!</button>
+                       <br></br>
+                </Link>
+            </div>
+        ))}</div>
     )
 };

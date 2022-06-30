@@ -6,17 +6,17 @@ const GET_ALL_SPOTS = 'main/getAllSpots'
 
 // Action Creators
 
-const actionGetAllSpots = (spots) => {
+const actionGetAllSpots = (allSpots) => {
     return {
         type: GET_ALL_SPOTS,
-        spots
+        allSpots
     }
 }
 
 // THUNKS
 
-export const thunkGetAllSpots = (spots) => async (dispatch) => {
-  // console.log(userId, "GET userId ********")
+export const thunkGetAllSpots = (allSpots) => async (dispatch) => {
+  //  console.log(allSpots, "spots ********")
     const response = await csrfFetch(`/api/main/`);
     if (response.ok) {
         const data = await response.json();
@@ -31,7 +31,8 @@ const allSpots = (state = {}, action) => {
   let newState = {...state};
   switch (action.type) {
     case GET_ALL_SPOTS:
-      action.spots.forEach(spot => {
+      // console.log(action, "&&&&&&&&")
+      action.allSpots.forEach(spot => {
         newState[spot.id] = spot
       });
       return newState;
