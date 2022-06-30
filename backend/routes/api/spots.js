@@ -4,7 +4,10 @@ const { Spot, User } = require('../../db/models');
 
 const router = express.Router();
 
-// get spots
+
+
+
+// get user spots
 router.get('/user/:id', asyncHandler(async(req, res) => {
 
     const userId = req.params.id
