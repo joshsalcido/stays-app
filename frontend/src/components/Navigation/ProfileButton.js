@@ -26,6 +26,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
+
     dispatch(sessionActions.logout());
   };
 
@@ -44,7 +45,9 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <Link to='/'>
+            <button type="button" onClick={logout}>Log Out</button>
+            </Link>
           </li>
         </ul>
       )}

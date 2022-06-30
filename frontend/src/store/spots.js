@@ -65,7 +65,7 @@ export const thunkCreateSpot = (newSpot) => async (dispatch) => {
 }
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-  // console.log(spot, "<-----thunk UPDATE SPOT")
+  console.log(spot, "<-----thunk UPDATE SPOT")
   const response = await csrfFetch(`/api/spots/${spot.spotId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
@@ -73,6 +73,7 @@ export const thunkUpdateSpot = (spot) => async (dispatch) => {
   })
   if (response.ok) {
     const data = await response.json();
+    console.log(data, "%%%%% UPDATE THUNK DATA")
     dispatch(actionUpdateSpot(data))
     return data
   }
@@ -112,6 +113,7 @@ const userSpots = (state = {}, action) => {
     case UPDATE_SPOT:
       const updateState = {...state}
       updateState[action.spot.id] = action.spot
+      console.log(action, "++++ UPDATE STATE")
       return updateState;
 
     case DELETE_SPOT:
