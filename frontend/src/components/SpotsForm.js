@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
+import CreateReview from "./createReview";
 
 export default function SpotForm(){
-    const currState = useSelector(state => state)
+    // const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
     // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
-    const spot = useSelector(state => state.userSpots)
+    // const spot = useSelector(state => state.userSpots)
     // console.log(spot, "<---- Spot")
     // let values = Object.values(userSpotsSelector)
     // let userSpots =values.map((spot)=> {

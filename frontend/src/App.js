@@ -29,9 +29,9 @@ function App() {
           <Route path="/user/:id">
             <SpotForm/>
           </Route>
-        <Route path="/">
-          <MainPage />
-        </Route>
+          <Route exact path="/">
+            <MainPage />
+          </Route>
         </Switch>
       )}
     </>

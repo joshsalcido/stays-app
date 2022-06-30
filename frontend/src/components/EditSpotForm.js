@@ -8,7 +8,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session?.user?.id)
     const updatedSpots = useSelector(state => state)
-    console.log(updatedSpots, "<----- Updated STATE")
+    // console.log(updatedSpots, "<----- Updated STATE")
     const [name, setName] = useState(spot.name)
     const [address, setAddress] = useState(spot.address)
     const [city, setCity] = useState(spot.city)

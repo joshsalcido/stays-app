@@ -6,18 +6,22 @@ import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/sp
 import EditSpotForm from "./EditSpotForm";
 import { thunkGetAllSpots } from "../store/main";
 import { Link } from "react-router-dom";
+import CreateReview from "./createReview";
 
 export default function MainPage(){
     const dispatch = useDispatch();
     const userId = useSelector(state => state.session?.user?.id)
-    console.log(userId, "++++USERID")
-    const allSpots = useSelector(state => state.allSpots)
-    console.log(allSpots, "<--MAIN ALLSPOTs")
+    // const currState = useSelector(state => state);
+    const allSpots = useSelector(state => state?.allSpots)
+    // console.log(currState, "<+++ CURRSTATE")
+    // console.log(allSpots, "<--MAIN ALLSPOTs")
     const [spots, setSpots] = useState([]);
 
-    async function onSelect(spotId) {
+    const [showReviewForm, setShowReviewForm] = useState(false)
 
-    }
+    // async function onSelect(spotId) {
+
+    // }
 
     useEffect(()=>{
         dispatch(thunkGetAllSpots())
@@ -28,7 +32,9 @@ export default function MainPage(){
             setSpots(Object.values(allSpots))
         }
     }, [allSpots])
-
+    // if (allSpots){
+    //     setSpots(Object.values(allSpots))
+    // }
 
 
     return (
@@ -42,7 +48,8 @@ export default function MainPage(){
                        <br/>
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
-                       {userId && <button>Leave a Review!</button>}
+                       {userId && <button onClick={setShowReviewForm(true)}>Leave a Review!</button>}
+                       {showReviewForm && <div><CreateReview/></div>}
                        <br></br>
                 </Link>
             </div>
