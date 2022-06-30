@@ -10,13 +10,13 @@ const router = express.Router();
 // create a review
 
 router.post('/:id', asyncHandler(async (req, res) => {
-    const {review ,rating} = req.body;
+    const {review , rating} = req.body;
     const id = req.params.id;
-    const newSpot = await Spot.create({
-         address, city, state, country, name, price, userId: id
+    const newReview = await Review.create({
+         review, rating, spotId: id
     });
 
-    return res.json(newSpot)
+    return res.json(newReview)
 }))
 
 module.exports = router;

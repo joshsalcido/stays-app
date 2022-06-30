@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async(req,res) => {
     const allSpots = await Spot.findAll();
+    // console.log(allSpots, "+BACKEND ALL SPOTS+")
     return res.json(allSpots);
 }))
 
