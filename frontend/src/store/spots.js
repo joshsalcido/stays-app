@@ -29,10 +29,10 @@ const actionUpdateSpot = (spot) => {
         spot
     }
 }
-const actionDeleteSpot = (spot) => {
+const actionDeleteSpot = (spotId) => {
     return {
         type: DELETE_SPOT,
-        spot
+        spotId
     }
 }
 
@@ -78,14 +78,14 @@ export const thunkUpdateSpot = (spot) => async (dispatch) => {
   }
 }
 
-export const thunkDeleteSpot = (spot) => async (dispatch) => {
-  // console.log(spot, "<--- THUNK DELETE")
-  const response = await csrfFetch(`/api/spots/${spot.id}`, {
+export const thunkDeleteSpot = (spotId) => async (dispatch) => {
+  console.log(spotId, "<--- THUNK DELETE")
+  const response = await csrfFetch(`/api/spots/${spotId}`, {
     method: 'DELETE'
   })
   if (response.ok) {
     const data = await response.json();
-    dispatch(actionDeleteSpot(data))
+    dispatch(actionDeleteSpot(spotId))
   }
 }
 
@@ -116,9 +116,11 @@ const userSpots = (state = {}, action) => {
 
     case DELETE_SPOT:
       const deleteState = {...state}
+      console.log(action, "<--- DELETE_SPOT")
+      deleteState[action.spotId] = action.spot
       console.log(action, "<+++++ DELETE SPOT")
-      delete deleteState[action.spot.id]
-      return newState;
+      delete deleteState[action.spotId]
+      return deleteState;
 
     default:
       return state;

@@ -53,8 +53,8 @@ export default function SpotForm(){
     }
 
 
-    async function onDelete(spot){
-        dispatch(thunkDeleteSpot(spot))
+    async function onDelete(spotId){
+        dispatch(thunkDeleteSpot(spotId))
     }
     async function revealCreateForm(e) {
         e.preventDefault()
@@ -146,7 +146,7 @@ export default function SpotForm(){
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
                        <div className="edit/delete">
-                            <button type='button' onClick={()=> onDelete(spot)}>Delete Stay</button>
+                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
                             <button type='button' onClick={()=> {
                                 setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
                        </div>
