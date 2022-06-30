@@ -36,11 +36,11 @@ router.put('/:id', asyncHandler(async(req, res)=> {
     const spotId = req.params.id
     const {name, address, city, country, price, state } = req.body;
     // console.log(spotId, "We HERE *** $$$$$ ");
-    const updateSpot = await Spot.update({
-        name, address, city, country, price, state},
-        { where: { id: spotId}
-    });
-
+    const spotToUpdate = await Spot.findByPk(spotId);
+    const updateSpot = await spotToUpdate.update({
+        name, address, city, country, price, state}
+    );
+    // console.log(updateSpot, "BACKEND updateSPOT")
     return res.json(updateSpot);
 }))
 
