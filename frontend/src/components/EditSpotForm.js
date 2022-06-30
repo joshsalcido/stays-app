@@ -40,7 +40,7 @@ const EditSpotForm = ({ spot, hideform}) => {
 
         // dispatch(thunkUpdateSpot(updatedSpot));
     dispatch(thunkUpdateSpot(updatedSpot))
-        .then(dispatch(thunkGetUserSpots(userId)))
+    dispatch(thunkGetUserSpots(userId))
 
         let updateSpot = true;
         if (updateSpot) {
