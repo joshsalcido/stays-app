@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 
 export default function MainPage(){
     const dispatch = useDispatch();
-
+    const userId = useSelector(state => state.session?.user?.id)
+    console.log(userId, "++++USERID")
     const allSpots = useSelector(state => state.allSpots)
     console.log(allSpots, "<--MAIN ALLSPOTs")
     const [spots, setSpots] = useState([]);
@@ -28,7 +29,7 @@ export default function MainPage(){
         }
     }, [allSpots])
 
-    
+
 
     return (
         <div>{spots.map((spot)=> (
@@ -41,7 +42,7 @@ export default function MainPage(){
                        <br/>
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
-                       <button>Leave a Review!</button>
+                       {userId && <button>Leave a Review!</button>}
                        <br></br>
                 </Link>
             </div>
