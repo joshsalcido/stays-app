@@ -44,17 +44,17 @@ export default function CreateReview(){
     // async function onDelete(spotId){
     //     dispatch(thunkDeleteSpot(spotId))
     // }
-    async function revealCreateForm(e) {
+    async function revealReviewForm(e) {
         e.preventDefault()
         setShowForm(!showForm)
     }
     useEffect(()=> {
         setShowEditSpotForm(false);
     }, [userId])
-    useEffect(()=> {
-       dispatch(thunkGetUserReviews(userId))
-        // console.log('sent dispatch')
-    }, [dispatch])
+    // useEffect(()=> {
+    //    dispatch(thunkGetUserReviews(userId))
+    //     // console.log('sent dispatch')
+    // }, [dispatch])
 
     // useEffect(()=> {
     //     // console.log('effect spots ***:: ', spots)
@@ -86,6 +86,7 @@ export default function CreateReview(){
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
+            <button>Submit Review</button>
         </form>
         </>
     )

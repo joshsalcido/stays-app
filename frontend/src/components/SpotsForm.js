@@ -148,8 +148,7 @@ export default function SpotForm(){
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
                        <div className="edit/delete">
                             <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
-                            <button type='button' onClick={()=> {
-                                setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
+                            <button type='button' onClick={()=> { setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
                        </div>
                        <br/>
                    </div>

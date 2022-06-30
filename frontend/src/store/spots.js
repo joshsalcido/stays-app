@@ -1,6 +1,8 @@
 import { csrfFetch } from "./csrf";
 
 // Action Types
+
+
 const CREATE_SPOT = 'spots/createSpot'
 
 const GET_SPOTS = 'spots/getSpots'
@@ -10,6 +12,7 @@ const UPDATE_SPOT = 'spots/updateSpot'
 const DELETE_SPOT = 'spots/deleteSpot'
 
 // Action Creators
+
 
 const actionCreateSpot = (spot) => {
     return {
@@ -37,6 +40,9 @@ const actionDeleteSpot = (spotId) => {
 }
 
 // THUNKS
+
+
+
 
 export const thunkGetUserSpots = (userId) => async (dispatch) => {
   // console.log(userId, "GET userId ********")
@@ -95,7 +101,6 @@ export const thunkDeleteSpot = (spotId) => async (dispatch) => {
 const userSpots = (state = {}, action) => {
   let newState = {...state};
   switch (action.type) {
-
     case CREATE_SPOT:
         const createState = {...state}
         createState[action.spot.id] = action.spot
