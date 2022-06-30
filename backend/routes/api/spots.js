@@ -37,7 +37,7 @@ router.put('/:id', asyncHandler(async(req, res)=> {
         name, address, city, country, price, state},
         { where: { id: spotId}
     });
-    co
+
     return res.json(updateSpot);
 }))
 
