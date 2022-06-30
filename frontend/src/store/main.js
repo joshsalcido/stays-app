@@ -17,7 +17,7 @@ const actionGetAllSpots = (allSpots) => {
 
 export const thunkGetAllSpots = (allSpots) => async (dispatch) => {
   //  console.log(allSpots, "spots ********")
-    const response = await csrfFetch(`/api/main/`);
+    const response = await csrfFetch(`/api/main`);
     if (response.ok) {
         const data = await response.json();
         dispatch(actionGetAllSpots(data));
