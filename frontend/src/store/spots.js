@@ -116,6 +116,7 @@ const userSpots = (state = {}, action) => {
 
     case DELETE_SPOT:
       const deleteState = {...state}
+      console.log(action, "<+++++ DELETE SPOT")
       delete deleteState[action.spot.id]
       return newState;
 
