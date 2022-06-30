@@ -5,7 +5,7 @@ import { csrfFetch } from "../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 import { thunkGetAllSpots } from "../store/main";
-import { Link } from "react-router-dom";
+import { Link , NavLink} from "react-router-dom";
 import CreateReview from "./createReview";
 
 export default function MainPage(){
@@ -40,7 +40,7 @@ export default function MainPage(){
         <>
         <div>{Object.values(allSpots).map((spot)=> (
             <div key={spot.id}>
-                <Link style={{textDecoration: 'none', color: 'black'}}>
+                <NavLink style={{textDecoration: 'none', color: 'black'}} to={`/spot/${spot.id}`} >
                  <h4 className="span-name">{spot.name}</h4>
                        <span className="span-address">Address: {spot.address}</span>
                        <br/>
@@ -51,7 +51,7 @@ export default function MainPage(){
                        {userId && <button onClick={()=> {setShowReviewForm(true)}}>Leave a Review!</button>}
                        {showReviewForm && <div><CreateReview/></div>}
                        <br></br>
-                </Link>
+                </NavLink>
             </div>
         ))}</div>
         </>
