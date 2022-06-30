@@ -5,6 +5,7 @@ import { csrfFetch } from "../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 import { thunkGetIndividualSpot } from "../store/spot";
+import { thunkGetAllSpots } from "../store/main";
 import { Link, useParams } from "react-router-dom";
 import CreateReview from "./createReview";
 
@@ -14,7 +15,7 @@ export default function IndividualSpot(){
     console.log(id, "USEPARAMS")
 
     // const currState = useSelector(state => state);
-    const indSpot = useSelector(state => Object.values(state.singleSpot))
+    const indSpot = useSelector(state => state.allSpots[id])
     // console.log(currState, "<+++ CURRSTATE")
      console.log(indSpot, "<-- IND SPOT")
     //  const [allSpot, setAllSpot] = useState([]);
@@ -28,7 +29,7 @@ export default function IndividualSpot(){
     // console.log(currSpot, " Current Spot")
     const [showReviewForm, setShowReviewForm] = useState(false)
     useEffect(()=>{
-        dispatch(thunkGetIndividualSpot(id))
+        dispatch(thunkGetAllSpots(id))
     }, [dispatch])
     // useEffect(()=> {
     // setAllSpot(Object.values(allSpots))

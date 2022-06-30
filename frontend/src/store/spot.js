@@ -21,10 +21,10 @@ const actionGetIndividualSpot = (spotId) => {
   }
 
 const singleSpot = (state = {}, action) => {
-    let newState = {...state};
+    // let newState = {...state};
     switch (action.type) {
         case GET_INDIVIDUAL_SPOT:
-            const indvState = {...state}
+            const indvState = state
             console.log(action, "+++INDV ACTION")
 
               indvState[action.spotId.id] = action.spotId;
