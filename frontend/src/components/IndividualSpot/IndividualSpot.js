@@ -73,7 +73,7 @@ export default function IndividualSpot(){
                            {/* {userId && review.userId === userId && */}
                            <h5>Rating:{review.rating}</h5>
                            <span>{review.review}</span>
-                           {(
+                           {userId && userId === review.userId && (
                             <button onClick={()=> onDelete(review.id)}>Delete Your Review!</button>
                            )}
                        </div>
