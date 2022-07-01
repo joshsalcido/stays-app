@@ -5,7 +5,7 @@ import { csrfFetch } from "../../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../../store/spots";
 import EditSpotForm from "../EditSpotForm";
 import { thunkGetIndividualSpot } from "../../store/spot";
-import { thunkGetAllSpots } from "../../store/main";
+
 import { thunkDeleteReview, thunkGetReviews } from "../../store/reviews";
 import { Link, useParams } from "react-router-dom";
 import CreateReview from "../createReview";
@@ -15,24 +15,16 @@ export default function IndividualSpot(){
     const dispatch = useDispatch();
     const {id} = useParams();
     const idNum = parseInt(id);
-    console.log(idNum, "USEPARAMS")
 
-    const currState = useSelector(state => state);
-    const indSpot = useSelector(state => state.allSpots[idNum])
+
+    const indSpotObj = useSelector(state => state.singleSpot)
+    const indSpot = indSpotObj[idNum]
     const userId = useSelector(state => state.session.user?.id)
-    // const user = useSelector(state => state.session.user)
-    // const [showForm, setShowForm] = useState(true);
-    console.log(currState, "<+++ CURRSTATE")
-    console.log(indSpot, "<-- INDSPOTTTTTTTT")
-    const reviews = useSelector(state => state.allSpots[idNum].Reviews)
-    //  const [allSpot, setAllSpot] = useState([]);
-    // let currSpot;
-    // spotData.forEach(spot => {
-    //     console.log(spot.id, "spot")
-    //     if (spotId === spot.id){
-    //         currSpot = spot;
-    //     }
-    // })
+
+
+    const reviewsObj = useSelector(state => state.reviewReducer)
+    const reviews = Object.values(reviewsObj);
+
     const [reviewForm, setReviewForm] = useState(false)
     async function revealReviewForm(e) {
         e.preventDefault()
@@ -43,19 +35,13 @@ export default function IndividualSpot(){
         dispatch(thunkDeleteReview(reviewId, idNum))
         dispatch(thunkGetReviews(idNum))
     }
-    // console.log(currSpot, " Current Spot")
-    // const [showReviewForm, setShowReviewForm] = useState(false)
+
     useEffect(()=>{
-        // dispatch(thunkGetAllSpots())
+        dispatch(thunkGetIndividualSpot(idNum))
         dispatch(thunkGetReviews(idNum))
     }, [dispatch, idNum])
-    // useEffect(()=> {
-    // setAllSpot(Object.values(allSpots))
-    // },[]);
-    // if (allSpots){
-    //     setSpots(Object.values(allSpots))
-    // }
-    // console.log(allSpots)
+
+
     let reviewButton = "Leave a Review!"
     if (reviewForm){
         reviewButton = "Cancel Review"

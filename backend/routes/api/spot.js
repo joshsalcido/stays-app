@@ -9,8 +9,8 @@ const router = express.Router();
 
 router.get('/:id', asyncHandler(async(req,res)=>{
     const spotId = req.params.id
-    const selectedSpot = await Spot.findOne(spotId);
-    // console.log(spotId, "Backend spotid @@")
+    const selectedSpot = await Spot.findByPk(spotId);
+    console.log(selectedSpot, "Backend selectedSPot @@")
     //  console.log(selectedSpot, "selectedSPOT %%%%%%%%5")
     return res.json(selectedSpot);
 }))

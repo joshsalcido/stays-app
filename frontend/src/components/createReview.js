@@ -18,7 +18,7 @@ export default function CreateReview({spotId}){
 
     const dispatch = useDispatch();
     const [review, setReview] = useState('')
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(1);
     const [reviews, setReviews] = useState([])
 
     const [showForm, setShowForm] = useState(false);
@@ -39,7 +39,7 @@ export default function CreateReview({spotId}){
         // console.log("DISPATCHED")
         setShowForm(false);
         setReview('')
-        setRating('')
+        setRating(1)
     }
 
 

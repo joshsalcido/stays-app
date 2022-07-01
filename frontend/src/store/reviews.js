@@ -30,11 +30,11 @@ const actionGetReviews = (reviews, spotId) => {
 //         review
 //     }
 // }
-const actionDeleteReview = (reviewId, spotId) => {
+const actionDeleteReview = (reviewId) => {
     return {
         type: DELETE_REVIEW,
-        reviewId,
-        spotId
+        reviewId
+
     }
 }
 
@@ -80,15 +80,15 @@ export const thunkCreateReview = (newReview) => async (dispatch) => {
 //   }
 // }
 
-export const thunkDeleteReview = (reviewId, spotId) => async (dispatch) => {
+export const thunkDeleteReview = (reviewId) => async (dispatch) => {
   // console.log(spotId, "<--- THUNK DELETE")
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE'
   })
   if (response.ok) {
-    const {id: review} = await response.json();
-    dispatch(actionDeleteReview(review, spotId))
-    return review;
+    const {id} = await response.json();
+    dispatch(actionDeleteReview(id))
+    return id;
   }
 }
 

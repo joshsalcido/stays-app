@@ -39,7 +39,7 @@ router.delete('/:id', asyncHandler(async(req, res)=> {
         await badReview.destroy()
         // res.json(badReview)
     // } else {
-        return res.json({ badReview })
+        return res.json(badReview)
     // }
     // console.log(badSpot, " <==== DELETED SPOT");
 }))
