@@ -40,7 +40,7 @@ export default function IndividualSpot(){
     }
 
     async function onDelete(reviewId){
-        dispatch(thunkDeleteReview(reviewId))
+        dispatch(thunkDeleteReview(reviewId, idNum))
         dispatch(thunkGetReviews(idNum))
     }
     // console.log(currSpot, " Current Spot")
@@ -48,7 +48,7 @@ export default function IndividualSpot(){
     useEffect(()=>{
         // dispatch(thunkGetAllSpots())
         dispatch(thunkGetReviews(idNum))
-    }, [dispatch])
+    }, [dispatch, idNum])
     // useEffect(()=> {
     // setAllSpot(Object.values(allSpots))
     // },[]);
@@ -88,7 +88,7 @@ export default function IndividualSpot(){
                            <h5>Rating:{review.rating}</h5>
                            <span>{review.review}</span>
                            {(
-                            <button onClick={()=> (onDelete(review.id))}>Delete Your Review!</button>
+                            <button onClick={()=> onDelete(review.id)}>Delete Your Review!</button>
                            )}
                        </div>
                     )}

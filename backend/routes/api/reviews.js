@@ -9,9 +9,13 @@ const router = express.Router();
 
 router.get('/:id', asyncHandler(async(req,res)=> {
     const id = req.params.id
-    const reviews = Review.findAll({
-        where: { spotId: id }
+    const numId = parseInt(id)
+    console.log(numId, "$$$$$$$$$$$$$")
+    const reviews = await Review.findAll({
+        where: {spotId: numId},
+        include: User
     })
+    console.log(reviews, "ReVIEWS #########")
     return res.json(reviews);
 }))
 
@@ -35,7 +39,7 @@ router.delete('/:id', asyncHandler(async(req, res)=> {
         await badReview.destroy()
         // res.json(badReview)
     // } else {
-        return res.json({success: true})
+        return res.json({ badReview })
     // }
     // console.log(badSpot, " <==== DELETED SPOT");
 }))

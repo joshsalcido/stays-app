@@ -17,10 +17,11 @@ const actionCreateReview = (review) => {
         review
     }
 }
-const actionGetReviews = (reviews) => {
+const actionGetReviews = (reviews, spotId) => {
     return {
         type: GET_REVIEWS,
-        reviews
+        reviews,
+        spotId
     }
 }
 // const actionUpdateReview = (review) => {
@@ -29,10 +30,11 @@ const actionGetReviews = (reviews) => {
 //         review
 //     }
 // }
-const actionDeleteReview = (reviewId) => {
+const actionDeleteReview = (reviewId, spotId) => {
     return {
         type: DELETE_REVIEW,
-        reviewId
+        reviewId,
+        spotId
     }
 }
 
@@ -78,15 +80,15 @@ export const thunkCreateReview = (newReview) => async (dispatch) => {
 //   }
 // }
 
-export const thunkDeleteReview = (reviewId) => async (dispatch) => {
+export const thunkDeleteReview = (reviewId, spotId) => async (dispatch) => {
   // console.log(spotId, "<--- THUNK DELETE")
   const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE'
   })
   if (response.ok) {
-    const data = await response.json();
-    dispatch(actionDeleteReview(reviewId))
-    return data;
+    const {id: review} = await response.json();
+    dispatch(actionDeleteReview(review, spotId))
+    return review;
   }
 }
 
@@ -107,19 +109,19 @@ const reviewReducer = (state = {}, action) => {
     case CREATE_REVIEW:
 
         // console.log(action, "action Review")
-        newState[action.review.id] = action.review
+        // newState[action.review.id] = action.review
     //   newState.user = action.payload;
     //   return newState;
-        return newState;
+        return {...state, [action.review.id]: action.review};
 
 
     case DELETE_REVIEW:
       // console.log(action, "DELETE ACTION")
-      // const deleteState = {...state}
+      const deleteState = {...state}
       // deleteState[action.reviewId] = action.review
       // console.log(action, "<+++++ DELETE SPOT"
-      delete newState[action.reviewId]
-      return newState;
+      delete deleteState[action.reviewId]
+      return deleteState;
 
     default:
       return state;
