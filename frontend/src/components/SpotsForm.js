@@ -6,17 +6,11 @@ import EditSpotForm from "./EditSpotForm";
 import CreateReview from "./createReview";
 
 export default function SpotForm(){
-    // const currState = useSelector(state => state)
+    const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
-    // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
-    // const spot = useSelector(state => state.userSpots)
-    // console.log(spot, "<---- Spot")
-    // let values = Object.values(userSpotsSelector)
-    // let userSpots =values.map((spot)=> {
-    //     if (spot.userId === userId) return spot
-    // })
 
+    console.log(Object.values(currState.userSpots).length, "++++++++")
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
@@ -25,6 +19,8 @@ export default function SpotForm(){
     const [country, setCountry] = useState('')
     const [price, setPrice] = useState('')
     const [spots, setSpots] = useState([])
+
+
 
     const [showForm, setShowForm] = useState(false);
     const [showEditSpotForm, setShowEditSpotForm] = useState(false);
@@ -78,14 +74,19 @@ export default function SpotForm(){
     }, [userSpotsSelector])
 
 
-    let buttonName = "Create a New Listing!"
+    let buttonName = "Create a New Listing!";
     if (showForm){
         buttonName = "Cancel"
+    }
+    let yourListings = "Your Listings:";
+    if (Object.values(currState.userSpots).length === 0) {
+        yourListings = "You have no Listings, Create one!"
     }
 
     return (
         <>
         {userId && <button onClick={revealCreateForm}>{buttonName}</button>}
+        {userSpotsSelector && <h2>{yourListings}</h2>}
         {showForm && (
             <form onSubmit={handleSubmit}>
                 <label>Name:</label>
