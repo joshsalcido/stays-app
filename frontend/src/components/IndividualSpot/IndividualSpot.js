@@ -46,6 +46,10 @@ export default function IndividualSpot(){
     if (reviewForm){
         reviewButton = "Cancel Review"
     }
+    let reviewsTitle = "Reviews:"
+    if (!reviews.length) {
+        reviewsTitle = "Be the first to Leave a Review!"
+    }
     return (
         <div>
         {indSpot &&
@@ -63,7 +67,7 @@ export default function IndividualSpot(){
             {reviewForm && <div><CreateReview spotId={id}/></div>}
             <div>
                 {reviews && (
-                    <h4>Reviews:</h4>
+                    <h4>{reviewsTitle}</h4>
                 )}
                 { reviews && reviews.map((review) => (
                     <div key={review.id}>
