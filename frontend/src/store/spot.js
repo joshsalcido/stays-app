@@ -3,10 +3,10 @@ import { csrfFetch } from "./csrf";
 
 const GET_INDIVIDUAL_SPOT = 'spot/getSpot'
 
-const actionGetIndividualSpot = (spotId) => {
+const actionGetIndividualSpot = (spot) => {
     return {
       type: GET_INDIVIDUAL_SPOT,
-      spotId
+      spot
     }
   }
 
@@ -17,6 +17,7 @@ const actionGetIndividualSpot = (spotId) => {
       if (response.ok){
         const data = await response.json();
         dispatch(actionGetIndividualSpot(data))
+        return data
       }
   }
 
@@ -24,10 +25,10 @@ const singleSpot = (state = {}, action) => {
     // let newState = {...state};
     switch (action.type) {
         case GET_INDIVIDUAL_SPOT:
-            const indvState = state
+            const indvState = {}
             console.log(action, "+++INDV ACTION")
 
-              indvState[action.spotId.id] = action.spotId;
+              indvState[action.spot.id] = action.spot;
 
             return indvState;
         default:

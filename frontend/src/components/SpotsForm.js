@@ -66,12 +66,9 @@ export default function SpotForm(){
     }, [userId])
     useEffect(()=> {
        dispatch(thunkGetUserSpots(userId))
-        // console.log('sent dispatch')
     }, [dispatch])
 
-    // useEffect(()=> {
-    //     // console.log('effect spots ***:: ', spots)
-    // }, [spots])
+
 
 
     useEffect(()=> {

@@ -16,7 +16,7 @@ const actionGetAllSpots = (allSpots) => {
 // THUNKS
 
 export const thunkGetAllSpots = () => async (dispatch) => {
-  //  console.log(allSpots, "THUNK ALL spots ********")
+
     const response = await csrfFetch(`/api/main/`);
     if (response.ok) {
         const allSpots = await response.json();
@@ -30,7 +30,6 @@ const allSpots = (state = {}, action) => {
   let newState = {...state};
   switch (action.type) {
     case GET_ALL_SPOTS:
-      console.log(action, "&&&&&&&& ALL SPOTS REDUCER ACTION")
       action.allSpots.forEach(spot => {
         newState[spot.id] = spot
       });

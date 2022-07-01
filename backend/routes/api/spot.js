@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Spot, User } = require('../../db/models');
+const { Spot, User, Image, Review } = require('../../db/models');
 
 const router = express.Router();
 
@@ -9,11 +9,9 @@ const router = express.Router();
 
 router.get('/:id', asyncHandler(async(req,res)=>{
     const spotId = req.params.id
-    const selectedSpot = await Spot.findOne({
-        where: {id: spotId}
-    });
-    // console.log(spotId, "Backend spotid @@")
-     console.log(selectedSpot, "selectedSPOT")
+    const selectedSpot = await Spot.findByPk(spotId);
+    console.log(selectedSpot, "Backend selectedSPot @@")
+    //  console.log(selectedSpot, "selectedSPOT %%%%%%%%5")
     return res.json(selectedSpot);
 }))
 
