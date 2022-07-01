@@ -48,8 +48,6 @@ export default function MainPage(){
                        <br/>
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${spot.price}/ Night</h4>
-                       {userId && <button onClick={()=> {setShowReviewForm(true)}}>Leave a Review!</button>}
-                       {showReviewForm && <div><CreateReview/></div>}
                        <br></br>
                 </NavLink>
             </div>

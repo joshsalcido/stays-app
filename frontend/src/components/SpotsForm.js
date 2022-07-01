@@ -50,7 +50,7 @@ export default function SpotForm(){
         setCity('')
         setState('')
         setCountry('')
-        setPrice('')
+        setPrice(0)
     }
 
 
@@ -128,7 +128,7 @@ export default function SpotForm(){
 
         <br/>
         {userId && spots.map(spot => (
-            <div>
+            <div key={spot.id}>
                 {selectedSpot === spot.id && showEditSpotForm && (
                 <div>
                     <EditSpotForm

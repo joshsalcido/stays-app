@@ -125,7 +125,7 @@ const userSpots = (state = {}, action) => {
       const deleteState = {...state}
       // console.log(action, "<--- DELETE_SPOT")
       deleteState[action.spotId] = action.spot
-      // console.log(action, "<+++++ DELETE SPOT")
+      console.log(action.spot, "<+++++ DELETE SPOT")
       delete deleteState[action.spotId]
       return deleteState;
 

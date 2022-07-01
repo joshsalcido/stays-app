@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
-import { thunkCreateReview } from "../store/reviews";
+import { thunkCreateReview, thunkGetReviews } from "../store/reviews";
 
 
-export default function CreateReview(){
+export default function CreateReview({spotId}){
     // const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     // const userSpotsSelector = useSelector(state => state.userSpots)
@@ -30,10 +30,12 @@ export default function CreateReview(){
         const newReview = {
             review,
             rating,
+            spotId: spotId,
             userId: userId
         }
         // console.log(newSpot.name)
         dispatch(thunkCreateReview(newReview))
+        dispatch(thunkGetReviews(spotId))
         // console.log("DISPATCHED")
         setShowForm(false);
         setReview('')
@@ -75,18 +77,24 @@ export default function CreateReview(){
 
     return (
         <>
-        <form>
+        <form onSubmit={handleSubmit}>
             <label>Review:</label>
-            <textarea placeholder="Write a Review"></textarea>
+            <textarea placeholder="Write a Review"
+            onChange={(e)=> setReview(e.target.value)}
+            value={review}
+            />
             <label>Rating:</label>
-            <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+            <select
+            onChange={(e)=> setRating(e.target.value)}
+            value={rating}
+            >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
             </select>
-            <button>Submit Review</button>
+            <button type="submit">Submit Review</button>
         </form>
         </>
     )

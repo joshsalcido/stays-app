@@ -6,12 +6,17 @@
     overflow: hidden;
     border-bottom: 1px solid #e2e2e2;
 }
-p {
+ul {
+    list-style: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
+}
+
+li {
 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
 }
 
-p .login, .signup{
+li .login, .signup{
     color: #77aa97;
     float: right;
     text-align: center;
@@ -19,7 +24,7 @@ p .login, .signup{
     text-decoration: none;
     font-size: 17px;
 }
-p .home {
+li .home {
     color: #77aa97;
     float: left;
     text-align: center;
