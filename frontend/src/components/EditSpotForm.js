@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserSpots, thunkUpdateSpot } from "../store/spots";
+import './SpotsForm.css'
 
 
 const EditSpotForm = ({ spot, hideform}) => {
@@ -38,6 +39,7 @@ const EditSpotForm = ({ spot, hideform}) => {
         if (!state.length) errors.push("Please enter a state")
         if (!country.length) errors.push("Please enter a country")
         if (!numberRegex.test(price)) errors.push("Price must be a number")
+        if (price <= 0) errors.push("Price minimum $1")
 
         setValidationErrors(errors);
 
@@ -56,7 +58,7 @@ const EditSpotForm = ({ spot, hideform}) => {
         }
 
         setHasSubmitted(true);
-        if (validationErrors.length) return alert("Please fill out form properly")
+        if (validationErrors.length) return alert("Double check your listing info!")
         // dispatch(thunkUpdateSpot(updatedSpot));
     await dispatch(thunkUpdateSpot(updatedSpot))
             .then(dispatch(thunkGetUserSpots(userId)))
@@ -96,7 +98,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     return (
         <>
         { (<section className="edit-form">
-            <form onSubmit={handleSubmit}>
+            <form className="edit-spotForm" onSubmit={handleSubmit}>
             {hasSubmitted && validationErrors.length > 0 && <ul className="errors" >
                   {validationErrors.map((errors)=> (
                       <li key={errors}>{errors}</li>

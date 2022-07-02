@@ -4,6 +4,7 @@ import { csrfFetch } from "../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
 import EditSpotForm from "./EditSpotForm";
 import CreateReview from "./createReview";
+import './SpotsForm.css'
 
 export default function SpotForm(){
     const currState = useSelector(state => state)
@@ -38,6 +39,7 @@ export default function SpotForm(){
         if (!state.length) errors.push("Please enter a state")
         if (!country.length) errors.push("Please enter a country")
         if (!numberRegex.test(price)) errors.push("Price must be a number")
+        if (price <= 0) errors.push("Price minimum $1")
 
         setValidationErrors(errors);
 
@@ -117,13 +119,13 @@ export default function SpotForm(){
         <>
         {userId && <button onClick={revealCreateForm}>{buttonName}</button>}
         {showForm && (
-            <form onSubmit={handleSubmit}>
+            <form className="spot-form" onSubmit={handleSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && <ul className="errors">
                   {validationErrors.map((errors)=> (
-                      <li key={errors}>{errors}</li>
+                      <li className="errors" key={errors}>{errors}</li>
                       ))}
                 </ul>}
-                <label>Name:</label>
+                <label>Title:</label>
                 <input
                 onChange={(e)=> setName(e.target.value)}
                 value={name}
@@ -180,11 +182,11 @@ export default function SpotForm(){
                 {spot.userId === userId && spot.userId && (
                     <div key={spot.id}>
                        <h4 className="span-name">{spot.name}</h4>
-                       <span className="span-address">Address: {spot.address}</span>
+                       <span className="span-address">{spot.address}</span>
                        <br/>
-                       <span className="span-city">City: {spot.city}</span>
+                       <span className="span-city">{spot.city},</span>
                        <br/>
-                       <span className="span-state">State: {spot.state}, {spot.country}</span>
+                       <span className="span-state">{spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
                        <div className="edit/delete">
                             <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
