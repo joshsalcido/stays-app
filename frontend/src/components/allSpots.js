@@ -29,12 +29,12 @@ export default function MainPage(){
             <div key={spot.id}>
                 <NavLink style={{textDecoration: 'none', color: 'black'}} to={`/spot/${spot.id}`} >
                  <h4 className="span-name">{spot.name}</h4>
-                       <span className="span-address">Address: {spot.address}</span>
+                       <span className="span-address">{spot.address}</span>
                        <br/>
-                       <span className="span-city">City: {spot.city}</span>
+                       <span className="span-city">{spot.city},</span>
                        <br/>
-                       <span className="span-state">State: {spot.state}, {spot.country}</span>
-                       <h4 className="span-price">Price: ${spot.price}/ Night</h4>
+                       <span className="span-state">{spot.state}, {spot.country}</span>
+                       <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
                        <br></br>
                 </NavLink>
             </div>

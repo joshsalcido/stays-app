@@ -1,1 +1,19 @@
 /* TODO Add site wide styles */
+h4 {
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+h5 {
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+
+span {
+    font-family: 'Montserrat';
+    font-weight: 200;
+}
+
+h2 {
+    font-family: 'Montserrat';
+    font-weight: 700;
+}

@@ -55,7 +55,6 @@ function LoginFormPage() {
       </label>
       <button type="submit">Log In</button>
       <button onClick={demoSubmit}>Demo</button>
-      <Link onClick={demoSubmit} >Log in as Guest</Link>
     </form>
   );
 }

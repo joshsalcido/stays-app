@@ -58,10 +58,10 @@ export default function SpotForm(){
         }
 
         setHasSubmitted(true);
-        if (validationErrors.length) return alert("Please fill out form properly")
+        if (validationErrors.length) return alert("Double check your listing info!")
 
         dispatch(thunkCreateSpot(newSpot))
-        
+
         setShowForm(false);
         setName('')
         setAddress('')
@@ -153,7 +153,7 @@ export default function SpotForm(){
                 value={country}
                 required={true}
                 />
-                <label>Price:</label>
+                <label>Price Per Night:</label>
                 <input
                 placeholder="numbers only"
                 onChange={(e)=> setPrice(e.target.value)}
@@ -163,7 +163,7 @@ export default function SpotForm(){
                 <button type="submit">Create Spot</button>
             </form>)
          }
-                {userSpotsSelector && <h2>{yourListings}</h2>}
+                {userSpotsSelector && <h2 className="your-listing">{yourListings}</h2>}
 
 
         <br/>
@@ -185,7 +185,7 @@ export default function SpotForm(){
                        <span className="span-city">City: {spot.city}</span>
                        <br/>
                        <span className="span-state">State: {spot.state}, {spot.country}</span>
-                       <h4 className="span-price">Price: ${spot.price}/ Night</h4>
+                       <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
                        <div className="edit/delete">
                             <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
                             <button type='button' onClick={()=> { setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
