@@ -17,6 +17,9 @@ const EditSpotForm = ({ spot, hideform}) => {
     const [price, setPrice] = useState(spot.price)
     const [spots, setSpots] = useState([])
 
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
     const updateCity = (e) => setCity(e.target.value);
@@ -25,6 +28,20 @@ const EditSpotForm = ({ spot, hideform}) => {
     const updatePrice = (e) => setPrice(e.target.value);
 
     // const [hideForm, setHideForm] = useState(true);
+    useEffect(()=> {
+        const errors = [];
+
+        let numberRegex = /\d+/
+        if (name.length < 3) errors.push("Please enter a longer Title")
+        if (!address.length) errors.push("Please enter an address")
+        if (!city.length) errors.push("Please enter a city")
+        if (!state.length) errors.push("Please enter a state")
+        if (!country.length) errors.push("Please enter a country")
+        if (!numberRegex.test(price)) errors.push("Price must be a number")
+
+        setValidationErrors(errors);
+
+    }, [name,address, city, state, country, price])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +55,8 @@ const EditSpotForm = ({ spot, hideform}) => {
             spotId: spot.id
         }
 
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert("Please fill out form properly")
         // dispatch(thunkUpdateSpot(updatedSpot));
     await dispatch(thunkUpdateSpot(updatedSpot))
             .then(dispatch(thunkGetUserSpots(userId)))
@@ -78,6 +97,11 @@ const EditSpotForm = ({ spot, hideform}) => {
         <>
         { (<section className="edit-form">
             <form onSubmit={handleSubmit}>
+            {hasSubmitted && validationErrors.length > 0 && <ul className="errors" >
+                  {validationErrors.map((errors)=> (
+                      <li key={errors}>{errors}</li>
+                      ))}
+                </ul>}
                 <label>Title:</label>
                 <input
                     required

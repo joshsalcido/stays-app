@@ -5,16 +5,9 @@ import { thunkCreateReview, thunkGetReviews } from "../store/reviews";
 
 
 export default function CreateReview({spotId}){
-    // const currState = useSelector(state => state)
+
     const userId = useSelector(state => state.session?.user?.id)
-    // const userSpotsSelector = useSelector(state => state.userSpots)
-    // const userSpotSelector = useSelector(state => Object.values(state.userSpots))
-    // const spot = useSelector(state => state.userSpots)
-    // console.log(spot, "<---- Spot")
-    // let values = Object.values(userSpotsSelector)
-    // let userSpots =values.map((spot)=> {
-    //     if (spot.userId === userId) return spot
-    // })
+
 
     const dispatch = useDispatch();
     const [review, setReview] = useState('')
@@ -33,19 +26,17 @@ export default function CreateReview({spotId}){
             spotId: spotId,
             userId: userId
         }
-        // console.log(newSpot.name)
+
         dispatch(thunkCreateReview(newReview))
         dispatch(thunkGetReviews(spotId))
-        // console.log("DISPATCHED")
+
         setShowForm(false);
         setReview('')
         setRating(1)
     }
 
 
-    // async function onDelete(spotId){
-    //     dispatch(thunkDeleteSpot(spotId))
-    // }
+
     async function revealReviewForm(e) {
         e.preventDefault()
         setShowForm(!showForm)
@@ -82,6 +73,7 @@ export default function CreateReview({spotId}){
             <textarea placeholder="Write a Review"
             onChange={(e)=> setReview(e.target.value)}
             value={review}
+            required={true}
             />
             <label>Rating:</label>
             <select

@@ -8,7 +8,6 @@ const router = express.Router();
 
 
 
-
 // get user spots
 router.get('/user/:id', asyncHandler(async(req, res) => {
 

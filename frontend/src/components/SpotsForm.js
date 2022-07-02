@@ -10,7 +10,6 @@ export default function SpotForm(){
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
 
-    console.log(Object.values(currState.userSpots).length, "++++++++")
     const dispatch = useDispatch();
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
@@ -25,6 +24,26 @@ export default function SpotForm(){
     const [showForm, setShowForm] = useState(false);
     const [showEditSpotForm, setShowEditSpotForm] = useState(false);
     const [selectedSpot, setSelectedSpot] = useState(null);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    const [validationErrors, setValidationErrors] = useState([]);
+
+    useEffect(()=> {
+        const errors = [];
+
+        let numberRegex = /\d+/
+        if (name.length < 3) errors.push("Please enter a longer Title")
+        if (!address.length) errors.push("Please enter an address")
+        if (!city.length) errors.push("Please enter a city")
+        if (!state.length) errors.push("Please enter a state")
+        if (!country.length) errors.push("Please enter a country")
+        if (!numberRegex.test(price)) errors.push("Price must be a number")
+
+        setValidationErrors(errors);
+
+    }, [name,address, city, state, country, price])
+
+
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -37,16 +56,20 @@ export default function SpotForm(){
             price,
             userId: userId
         }
-        // console.log(newSpot.name)
+
+        setHasSubmitted(true);
+        if (validationErrors.length) return alert("Please fill out form properly")
+
         dispatch(thunkCreateSpot(newSpot))
-        // console.log("DISPATCHED")
+        
         setShowForm(false);
         setName('')
         setAddress('')
         setCity('')
         setState('')
         setCountry('')
-        setPrice(0)
+        setPrice('')
+
     }
 
 
@@ -56,6 +79,13 @@ export default function SpotForm(){
     async function revealCreateForm(e) {
         e.preventDefault()
         setShowForm(!showForm)
+        setName('')
+        setAddress('')
+        setCity('')
+        setState('')
+        setCountry('')
+        setPrice('')
+        setValidationErrors([])
     }
     useEffect(()=> {
         setShowEditSpotForm(false);
@@ -82,46 +112,58 @@ export default function SpotForm(){
     if (Object.values(currState.userSpots).length === 0) {
         yourListings = "You have no Listings, Create one!"
     }
-
+    let numberRegex = /\d+/;
     return (
         <>
         {userId && <button onClick={revealCreateForm}>{buttonName}</button>}
-        {userSpotsSelector && <h2>{yourListings}</h2>}
         {showForm && (
             <form onSubmit={handleSubmit}>
+                {hasSubmitted && validationErrors.length > 0 && <ul className="errors">
+                  {validationErrors.map((errors)=> (
+                      <li key={errors}>{errors}</li>
+                      ))}
+                </ul>}
                 <label>Name:</label>
                 <input
                 onChange={(e)=> setName(e.target.value)}
                 value={name}
+                required={true}
                 />
                 <label>Address:</label>
                 <input
                 onChange={(e)=> setAddress(e.target.value)}
                 value={address}
+                required={true}
                 />
                 <label>City:</label>
                 <input
                 onChange={(e)=> setCity(e.target.value)}
                 value={city}
+                required={true}
                 />
                 <label>State:</label>
                 <input
                 onChange={(e)=> setState(e.target.value)}
                 value={state}
+                required={true}
                 />
                 <label>Country:</label>
                 <input
                 onChange={(e)=> setCountry(e.target.value)}
                 value={country}
+                required={true}
                 />
                 <label>Price:</label>
                 <input
+                placeholder="numbers only"
                 onChange={(e)=> setPrice(e.target.value)}
                 value={price}
+                required={true}
                 />
                 <button type="submit">Create Spot</button>
             </form>)
          }
+                {userSpotsSelector && <h2>{yourListings}</h2>}
 
 
         <br/>
