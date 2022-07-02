@@ -75,7 +75,7 @@ function SignupFormPage() {
         />
       </label>
       <button type="submit">Sign Up</button>
-      <Link onClick={demoSubmit}>Log in as Guest</Link>
+      <Link class="guestLink" onClick={demoSubmit}>Log in as Guest</Link>
     </form>
   );
 }

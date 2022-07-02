@@ -1,5 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;500;600;700&display=swap');
+
+
 .profile-icon {
-    font-size:x-large
+    font-size:large
 }
 
 .navBar {
@@ -8,12 +12,13 @@
 }
 ul {
     list-style: none;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
+    font-family: 'Montserrat', Cambria, Cochin;
+    font-weight: 200;
 }
 
 li {
 
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif,
+    font-family: 'Montserrat', Cambria, Cochin, Georgia, Times, 'Times New Roman',
 }
 
 li .login, .signup{
@@ -24,11 +29,12 @@ li .login, .signup{
     text-decoration: none;
     font-size: 17px;
 }
-li .home {
+.home {
     color: #77aa97;
     float: left;
     text-align: center;
-    padding: 14px 16px 30px;
+    padding: 6px 16px 10px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 30px;
+    font-weight: 700;
 }

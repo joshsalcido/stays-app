@@ -25,11 +25,8 @@ export default function IndividualSpot(){
     const reviewsObj = useSelector(state => state.reviewReducer)
     const reviews = Object.values(reviewsObj);
 
-    const [reviewForm, setReviewForm] = useState(false)
-    async function revealReviewForm(e) {
-        e.preventDefault()
-        setReviewForm(!reviewForm)
-    }
+
+
 
     async function onDelete(reviewId){
         dispatch(thunkDeleteReview(reviewId, idNum))
@@ -42,29 +39,28 @@ export default function IndividualSpot(){
     }, [dispatch, idNum])
 
 
-    let reviewButton = "Leave a Review!"
-    if (reviewForm){
-        reviewButton = "Cancel Review"
-    }
-    let reviewsTitle = "Reviews:"
+   
+    let reviewsTitle = "Reviews"
     if (!reviews.length) {
         reviewsTitle = "Be the first to Leave a Review!"
     }
+
+
+
+
     return (
         <div>
         {indSpot &&
         <div>
             <h4 className="span-title">{indSpot.name}</h4>
-            <span className="span-address">Address: {indSpot.address}</span>
-            <br/>
-            <span className="span-city">City: {indSpot.city}</span>
-            <br/>
-            <span className="span-state">State: {indSpot.state}, {indSpot.country}</span>
-            <h4 className="span-price">Price: ${indSpot.price}/ Night</h4>
+            <img></img>
+            <span className="span-address">{indSpot.address}</span>
+            <br></br>
+            <span className="span-state"> {indSpot.city}, {indSpot.state}, {indSpot.country}</span>
+            <h4 className="span-price">Price: ${parseInt(indSpot.price).toLocaleString("en-Us")}/ Night</h4>
         </div>
         }
-            {userId && <button onClick={revealReviewForm}>{reviewButton}</button>}
-            {reviewForm && <div><CreateReview spotId={id}/></div>}
+            {<div><CreateReview spotId={id}/></div>}
             <div>
                 {reviews && (
                     <h4>{reviewsTitle}</h4>
@@ -75,7 +71,7 @@ export default function IndividualSpot(){
                         <div className="reviewBox">
                            {/* <h5>{user.username}</h5> */}
                            {/* {userId && review.userId === userId && */}
-                           <h5>Rating:{review.rating}</h5>
+                           <h5>Rating: {review.rating}</h5>
                            <span>{review.review}</span>
                            {userId && userId === review.userId && (
                             <button onClick={()=> onDelete(review.id)}>Delete Your Review!</button>

@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async(req,res) => {
     const allSpots = await Spot.findAll({
         include: Review,
     });
-     console.log(allSpots, "+BACKEND ALL SPOTS+")
+    
     return res.json(allSpots);
 }))
 
