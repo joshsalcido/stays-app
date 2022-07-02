@@ -45,7 +45,7 @@ const actionDeleteSpot = (spotId) => {
 
 
 export const thunkGetUserSpots = (userId) => async (dispatch) => {
-  // console.log(userId, "GET userId ********")
+ 
     const response = await csrfFetch(`/api/spots/user/${userId}`);
     if (response.ok) {
         const data = await response.json();
@@ -56,13 +56,13 @@ export const thunkGetUserSpots = (userId) => async (dispatch) => {
 
 export const thunkCreateSpot = (newSpot) => async (dispatch) => {
   const userId = newSpot.userId
-  // console.log(userId, "<--- CREATE THUNK")
+
     const response = await csrfFetch(`/api/spots/${userId}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(newSpot)
     })
-    // console.log("<--- INSIDE THUNK")
+
     if (response.ok) {
       const data = await response.json();
       dispatch(actionCreateSpot(data))
@@ -71,7 +71,7 @@ export const thunkCreateSpot = (newSpot) => async (dispatch) => {
 }
 
 export const thunkUpdateSpot = (spot) => async (dispatch) => {
-  console.log(spot, "<-----thunk UPDATE SPOT")
+
   const response = await csrfFetch(`/api/spots/${spot.spotId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
@@ -79,7 +79,7 @@ export const thunkUpdateSpot = (spot) => async (dispatch) => {
   })
   if (response.ok) {
     const data = await response.json();
-    console.log(data, "%%%%% UPDATE THUNK DATA")
+
     dispatch(actionUpdateSpot(data))
     return data
   }
@@ -104,13 +104,12 @@ const userSpots = (state = {}, action) => {
     case CREATE_SPOT:
         const createState = {...state}
         createState[action.spot.id] = action.spot
-    //   newState.user = action.payload;
-    //   return newState;
+
         return createState;
 
     case GET_SPOTS:
       action.spots.forEach(spot => {
-          // console.log(spot, "$$***REDUCERRRRRRRRR**$$")
+
         newState[spot.id] = spot
       });
       return newState;
@@ -118,14 +117,14 @@ const userSpots = (state = {}, action) => {
     case UPDATE_SPOT:
       const updateState = {...state}
       updateState[action.spot.id] = action.spot
-      console.log(action, "++++ UPDATE STATE")
+
       return updateState;
 
     case DELETE_SPOT:
       const deleteState = {...state}
-      // console.log(action, "<--- DELETE_SPOT")
+
       deleteState[action.spotId] = action.spot
-      console.log(action.spot, "<+++++ DELETE SPOT")
+
       delete deleteState[action.spotId]
       return deleteState;
 

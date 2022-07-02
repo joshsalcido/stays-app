@@ -12,7 +12,7 @@ const actionGetIndividualSpot = (spot) => {
 
 
   export const thunkGetIndividualSpot = (spotId) => async (dispatch) => {
-    console.log(spotId, "SPOT ID")
+   
       const response = await csrfFetch(`/api/spot/${spotId}`);
       if (response.ok){
         const data = await response.json();
@@ -26,7 +26,6 @@ const singleSpot = (state = {}, action) => {
     switch (action.type) {
         case GET_INDIVIDUAL_SPOT:
             const indvState = {}
-            console.log(action, "+++INDV ACTION")
 
               indvState[action.spot.id] = action.spot;
 

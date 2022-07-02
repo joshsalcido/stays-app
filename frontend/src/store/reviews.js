@@ -52,7 +52,7 @@ export const thunkGetReviews = (spotId) => async (dispatch) => {
 
 export const thunkCreateReview = (newReview) => async (dispatch) => {
   const spotId = newReview.spotId
-  console.log(spotId, "<--- CREATE THUNK")
+
     const response = await csrfFetch(`/api/reviews/${spotId}`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -99,19 +99,16 @@ const reviewReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_REVIEWS:
       newState = {}
-      console.log(action, "Get ACTION")
+
       action.reviews.forEach(review => {
-          // console.log(spot, "$$***REDUCERRRRRRRRR**$$")
+
         newState[review.id] = review
       });
       return newState;
 
     case CREATE_REVIEW:
 
-        // console.log(action, "action Review")
-        // newState[action.review.id] = action.review
-    //   newState.user = action.payload;
-    //   return newState;
+      
         return {...state, [action.review.id]: action.review};
 
 
