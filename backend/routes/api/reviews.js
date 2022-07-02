@@ -10,12 +10,12 @@ const router = express.Router();
 router.get('/:id', asyncHandler(async(req,res)=> {
     const id = req.params.id
     const numId = parseInt(id)
-    console.log(numId, "$$$$$$$$$$$$$")
+
     const reviews = await Review.findAll({
         where: {spotId: numId},
         include: User
     })
-    console.log(reviews, "ReVIEWS #########")
+   
     return res.json(reviews);
 }))
 
