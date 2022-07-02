@@ -12,7 +12,19 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {model: 'Spots'}
       },
-      url: {
+      url1: {
+        type: Sequelize.STRING
+      },
+      url2: {
+        type: Sequelize.STRING
+      },
+      url3: {
+        type: Sequelize.STRING
+      },
+      url4: {
+        type: Sequelize.STRING
+      },
+      url5: {
         type: Sequelize.STRING
       },
       createdAt: {
