@@ -27,9 +27,10 @@ export const thunkGetAllSpots = () => async (dispatch) => {
   // REDUCERS
 
 const allSpots = (state = {}, action) => {
-  let newState = {...state};
   switch (action.type) {
     case GET_ALL_SPOTS:
+      const newState = {};
+      console.log(action, "+++ allspots action +++")
       action.allSpots.forEach(spot => {
         newState[spot.id] = spot
       });

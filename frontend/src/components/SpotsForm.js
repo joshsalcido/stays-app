@@ -163,7 +163,7 @@ export default function SpotForm(){
                 value={price}
                 required={true}
                 />
-                <button type="submit">Create Spot</button>
+                <button type="submit">Submit Listing</button>
             </form>)
          }
                 {userSpotsSelector && <h2 className="your-listing">{yourListings}</h2>}

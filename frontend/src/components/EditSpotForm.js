@@ -20,7 +20,7 @@ const EditSpotForm = ({ spot, hideform}) => {
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-   
+
 
     const updateName = (e) => setName(e.target.value);
     const updateAddress = (e) => setAddress(e.target.value);
@@ -61,8 +61,8 @@ const EditSpotForm = ({ spot, hideform}) => {
         setHasSubmitted(true);
         if (validationErrors.length) return alert("Double check your listing info!")
         // dispatch(thunkUpdateSpot(updatedSpot));
-    await dispatch(thunkUpdateSpot(updatedSpot))
-            .then(dispatch(thunkGetUserSpots(userId)))
+    dispatch(thunkUpdateSpot(updatedSpot))
+    dispatch(thunkGetUserSpots(userId))
 
         let updateSpot = true;
         if (updateSpot) {
@@ -84,7 +84,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     }
     useEffect(()=> {
         dispatch(thunkGetUserSpots(userId))
-    }, [dispatch]);
+    }, [dispatch, userId]);
     // useEffect(()=> {
     //     dispatch(thunkUpdateSpot(spot))
     // }, [dispatch])
