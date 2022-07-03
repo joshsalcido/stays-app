@@ -191,8 +191,8 @@ export default function SpotForm(){
                        <span className="span-state">{spot.state}, {spot.country}</span>
                        <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
                        <div className="edit/delete">
-                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
-                            {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Stay</button>)}
+                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
+                            {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Listing</button>)}
                        </div>
                        <br/>
                    </div>
