@@ -41,6 +41,7 @@ const EditSpotForm = ({ spot, hideform}) => {
         if (!country.length) errors.push("Please enter a country")
         if (!numberRegex.test(price)) errors.push("Price must be a number")
         if (price <= 0) errors.push("Price minimum $1")
+        if (price.length > 8) errors.push("Price too expensive!")
 
         setValidationErrors(errors);
 

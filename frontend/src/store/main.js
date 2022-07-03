@@ -30,7 +30,6 @@ const allSpots = (state = {}, action) => {
   switch (action.type) {
     case GET_ALL_SPOTS:
       const newState = {};
-      console.log(action, "+++ allspots action +++")
       action.allSpots.forEach(spot => {
         newState[spot.id] = spot
       });
