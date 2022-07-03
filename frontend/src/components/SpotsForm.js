@@ -41,6 +41,7 @@ export default function SpotForm(){
         if (!country.length) errors.push("Please enter a country")
         if (!numberRegex.test(price)) errors.push("Price must be a number")
         if (price <= 0) errors.push("Price minimum $1")
+        if (price.length > 8) errors.push("Price too expensive!")
 
         setValidationErrors(errors);
 
@@ -163,7 +164,7 @@ export default function SpotForm(){
                 value={price}
                 required={true}
                 />
-                <button type="submit">Create Spot</button>
+                <button type="submit">Submit Listing</button>
             </form>)
          }
                 {userSpotsSelector && <h2 className="your-listing">{yourListings}</h2>}
