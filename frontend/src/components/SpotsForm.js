@@ -26,6 +26,7 @@ export default function SpotForm(){
     const [showEditSpotForm, setShowEditSpotForm] = useState(false);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+    const [showEditButton, setShowEditButton] = useState(true);
 
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -190,7 +191,7 @@ export default function SpotForm(){
                        <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
                        <div className="edit/delete">
                             <button type='button' onClick={()=> onDelete(spot.id)}>Delete Stay</button>
-                            <button type='button' onClick={()=> { setShowEditSpotForm(true); setSelectedSpot(spot.id)}}>Edit Stay</button>
+                            {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Stay</button>)}
                        </div>
                        <br/>
                    </div>

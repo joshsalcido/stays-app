@@ -51,6 +51,9 @@ export default function CreateReview({spotId}){
         setReview('')
         setRating(1)
     }
+    useEffect(()=> {
+        dispatch(thunkGetReviews(spotId))
+    }, [dispatch, userId])
 
     async function revealReviewForm(e) {
         e.preventDefault()
