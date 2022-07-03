@@ -136,7 +136,7 @@ const EditSpotForm = ({ spot, hideform}) => {
                     required
                     value={price}
                     onChange={updatePrice}/>
-                <button type="submit">Update Stay!</button>
+                <button type="submit">Submit</button>
                 <button type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
         </section>)}
