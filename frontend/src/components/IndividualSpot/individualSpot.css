@@ -1,4 +1,111 @@
+.Indv-spot-div {
+    border: solid 1px blue;
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 5rem 2rem 5rem
+
+}
+
+
+
 div .reviewBox {
 
     border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.span-title {
+    font-size: 2rem;
+    font-weight: 500;
+    border: solid 1px blue;
+    width: fit-content;
+}
+
+.image-block {
+    position: relative;
+    width: auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px blue;
+}
+
+.single-url1 {
+    width: min-content;
+    height: min-content;
+    border: solid 1px blue;
+    margin: .1rem .1rem;
+    /* border-radius: 1rem 0rem 0rem 1rem; */
+}
+
+.img-url1 {
+    width: auto;
+    height: 25rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+
+.single-url2 {
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    margin: 1rem;
+
+    /* border-radius: 1rem 0rem 0rem 1rem; */
+}
+.img-url2 {
+    width: auto;
+    height: 16rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+.single-url3 {
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    margin: 1rem;
+
+    /* border-radius: 1rem 0rem 0rem 1rem; */
+}
+.img-url3 {
+    width: auto;
+    height: 16rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+.single-url4 {
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    margin: 1rem;
+    /* border-radius: 1rem 0rem 0rem 1rem; */
+}
+.img-url4 {
+    width: auto;
+    height: 16rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+
+.single-url5 {
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    margin: 1rem;
+    /* border-radius: 1rem 0rem 0rem 1rem; */
+}
+.img-url5 {
+    width: auto;
+    height: 16rem;
+    border-radius: 2%;
+    object-fit: cover;
 }
