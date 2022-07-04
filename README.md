@@ -1,6 +1,6 @@
 # Welcome to Stays!
 
-Just like Airbnb, at **Stays** you can explores multiple vacation listings across the world and find the one you'd love to  **Stay** at! If you have a stay of your own that you would like to offer to others you can create your very own listing! If you stayed at a stay recently and would like to leave a review you can also do that once you are logged in to your **Stays** account. Checkout [Stays](https://stays-app.herokuapp.com/) now!
+Just like Airbnb, at **Stays** you can explore multiple vacation listings across the world and find the one you'd love to  **Stay** at! If you have a stay of your own that you would like to offer to others you can create your very own listing! If you stayed at a stay recently and would like to leave a review you can also do that once you are logged in to your **Stays** account. Checkout [Stays](https://stays-app.herokuapp.com/) now!
 
 Created with: **JavaScript**, **PostgresSQL**, **Sequelize**, **Express**, **React**, **Redux**, **CSS**
 
