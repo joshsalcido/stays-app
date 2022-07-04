@@ -184,6 +184,7 @@ export default function SpotForm(){
                 {spot.userId === userId && spot.userId && (
                     <div key={spot.id}>
                        <h4 className="span-name">{spot.name}</h4>
+                       <img src=""></img>
                        <span className="span-address">{spot.address}</span>
                        <br/>
                        <span className="span-city">{spot.city},</span>
