@@ -9,14 +9,23 @@ Created with: **JavaScript**, **PostgresSQL**, **Sequelize**, **Express**, **Rea
 
 Checkout all of **Stays** listings without having to be logged in!
 
+![Screen Shot 2022-07-04 at 11 55 51 AM](https://user-images.githubusercontent.com/75753879/177201359-16519b04-25be-4d3c-803b-7f998860c26a.png)
+
 
 ## Guest/Demo User
 
 Don't have time to Sign up and create a new account, no worries! Simply log in with our provided Demo/Guest user, and explore **Stays** and all its capabilities! Create a Listing and leave some reviews!
 
+![Screen Shot 2022-07-04 at 10 27 25 AM](https://user-images.githubusercontent.com/75753879/177201418-3d4eb096-004e-4f49-a2fc-992e23e4f9dc.png)
+![Screen Shot 2022-07-04 at 10 27 36 AM](https://user-images.githubusercontent.com/75753879/177201421-c0a718b5-7351-4ea8-989a-f613a472c455.png)
+
 ## Create a Listing!
 
 Once you have signed up and logged in you can now Create your first listing within your 'My Profile' page. You can also instantly delete it or edit it as you please!
+
+![Screen Shot 2022-07-04 at 10 34 13 AM](https://user-images.githubusercontent.com/75753879/177201458-9bf8861a-2212-4f4d-baec-448cd3495749.png)
+![Screen Shot 2022-07-04 at 10 37 40 AM](https://user-images.githubusercontent.com/75753879/177201481-1aacc479-c885-415a-864f-0192be1d942c.png)
+![Screen Shot 2022-07-04 at 10 38 05 AM](https://user-images.githubusercontent.com/75753879/177201493-9f9efa0e-140a-4458-a2da-8da3aad6ce2f.png)
 
 ## Leave some Reviews!
 
