@@ -36,6 +36,24 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DECIMAL
       },
+      description: {
+        type: Sequelize.STRING(2000)
+      },
+      url1: {
+        type: Sequelize.STRING
+      },
+      url2: {
+        type: Sequelize.STRING
+      },
+      url3: {
+        type: Sequelize.STRING
+      },
+      url4: {
+        type: Sequelize.STRING
+      },
+      url5: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

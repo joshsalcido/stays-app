@@ -6,6 +6,8 @@ import { csrfFetch } from "../store/csrf";
 import { thunkGetAllSpots } from "../store/main";
 import { Link , NavLink} from "react-router-dom";
 
+import './allspots.css'
+
 
 export default function MainPage(){
     const dispatch = useDispatch();
@@ -25,16 +27,15 @@ export default function MainPage(){
 
     return (
         <>
-        <div>{Object.values(allSpots).map((spot)=> (
-            <div key={spot.id}>
-                <NavLink style={{textDecoration: 'none', color: 'black'}} to={`/spot/${spot.id}`} >
-                 <h4 className="span-name">{spot.name}</h4>
+        <div className="allSpotsDiv">{Object.values(allSpots).map((spot)=> (
+            <div className="singleSpotDiv" key={spot.id}>
+                <NavLink style={{textDecoration: 'none', color: 'black'}} to={`/spot/${spot.id}`}>
+                       <img className="url1" alt="airbnb-Image" src={spot.url1}></img>
+                       <h5 className="span-city">{spot.city}, {spot.state}</h5>
                        <span className="span-address">{spot.address}</span>
                        <br/>
-                       <span className="span-city">{spot.city},</span>
-                       <br/>
-                       <span className="span-state">{spot.state}, {spot.country}</span>
-                       <h4 className="span-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
+                       <span className="span-address">{spot.state}, {spot.country}</span>
+                       <h5 className="h5-price">${parseInt(spot.price).toLocaleString("en-Us")} / night</h5>
                        <br></br>
                 </NavLink>
             </div>

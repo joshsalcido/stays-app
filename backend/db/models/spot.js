@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
     state: DataTypes.STRING,
     country: DataTypes.STRING,
     name: DataTypes.STRING,
-    price: DataTypes.DECIMAL
+    price: DataTypes.DECIMAL,
+    description: DataTypes.STRING,
+    url1: DataTypes.STRING,
+    url2: DataTypes.STRING,
+    url3: DataTypes.STRING,
+    url4: DataTypes.STRING,
+    url5: DataTypes.STRING
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here
