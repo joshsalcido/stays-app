@@ -29,7 +29,7 @@ Once you have signed up and logged in you can now Create your first listing with
 
 ## Leave some Reviews!
 
-Once you are logged in on Stays you can leave a review on any business and even your own business! You can also delete your review if you end up changing your mind!
+Once you are logged in on Stays you can leave a review on any listing and even your own listings! You can also delete your review if you end up changing your mind!
 
 ## Technical Implementation Details
 
