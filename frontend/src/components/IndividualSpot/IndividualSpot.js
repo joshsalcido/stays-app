@@ -39,7 +39,7 @@ export default function IndividualSpot(){
     }, [dispatch, idNum])
 
 
-   
+
     let reviewsTitle = "Reviews"
     if (!reviews.length) {
         reviewsTitle = "Be the first to Leave a Review!"
@@ -49,14 +49,34 @@ export default function IndividualSpot(){
 
 
     return (
-        <div>
+        <div className="Indv-spot-div">
         {indSpot &&
         <div>
             <h4 className="span-title">{indSpot.name}</h4>
-            <img></img>
-            <span className="span-address">{indSpot.address}</span>
+            <span className="span-address-single">{indSpot.address} {indSpot.city}, {indSpot.state}, {indSpot.country}</span>
+            <div className="image-block">
+                {<div className="single-url1">
+                    <img className="img-url1" alt="airbnb-image" src={indSpot.url1}></img>
+                </div>
+                }
+               {<div className="single-url2">
+                    <img className="img-url2" alt="airbnb-image" src={indSpot.url2}></img>
+                </div>
+                }
+                {<div className="single-url3">
+                    <img className="img-url3" alt="airbnb-image" src={indSpot.url3}></img>
+                </div>
+                }
+               {<div className="single-url4">
+                    <img className="img-url4" alt="airbnb-image" src={indSpot.url4}></img>
+                </div>
+                }
+               {<div className="single-url5">
+                    <img className="img-url5" alt="airbnb-image" src={indSpot.url5}></img>
+                </div>
+                }
+            </div>
             <br></br>
-            <span className="span-state"> {indSpot.city}, {indSpot.state}, {indSpot.country}</span>
             <h4 className="span-price">Price: ${parseInt(indSpot.price).toLocaleString("en-Us")}/ Night</h4>
         </div>
         }
