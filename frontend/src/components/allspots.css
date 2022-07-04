@@ -1,0 +1,47 @@
+.allSpotsDiv {
+    position: relative;
+    width: auto;
+    height: auto;
+    /* max-width: 90rem; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* border: solid 1px blue; */
+    margin: 3rem 2rem 2rem 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.singleSpotDiv {
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding-bottom: -3rem;
+}
+
+.url1 {
+    width: 17rem;
+    height: 16rem;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+.span-city {
+    margin-top: 0.5rem;
+}
+.span-address {
+    font-size: .8rem;
+    position: relative;
+    bottom: 1rem;
+}
+.h5-price {
+    position: relative;
+    bottom: 1.7rem;
+    margin-bottom: -2rem;
+}
