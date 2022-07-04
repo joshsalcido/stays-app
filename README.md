@@ -33,7 +33,40 @@ Once you are logged in on Stays you can leave a review on any listing and even y
 
 ## Technical Implementation Details
 
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
+Taking the time to setup my database properly and understand the relationship between my models was super important to me and came in handy when I needed to pull related data from other data. This situation first presented itself in the reviews feature, I wanted to showcase reviews in the same individual spot (or individual stay/listing) page and underneath the individual spot/listing information. Since I also created a reducer specifically for my reviews I was able to easily access reviews through the state.
+
+
+    const  reviewsObj  =  useSelector(state  =>  state.reviewReducer)
+    const  reviews  =  Object.values(reviewsObj);
+
+I was then able to iterate through all the reviews that the particular spot/listing had and display them!
+
+  
+
+    {  reviews  &&  reviews.map((review) => (
+    <div  key={review.id}>
+	    {(
+	    <div  className="reviewBox"> 
+		    <h5>Rating: {review.rating}</h5>
+		    <span>{review.review}</span>
+	    {userId  &&  userId  ===  review.userId && (
+	    <button  onClick={()=>  onDelete(review.id)}>Delete Your Review!</button>
+	    )}
+	    </div>
+	    )}
+    </div>
+    ))}
+Using conditionals within my JSX was a great way to solve some of my road bumps, for example figuring out how to Display a delete button only if the logged in users Id matched the userId asspciated to that review. After overcoming this road bump I was able to use multiple conditionals to display specific features throughout Stays
+
+    {userId  &&  userId  ===  review.userId && (
+    <button  onClick={()=>  onDelete(review.id)}>Delete Your Review!</button>
+    )}
+
+## Stays layout and Plan:
+
+ - [Database Schema](https://github.com/joshsalcido/stays-app/wiki/Database-Schema)
+ - [Feature List](https://github.com/joshsalcido/stays-app/wiki/MVP-Feature-List)
+ - [Store Shape](https://github.com/joshsalcido/stays-app/wiki/Store-Shape)
 
 ## Install Instructions
 
