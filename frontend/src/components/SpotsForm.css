@@ -9,3 +9,55 @@
 .edit-spotForm{
     width: auto
 }
+
+.all-your-listings {
+    position: relative;
+    width: auto;
+    height: auto;
+    /* max-width: 90rem; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* border: solid 1px blue; */
+    margin: 3rem 3rem 2rem 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.full-listing {
+    /* border: solid 1px blue; */
+    width: min-content;
+    height: min-content;
+    /* border: solid 1px blue; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding-bottom: -3rem;
+}
+
+.your-listing-img {
+    width: 18rem;
+    height: 15rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+.your-city {
+    margin-top: 1rem;
+}
+.your-address {
+    font-size: .8rem;
+    position: relative;
+    bottom: -.5rem;
+}
+.your-price {
+    position: relative;
+    bottom: -1rem;
+    margin-bottom: 2rem;
+}
+
+.edit-spot-form {
+    position:static;
+    width: 50rem;
+}

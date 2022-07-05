@@ -3,5 +3,9 @@ textarea {
 }
 
 .review-form {
-    width:auto
+    width: 60rem;
+}
+
+.create-review {
+    margin-right: 6rem;
 }

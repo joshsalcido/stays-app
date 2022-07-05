@@ -25,12 +25,15 @@ export default function MainPage(){
     }, [dispatch])
 
 
+
     return (
         <>
         <div className="allSpotsDiv">{Object.values(allSpots).map((spot)=> (
             <div className="singleSpotDiv" key={spot.id}>
                 <NavLink style={{textDecoration: 'none', color: 'black'}} to={`/spot/${spot.id}`}>
-                       <img className="url1" alt="airbnb-Image" src={spot.url1}></img>
+
+                        {/* (<img className="url1" alt="airbnb-image" src="https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png"></img>)} */}
+                       <img className="url1" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
                        <h5 className="span-city">{spot.city}, {spot.state}</h5>
                        <span className="span-address">{spot.address}</span>
                        <br/>

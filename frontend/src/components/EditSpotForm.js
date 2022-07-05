@@ -16,6 +16,11 @@ const EditSpotForm = ({ spot, hideform}) => {
     const [state, setState] = useState(spot.state)
     const [country, setCountry] = useState(spot.country)
     const [price, setPrice] = useState(spot.price)
+    const [url1, setUrl1] = useState(spot.url1 || '')
+    const [url2, setUrl2] = useState(spot.url2 || '')
+    const [url3, setUrl3] = useState(spot.url3 || '')
+    const [url4, setUrl4] = useState(spot.url4 || '')
+    const [url5, setUrl5] = useState(spot.url5 || '')
     const [spots, setSpots] = useState([])
 
     const [validationErrors, setValidationErrors] = useState([]);
@@ -28,24 +33,36 @@ const EditSpotForm = ({ spot, hideform}) => {
     const updateState = (e) => setState(e.target.value);
     const updateCountry = (e) => setCountry(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
+    const updateUrl1 = (e) => setUrl1(e.target.value);
+    const updateUrl2 = (e) => setUrl2(e.target.value);
+    const updateUrl3 = (e) => setUrl3(e.target.value);
+    const updateUrl4 = (e) => setUrl4(e.target.value);
+    const updateUrl5 = (e) => setUrl5(e.target.value);
 
     // const [hideForm, setHideForm] = useState(true);
     useEffect(()=> {
         const errors = [];
 
-        let numberRegex = /\d+/
+        let numberRegex = /\d+/;
+        let imageFileRegex = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
+
         if (name.length < 3) errors.push("Please enter a longer Title")
-        if (!address.length) errors.push("Please enter an address")
-        if (!city.length) errors.push("Please enter a city")
-        if (!state.length) errors.push("Please enter a state")
-        if (!country.length) errors.push("Please enter a country")
+        if (!address) errors.push("Please enter an address")
+        if (!city) errors.push("Please enter a city")
+        if (!state) errors.push("Please enter a state")
+        if (!country) errors.push("Please enter a country")
         if (!numberRegex.test(price)) errors.push("Price must be a number")
         if (price <= 0) errors.push("Price minimum $1")
         if (price.length > 8) errors.push("Price too expensive!")
+        if (url1 && !imageFileRegex.test(url1)) errors.push("First image is not a valid file")
+        if (url2 && !imageFileRegex.test(url2)) errors.push("Second image is not a valid file")
+        if (url3 && !imageFileRegex.test(url3)) errors.push("Third image is not a valid file")
+        if (url4 && !imageFileRegex.test(url4)) errors.push("Fourth image is not a valid file")
+        if (url5 && !imageFileRegex.test(url5)) errors.push("Fifth image is not a valid file")
 
         setValidationErrors(errors);
 
-    }, [name,address, city, state, country, price])
+    }, [name,address, city, state, country, price, url1, url2, url3, url4, url5])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,6 +73,11 @@ const EditSpotForm = ({ spot, hideform}) => {
             state,
             country,
             price,
+            url1,
+            url2,
+            url3,
+            url4,
+            url5,
             spotId: spot.id
         }
 
@@ -76,6 +98,11 @@ const EditSpotForm = ({ spot, hideform}) => {
         setState('')
         setCountry('')
         setPrice(0)
+        setUrl1('')
+        setUrl2('')
+        setUrl3('')
+        setUrl4('')
+        setUrl5('')
         setSpots([])
     };
 
@@ -136,6 +163,32 @@ const EditSpotForm = ({ spot, hideform}) => {
                     required
                     value={price}
                     onChange={updatePrice}/>
+                <label>Images:</label>
+                <input
+                onChange={updateUrl1}
+                value={url1}
+                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                />
+                <input
+                onChange={updateUrl2}
+                value={url2}
+                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                />
+                <input
+                onChange={updateUrl3}
+                value={url3}
+                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                />
+                <input
+                onChange={updateUrl4}
+                value={url4}
+                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                />
+                <input
+                onChange={updateUrl5}
+                value={url5}
+                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                />
                 <button type="submit">Submit</button>
                 <button type="button" onClick={handleCancelClick}>Cancel</button>
             </form>
