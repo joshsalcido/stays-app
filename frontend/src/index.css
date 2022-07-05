@@ -17,3 +17,10 @@ h2 {
     font-family: 'Montserrat';
     font-weight: 700;
 }
+
+input {
+    margin: .5rem;
+    padding: .5rem;
+    border: 0.1rem solid #77aa97;
+    border-radius: 1rem;
+}

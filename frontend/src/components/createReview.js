@@ -44,8 +44,9 @@ export default function CreateReview({spotId}){
         setHasSubmitted(true);
         if (validationErrors.length) return alert("Please leave a longer review")
 
-        dispatch(thunkCreateReview(newReview))
-        dispatch(thunkGetReviews(spotId))
+       dispatch(thunkCreateReview(newReview))
+            //   .then(dispatch(thunkGetReviews(spotId)))
+        // dispatch(thunkGetReviews(spotId))
 
         setReviewForm(false);
         setReview('')
@@ -70,7 +71,7 @@ export default function CreateReview({spotId}){
 
     return (
         <>
-            {userId && <button onClick={revealReviewForm}>{reviewButton}</button>}
+            {userId && <div className="create-review"> <button  onClick={revealReviewForm}>{reviewButton}</button> </div>}
         {reviewForm &&
         (
         <form className="review-form" onSubmit={handleSubmit}>
