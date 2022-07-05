@@ -85,7 +85,7 @@ const EditSpotForm = ({ spot, hideform}) => {
         if (validationErrors.length) return alert("Double check your listing info!")
         // dispatch(thunkUpdateSpot(updatedSpot));
     dispatch(thunkUpdateSpot(updatedSpot))
-    dispatch(thunkGetUserSpots(userId))
+    // dispatch(thunkGetUserSpots(userId))
 
         let updateSpot = true;
         if (updateSpot) {
