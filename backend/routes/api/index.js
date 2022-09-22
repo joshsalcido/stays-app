@@ -9,6 +9,7 @@ const spotsRouter = require('./spots.js');
 const mainPageRouter = require('./main.js');
 const reviewRouter = require('./reviews.js');
 const singleSpotRouter = require('./spot.js');
+const bookingRouter = require('./bookings.js')
 
 router.use('/session', sessionRouter);
 
@@ -21,6 +22,8 @@ router.use('/reviews', reviewRouter);
 router.use('/main', mainPageRouter);
 
 router.use('/spot', singleSpotRouter)
+
+router.use('/bookings', bookingRouter)
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
