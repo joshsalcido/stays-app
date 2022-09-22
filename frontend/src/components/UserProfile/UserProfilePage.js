@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { csrfFetch } from "../store/csrf";
-import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../store/spots";
-import EditSpotForm from "./EditSpotForm";
-import CreateReview from "./createReview";
-import './SpotsForm.css'
+import { csrfFetch } from "../../store/csrf";
+import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../../store/spots";
+import { thunkGetAllBookings } from "../../store/bookings";
+import EditSpotForm from "../EditSpotForm";
+import CreateReview from "../createReview";
+import './UserProfile.css'
 
-export default function SpotForm(){
+export default function UserProfilePage(){
     const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
+    const userBookings = Object.values(currState.bookingReducer)
 
     const dispatch = useDispatch();
     const [name, setName] = useState('')
@@ -144,10 +146,16 @@ export default function SpotForm(){
         yourListings = "You have no Listings, Create one!"
     }
     let numberRegex = /\d+/;
+
+    useEffect(() => {
+        dispatch(thunkGetAllBookings(userId))
+    }, [dispatch])
+
+    console.log(Object.values(currState.bookingReducer), "currentState")
+
     return (
-        <>
-        {userId && <button onClick={revealCreateForm}>{buttonName}</button>}
-        {showForm && (
+        <div className="profile-page-container">
+           {showForm && (
             <form className="spot-form" onSubmit={handleSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && <ul className="errors">
                   {validationErrors.map((errors)=> (
@@ -193,6 +201,7 @@ export default function SpotForm(){
                 />
                  <label>Add Images:</label>
                 <input
+                required
                 onChange={(e)=> setUrl1(e.target.value)}
                 value={url1}
                 placeholder="(this image will be displayed in your listings) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
@@ -218,43 +227,55 @@ export default function SpotForm(){
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
                 <button type="submit">Submit Listing</button>
+                <button onClick={revealCreateForm}>Cancel</button>
             </form>)
-         }
-                {userSpotsSelector && <h2 className="your-listing">{yourListings}</h2>}
-
-
-        <br/>
-        <div className="all-your-listings">
-            {userId && spots.map(spot => (
-                <div key={spot.id}>
-                    {selectedSpot === spot.id && showEditSpotForm && (
-                    <div className="edit-spot-form">
-                        <EditSpotForm
-                        spot={spot}
-                        hideform={()=> setShowEditSpotForm(false)}
-                        />
-                    </div>
-                    )}
-                    {spot.userId === userId && spot.userId && (
-                        <div className="full-listing" key={spot.id}>
-                        <h4 className="span-name">{spot.name}</h4>
-                        <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
-                        <br></br>
-                        <span className="your-address">{spot.address}</span>
-                        <br/>
-                        <span className="your-city">{spot.city}, {spot.state}, {spot.country}</span>
-                        <br/>
-                        <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
-                        <div className="edit/delete">
-                                <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
-                                {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Listing</button>)}
+            }
+            <div className="listings-div">
+                {userId && showForm === false && <button onClick={revealCreateForm}>{buttonName}</button>}
+                {userSpotsSelector && showForm === false && <h2 className="your-listing">{yourListings}</h2>}
+                <div className="all-your-listings">
+                    {userId && spots.map(spot => (
+                        <div key={spot.id}>
+                            {selectedSpot === spot.id && showEditSpotForm && (
+                            <div className="edit-spot-form">
+                                <EditSpotForm
+                                spot={spot}
+                                hideform={()=> setShowEditSpotForm(false)}
+                                />
+                            </div>
+                            )}
+                            {spot.userId === userId && spot.userId && (
+                                <div className="full-listing" key={spot.id}>
+                                <h4 className="span-name">{spot.name}</h4>
+                                <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
+                                <br></br>
+                                <span className="your-address">{spot.address}</span>
+                                <br/>
+                                <span className="your-city">{spot.city}, {spot.state}, {spot.country}</span>
+                                <br/>
+                                <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
+                                <div className="edit/delete">
+                                        <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
+                                        {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Listing</button>)}
+                                </div>
+                                <br/>
+                            </div>
+                            )}
                         </div>
-                        <br/>
-                    </div>
-                    )}
+                    ))}
                 </div>
-            ))}
+            </div>
+            <div className="bookings-containder-div">
+                <h2>No trips booked...yet!</h2>
+                {userBookings.map(booking => (
+                    <div className="indv-booking-div">
+                        <img className="booking-img" src={booking.Spot.url1}></img>
+                        <div className="booking-info-div">
+                            <p>{booking.startDate} - {booking.endDate}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-        </>
     )
 }

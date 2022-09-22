@@ -2,14 +2,22 @@
     list-style: circle;
     color:brown
 }
-
-.spot-form{
-    width: auto
+/* MAIN PROFILE PAGE DIV */
+.profile-page-container{
+    border: 1px solid blue;
+    width: auto;
+    height: auto;
+    display: flex;
+    padding-top: 7rem;
 }
-.edit-spotForm{
-    width: auto
-}
+/* LISTINGS SECTION DIV */
+.listings-div{
+    border: 1px solid red;
+    width: 30rem;
+    height: auto;
+    margin: auto;
 
+}
 .all-your-listings {
     position: relative;
     width: auto;
@@ -18,11 +26,45 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    /* border: solid 1px blue; */
+    border: solid 1px blue;
     margin: 3rem 3rem 2rem 3rem;
     align-items: center;
     justify-content: center;
 }
+/* BOOKINGS SECTION DIV */
+.bookings-containder-div{
+    border: 1px solid green;
+    width: 30rem;
+    height: auto;
+    margin: auto;
+}
+.indv-booking-div{
+    border: 1px solid blue;
+    display: flex;
+}
+.booking-img{
+    border: 1px solid pink;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 5%;
+    object-fit: cover;
+}
+.booking-info-div{
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* THE SPOT FORM */
+.spot-form{
+    width: 45rem
+}
+.edit-spotForm{
+    width: auto
+}
+
 
 .full-listing {
     /* border: solid 1px blue; */

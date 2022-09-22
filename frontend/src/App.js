@@ -5,9 +5,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import SpotForm from "./components/SpotsForm";
+// import SpotForm from "./components/SpotsForm";
 import MainPage from "./components/allSpots";
 import IndividualSpot from "./components/IndividualSpot/IndividualSpot";
+import UserProfilePage from "./components/UserProfile/UserProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/user/:id">
-            <SpotForm/>
+            <UserProfilePage/>
           </Route>
           <Route exact path="/">
             <MainPage />

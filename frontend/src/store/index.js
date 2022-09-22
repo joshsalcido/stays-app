@@ -5,10 +5,11 @@ import userSpots from "./spots";
 import reviewReducer from "./reviews";
 import allSpots from "./main";
 import singleSpot from "./spot";
+import bookingReducer from "./bookings";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  userSpots, reviewReducer, allSpots, singleSpot
+  userSpots, reviewReducer, allSpots, singleSpot, bookingReducer
 });
 
 let enhancer;

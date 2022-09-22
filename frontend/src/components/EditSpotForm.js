@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserSpots, thunkUpdateSpot } from "../store/spots";
-import './SpotsForm.css'
+import './UserProfile/UserProfile.css'
 
 
 const EditSpotForm = ({ spot, hideform}) => {
