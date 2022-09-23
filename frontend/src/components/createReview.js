@@ -5,7 +5,7 @@ import { thunkCreateReview, thunkGetReviews } from "../store/reviews";
 import './review.css'
 
 
-export default function CreateReview({spotId}){
+export default function CreateReview({spotId, toggleReviewForm}){
 
     const userId = useSelector(state => state.session?.user?.id)
 
@@ -48,7 +48,7 @@ export default function CreateReview({spotId}){
             //   .then(dispatch(thunkGetReviews(spotId)))
         // dispatch(thunkGetReviews(spotId))
 
-        setReviewForm(false);
+        toggleReviewForm();
         setReview('')
         setRating(1)
     }
@@ -72,8 +72,7 @@ export default function CreateReview({spotId}){
     return (
         <>
             {/* {userId && <div className="create-review"> <button  onClick={revealReviewForm}>{reviewButton}</button> </div>} */}
-        {
-        (
+        {(
         <form className="review-form" onSubmit={handleSubmit}>
              {hasSubmitted && validationErrors.length > 0 && (
              <ul className="errors">
@@ -81,14 +80,15 @@ export default function CreateReview({spotId}){
                       <li key={errors}>{errors}</li>
                       ))}
              </ul>)}
-            <label>Review:</label>
+            <label className="review-label">Review:</label>
             <textarea placeholder="Write a Review"
             onChange={(e)=> setReview(e.target.value)}
             value={review}
             required={true}
             />
-            <label>Rating:</label>
+            <label className="rating-label">Rating:</label>
             <select
+            className="rating-dropdown-menu"
             onChange={(e)=> setRating(e.target.value)}
             value={rating}
             >
@@ -98,8 +98,10 @@ export default function CreateReview({spotId}){
                 <option value={4}>4</option>
                 <option value={5}>5</option>
             </select>
-            <button type="submit">Submit Review</button>
-            <button>Cancel</button>
+            <div className="review-form-bttns-div">
+                <button className="submit-review-btn" type="submit">Submit Review</button>
+                <button className="cancel-review-btn" type="button" onClick={() => toggleReviewForm()}>Cancel Review</button>
+            </div>
         </form>)
         }
         </>

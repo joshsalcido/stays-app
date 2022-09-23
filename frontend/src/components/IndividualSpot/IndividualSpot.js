@@ -41,6 +41,9 @@ export default function IndividualSpot(){
         dispatch(thunkGetReviews(idNum))
     }, [dispatch, idNum])
 
+    function toggleReviewForm(){
+        setShowReviewForm(!showReviewForm)
+    }
 
 
     let reviewsTitle = "Reviews"
@@ -48,7 +51,7 @@ export default function IndividualSpot(){
         reviewsTitle = "Be the first to Leave a Review!"
     }
 
-    console.log(indSpot,"INDSPOT")
+    // console.log(indSpot,"INDSPOT")
 
     return (
         <div className="Indv-spot-div">
@@ -97,8 +100,8 @@ export default function IndividualSpot(){
                         <p className="staycover-description-details">Booking Protection ∙ Check-in Guarantee ∙ Get-What-You-Booked ∙ 24-hour Safety Line</p>
                     </div>
                     {<div className="review-button-div">
-                        <button className="leave-a-review-bttn" onClick={() => setShowReviewForm(true)}>Leave a Review!</button>
-                        {showReviewForm && userId && (<CreateReview spotId={id}/>)}
+                        {showReviewForm === false && (<button className="leave-a-review-bttn" onClick={() => setShowReviewForm(true)}>Leave a Review!</button>)}
+                        {showReviewForm && userId && (<CreateReview spotId={id} toggleReviewForm={toggleReviewForm}/>)}
                     </div>}
                 </div>
                 <div className="booking-form-div">
@@ -113,17 +116,21 @@ export default function IndividualSpot(){
                     <h4>{reviewsTitle}</h4>
                 )}
                 { reviews && reviews.map((review) => (
-                    <div key={review.id}>
+                    <div className="review-container" key={review.id}>
                     {(
+                        <>
                         <div className="reviewBox">
-                           {/* <h5>{user.username}</h5> */}
-                           {/* {userId && review.userId === userId && */}
-                           <h5>Rating: {review.rating}</h5>
-                           <span>{review.review}</span>
-                           {userId && userId === review.userId && (
-                            <button onClick={()=> onDelete(review.id)}>Delete Your Review!</button>
-                           )}
-                       </div>
+                            {/* <h5>{user.username}</h5> */}
+                            {/* {userId && review.userId === userId && */}
+                            <h5>Rating: {review.rating}</h5>
+                            <span>{review.review}</span>
+                        </div>
+                        <div className="delete-review-button-div">
+                            {userId && userId === review.userId && (
+                                <button className="delete-review-bttn" onClick={() => onDelete(review.id)}>Delete Your Review!</button>
+                            )}
+                        </div>
+                        </>
                     )}
                 </div>
                 ))}

@@ -1,6 +1,6 @@
 /* 1st and BIGGEST CONTAINER CENTERED */
 .Indv-spot-div {
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     position: relative;
     width: auto;
     height: auto;
@@ -15,27 +15,27 @@
 }
 /* TITLE AND ADRESS AT THE TOP */
 .title-address-div{
-    border: 1px solid brown;
+    /* border: 1px solid brown; */
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .span-title {
     font-size: 2rem;
     font-weight: 500;
-    border: solid 1px green;
+    /* border: solid 1px green; */
     width: fit-content;
     /* margin-left: 8rem; */
     margin: 0px;
 }
 .span-address-single {
     /* margin-left: 8rem; */
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }
 
 /* IMAGE DIV BLOCK */
 .image-block {
     display: flex;
-    border: 1px solid rgb(0, 255, 76);
+    /* border: 1px solid rgb(0, 255, 76); */
     padding: 0px;
     width: auto;
     height: auto;
@@ -43,7 +43,7 @@
 
 .image-block-2 {
     /* position: relative; */
-    width: 25rem;
+    width: 29rem;
     height: 19.6rem;
     display: flex;
     flex-wrap: wrap;
@@ -51,7 +51,7 @@
     margin: 0;
     /* align-items: center;
     justify-content: center; */
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     border-radius: 10px;
     padding: 0px;
 }
@@ -61,7 +61,7 @@
 .single-url1 {
     width: min-content;
     height: 20rem;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     margin: 0px;
     /* border-radius: 1rem 0rem 0rem 1rem; */
 }
@@ -85,7 +85,7 @@
     /* border-radius: 1rem 0rem 0rem 1rem; */
 }
 .img-url2 {
-    width: auto;
+    width: 14rem;
     height: 9rem;
     border-radius: 2%;
     object-fit: cover;
@@ -99,7 +99,7 @@
     /* position: relative; */
 }
 .img-url3 {
-    width: auto;
+    width: 14rem;
     height: 9rem;
     border-radius: 2%;
     object-fit: cover;
@@ -115,7 +115,7 @@
     /* position: relative; */
 }
 .img-url4 {
-    width: auto;
+    width: 14rem;
     height: 9rem;
     border-radius: 2%;
     object-fit: cover;
@@ -132,7 +132,7 @@
     /* position: relative; */
 }
 .img-url5 {
-    width: auto;
+    width: 14rem;
     height: 9rem;
     border-radius: 2%;
     object-fit: cover;
@@ -148,7 +148,7 @@
     border-bottom: 1px solid rgb(206, 206, 206);
 }
 .spot-details-div{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: auto;
     width: 100%;
     margin: 5px;
@@ -185,13 +185,13 @@
     font-weight: 200;
 }
 .staycover-description{
-    border: 1px solid palevioletred;
+    /* border: 1px solid palevioletred; */
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     margin: 0;
 }
 .staycover-description-details{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 10px;
@@ -200,7 +200,7 @@
 }
 
 .booking-form-div{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     height: auto;
     width: 70%;
     margin: 5px;
@@ -213,19 +213,37 @@
 
 /* PRICE */
 .span-price{
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 /* REVIEW SECTION */
 .review-button-div{
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
+    width: fit-content;
+    margin: auto;
+    margin-top: 35px;
 }
 .Review-section-div{
-    border: 1px solid green;
+    /* border: 1px solid green; */
+    width: 100%;
 }
-
+.review-container{
+    display: flex;
+}
 div .reviewBox {
 
     border-bottom: 1px solid rgb(211, 211, 211);
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
+    width: 48rem;
+    height: auto;
+    padding-bottom: 15px;
+}
+.delete-review-button-div{
+    /* border: 1px solid red; */
+    margin-right: 5px;
+}
+.delete-review-bttn{
+    width: 7rem;
+    margin-top: 19px;
+    margin-bottom: 0;
 }

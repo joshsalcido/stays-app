@@ -6,8 +6,30 @@ textarea {
 
 .review-form {
     width: 27rem;
+    padding-bottom: 10px;
+}
+.review-label{
+    margin-bottom: 5px;
+}
+.rating-label{
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+.rating-dropdown-menu{
+    width: 30px;
 }
 
 .create-review {
     margin-right: 6rem;
+}
+.review-form-bttns-div{
+    /* border: 1px solid blue; */
+    display: flex;
+}
+.submit-review-btn{
+    width: 50%;
+    margin-right: 12px;
+}
+.cancel-review-btn{
+    width: 50%;
 }
