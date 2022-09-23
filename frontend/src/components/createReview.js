@@ -71,8 +71,8 @@ export default function CreateReview({spotId}){
 
     return (
         <>
-            {userId && <div className="create-review"> <button  onClick={revealReviewForm}>{reviewButton}</button> </div>}
-        {reviewForm &&
+            {/* {userId && <div className="create-review"> <button  onClick={revealReviewForm}>{reviewButton}</button> </div>} */}
+        {
         (
         <form className="review-form" onSubmit={handleSubmit}>
              {hasSubmitted && validationErrors.length > 0 && (
@@ -99,6 +99,7 @@ export default function CreateReview({spotId}){
                 <option value={5}>5</option>
             </select>
             <button type="submit">Submit Review</button>
+            <button>Cancel</button>
         </form>)
         }
         </>

@@ -9,8 +9,10 @@ const router = express.Router();
 
 router.get('/:id', asyncHandler(async(req,res)=>{
     const spotId = req.params.id
-    const selectedSpot = await Spot.findByPk(spotId);
-   
+    const selectedSpot = await Spot.findByPk(spotId, {
+        include: User,
+    });
+
     return res.json(selectedSpot);
 }))
 

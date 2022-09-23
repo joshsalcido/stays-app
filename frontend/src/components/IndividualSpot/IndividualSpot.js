@@ -26,6 +26,8 @@ export default function IndividualSpot(){
     const reviewsObj = useSelector(state => state.reviewReducer)
     const reviews = Object.values(reviewsObj);
 
+    const [showReviewForm, setShowReviewForm] = useState(false)
+
 
 
 
@@ -46,6 +48,7 @@ export default function IndividualSpot(){
         reviewsTitle = "Be the first to Leave a Review!"
     }
 
+    console.log(indSpot,"INDSPOT")
 
     return (
         <div className="Indv-spot-div">
@@ -86,17 +89,25 @@ export default function IndividualSpot(){
             </div>
             <div className="details-bookings-section-div">
                 <div className="spot-details-div">
+                    <h4 className="hosted-by-h4">Hosted by {indSpot.User.username.charAt(0).toUpperCase() + indSpot.User.username.slice(1)}</h4>
+                    <div className="spot-description">{indSpot.description}</div>
+                    <div className="stays-cover-div">
+                        <h2 className="stays-h2">stays<span className="span-cover">cover</span></h2>
+                        <p className="staycover-description">Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</p>
+                        <p className="staycover-description-details">Booking Protection ∙ Check-in Guarantee ∙ Get-What-You-Booked ∙ 24-hour Safety Line</p>
+                    </div>
+                    {<div className="review-button-div">
+                        <button className="leave-a-review-bttn" onClick={() => setShowReviewForm(true)}>Leave a Review!</button>
+                        {showReviewForm && userId && (<CreateReview spotId={id}/>)}
+                    </div>}
                 </div>
                 <div className="booking-form-div">
-                    <BookingForm></BookingForm>
+                    <BookingForm indSpot={indSpot}></BookingForm>
                 </div>
             </div>
-            <h4 className="span-price">Price: ${parseInt(indSpot.price).toLocaleString("en-Us")}/ Night</h4>
+            {/* <h4 className="span-price">Price: ${parseInt(indSpot.price).toLocaleString("en-Us")}/ Night</h4> */}
         </div>
         }
-            {<div className="review-button-div">
-                <CreateReview spotId={id}/>
-            </div>}
             <div className="Review-section-div">
                 {reviews && (
                     <h4>{reviewsTitle}</h4>

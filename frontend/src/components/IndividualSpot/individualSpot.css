@@ -67,8 +67,8 @@
 }
 
 .img-url1 {
-    width: 25rem;
-    height: auto;
+    width: 26.9rem;
+    height: 18.78rem;
     border-radius: 2%;
     object-fit: cover;
     border-radius: 1rem 0rem 0rem 1rem;
@@ -140,10 +140,12 @@
 }
 /* Details and Booking from SECTION */
 .details-bookings-section-div{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: auto;
     height: auto;
     display: flex;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgb(206, 206, 206);
 }
 .spot-details-div{
     border: 1px solid green;
@@ -151,12 +153,62 @@
     width: 100%;
     margin: 5px;
 }
+.hosted-by-h4{
+    /* border: 1px solid blue; */
+    margin: 0;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.spot-description{
+    /* border: 1px solid salmon; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.stays-cover-div{
+    /* border: 1px solid blue; */
+    padding-bottom: 29px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+.stays-h2{
+    color: #77aa97;
+    font-size: 35px;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.span-cover{
+    color: black;
+    font-weight: 200;
+}
+.staycover-description{
+    border: 1px solid palevioletred;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    margin: 0;
+}
+.staycover-description-details{
+    border: 1px solid green;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    margin: 0;
+
+}
 
 .booking-form-div{
     border: 1px solid blue;
     height: auto;
     width: 70%;
     margin: 5px;
+}
+/* LEAVE A REVIEW SECTION */
+.leave-a-review-bttn{
+    width: 10rem;
+    margin: auto;
 }
 
 /* PRICE */

@@ -1,9 +1,11 @@
 textarea {
     font-family: 'Montserrat';
+    resize: none;
+    height: 50px;
 }
 
 .review-form {
-    width: 60rem;
+    width: 27rem;
 }
 
 .create-review {
