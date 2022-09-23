@@ -1,115 +1,179 @@
+/* 1st and BIGGEST CONTAINER CENTERED */
 .Indv-spot-div {
-    /* border: solid 1px blue; */
+    border: solid 1px blue;
     position: relative;
     width: auto;
     height: auto;
+    max-width: 53rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0rem 5rem 2rem 5rem
+    margin: auto;
 
 }
-
-
-
-div .reviewBox {
-
-    border-bottom: 1px solid rgb(211, 211, 211);
+/* TITLE AND ADRESS AT THE TOP */
+.title-address-div{
+    border: 1px solid brown;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
 .span-title {
     font-size: 2rem;
     font-weight: 500;
-    /* border: solid 1px blue; */
+    border: solid 1px green;
     width: fit-content;
-    margin-left: 8rem;
+    /* margin-left: 8rem; */
+    margin: 0px;
 }
 .span-address-single {
-    margin-left: 8rem;
+    /* margin-left: 8rem; */
+    border: 1px solid pink;
 }
 
+/* IMAGE DIV BLOCK */
 .image-block {
-    position: relative;
+    display: flex;
+    border: 1px solid rgb(0, 255, 76);
+    padding: 0px;
     width: auto;
+    height: auto;
+}
 
+.image-block-2 {
+    /* position: relative; */
+    width: 25rem;
+    height: 19.6rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     margin: 0;
-    align-items: center;
-    justify-content: center;
-    /* border: solid 1px blue; */
+    /* align-items: center;
+    justify-content: center; */
+    border: solid 1px blue;
+    border-radius: 10px;
+    padding: 0px;
 }
+
+/* SINGLE URL is the DIV holding the image IMG-URL is the image itself */
 
 .single-url1 {
     width: min-content;
-    height: min-content;
-    /* border: solid 1px blue; */
-    margin: .1rem .1rem;
+    height: 20rem;
+    border: solid 1px red;
+    margin: 0px;
     /* border-radius: 1rem 0rem 0rem 1rem; */
 }
 
 .img-url1 {
-    width: 30rem;
+    width: 25rem;
     height: auto;
     border-radius: 2%;
     object-fit: cover;
+    border-radius: 1rem 0rem 0rem 1rem;
+    margin-right: 10px;
 }
 
 .single-url2 {
     width: min-content;
     height: min-content;
     /* border: solid 1px blue; */
-    margin: 1rem;
+    margin-right: 14px;
+    /* position: relative; */
 
     /* border-radius: 1rem 0rem 0rem 1rem; */
 }
 .img-url2 {
     width: auto;
-    height: 12rem;
+    height: 9rem;
     border-radius: 2%;
     object-fit: cover;
+    border-radius: 0rem;
 }
 .single-url3 {
     width: min-content;
     height: min-content;
     /* border: solid 1px blue; */
-    margin: 1rem;
-
-    /* border-radius: 1rem 0rem 0rem 1rem; */
+    /* margin: 1rem; */
+    /* position: relative; */
 }
 .img-url3 {
     width: auto;
-    height: 12rem;
+    height: 9rem;
     border-radius: 2%;
     object-fit: cover;
+    border-radius: 0rem 1rem 0rem 0rem;
 }
 .single-url4 {
     width: min-content;
     height: min-content;
+    margin-right: 14px;
     /* border: solid 1px blue; */
-    margin: 1rem;
+    /* margin: 1rem; */
     /* border-radius: 1rem 0rem 0rem 1rem; */
+    /* position: relative; */
 }
 .img-url4 {
     width: auto;
-    height: 16rem;
+    height: 9rem;
     border-radius: 2%;
     object-fit: cover;
+    border-radius: 0rem;
+
 }
 
 .single-url5 {
     width: min-content;
     height: min-content;
     /* border: solid 1px blue; */
-    margin: 1rem;
+    /* margin: 1rem; */
     /* border-radius: 1rem 0rem 0rem 1rem; */
+    /* position: relative; */
 }
 .img-url5 {
     width: auto;
-    height: 16rem;
+    height: 9rem;
     border-radius: 2%;
     object-fit: cover;
+    border-radius: 0rem 0rem 1rem 0rem;
+}
+/* Details and Booking from SECTION */
+.details-bookings-section-div{
+    border: 1px solid red;
+    width: auto;
+    height: auto;
+    display: flex;
+}
+.spot-details-div{
+    border: 1px solid green;
+    height: auto;
+    width: 100%;
+    margin: 5px;
+}
+
+.booking-form-div{
+    border: 1px solid blue;
+    height: auto;
+    width: 70%;
+    margin: 5px;
+}
+
+/* PRICE */
+.span-price{
+    border: 1px solid red;
+}
+
+/* REVIEW SECTION */
+.review-button-div{
+    border: 1px solid pink;
+}
+.Review-section-div{
+    border: 1px solid green;
+}
+
+div .reviewBox {
+
+    border-bottom: 1px solid rgb(211, 211, 211);
+    border: 1px solid purple;
 }
