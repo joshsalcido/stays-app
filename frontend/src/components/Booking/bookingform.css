@@ -2,3 +2,57 @@
     width: auto;
     height: auto;
 }
+.checkin-out-div-container{
+    border: 1px solid #77aa97;
+    display: flex;
+    border-radius: 0.5rem ;
+}
+.checkin-div{
+    /* border: 1px solid #77aa97; */
+    padding-right: 3.5px;
+    border-right: 0.2px solid #77aa97;
+}
+.checkin-label{
+    /* border: 1px solid #77aa97; */
+    font-size: 13px;
+    margin-left: 9px;
+
+}
+.checkin-input{
+    /* border: 1px solid blue; */
+    width: 8.5rem;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    height: 10px;
+    border: none;
+}
+.checkin-input:focus{
+    outline: none;
+}
+.checkin-input:hover{
+    cursor: pointer;
+}
+.checkout-div{
+    /* border: 1px solid #77aa97; */
+    padding-left: 3.5px;
+    /* border-left: 0.2px solid #77aa97; */
+}
+.checkout-label{
+    /* border: 1px solid #77aa97; */
+    font-size: 13px;
+    margin-left: 9px;
+}
+.checkout-input{
+    /* border: 1px solid blue; */
+    border: none;
+    width: 8.5rem;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    height: 10px;
+}
+.checkout-input:focus{
+    outline: none;
+}
+.checkout-input:hover{
+    cursor: pointer;
+}
