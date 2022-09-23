@@ -9,10 +9,11 @@ router.get('/:id', asyncHandler(async(req, res) => {
 
     const userId = req.params.id
     const bookings = await Booking.findAll({
-        include: User,
+        // include: User,
         where: { userId: userId},
-        include: Spot,
+        include: [{model: Spot, include: [{model: User}]}]
     });
+    // console.log(bookings, " ++++++  ++++++ Bookings Backend ++++++++")
     return res.json(bookings);
 }))
 

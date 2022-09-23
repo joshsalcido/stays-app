@@ -33,26 +33,62 @@
 }
 /* BOOKINGS SECTION DIV */
 .bookings-containder-div{
-    border: 1px solid green;
-    width: 30rem;
+    /* border: 1px solid green; */
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 15px;
+    width: 32rem;
     height: auto;
     margin: auto;
 }
+.no-trips-yet-h2{
+    margin: auto;
+    margin-top: 19px;
+    margin-bottom: 29px;
+    width: fit-content;
+    /* border: 1px solid blue; */
+}
 .indv-booking-div{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
+    margin: 27px;
 }
 .booking-img{
-    border: 1px solid pink;
-    width: 12rem;
-    height: 12rem;
+    /* border: 1px solid pink; */
+    width: 9rem;
+    height: 9rem;
     border-radius: 5%;
     object-fit: cover;
 }
 .booking-info-div{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     height: auto;
+    margin: 10px;
+}
+.booked-info-city{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 0;
+    color: rgb(0, 0, 0);
+    /* border: 1px solid orange; */
+}
+.booked-info-username-tag{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: rgb(183, 183, 183);
+    /* text-transform: capitalize; */
+}
+.booked-info-username-tag{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: rgb(183, 183, 183);
+}
+.booked-info-p-tag{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: rgb(183, 183, 183);
+    /* border: 1px solid orange; */
 }
 
 

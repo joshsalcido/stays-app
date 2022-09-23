@@ -6,6 +6,7 @@ import { thunkGetAllBookings } from "../../store/bookings";
 import EditSpotForm from "../EditSpotForm";
 import CreateReview from "../createReview";
 import './UserProfile.css'
+import Moment from 'moment';
 
 export default function UserProfilePage(){
     const currState = useSelector(state => state)
@@ -151,7 +152,8 @@ export default function UserProfilePage(){
         dispatch(thunkGetAllBookings(userId))
     }, [dispatch])
 
-    console.log(Object.values(currState.bookingReducer), "currentState")
+    console.log(Object.values(currState.bookingReducer), "BookingReducer")
+    console.log(currState, "currentState")
 
     return (
         <div className="profile-page-container">
@@ -266,12 +268,17 @@ export default function UserProfilePage(){
                 </div>
             </div>
             <div className="bookings-containder-div">
-                <h2>No trips booked...yet!</h2>
+                {userBookings.length === 0 && (<h2 className="no-trips-yet-h2">No trips booked...yet!</h2>)}
+                {userBookings.length > 0 && (<h2 className="no-trips-yet-h2">Booked Trips</h2>)}
                 {userBookings.map(booking => (
                     <div className="indv-booking-div">
                         <img className="booking-img" src={booking.Spot.url1}></img>
                         <div className="booking-info-div">
-                            <p>{booking.startDate} - {booking.endDate}</p>
+                            <p className="booked-info-city">{booking.Spot.city}</p>
+                            <p className="booked-info-p-tag"> Hosted by
+                            <text className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</text>
+                            </p>
+                            <p className="booked-info-p-tag">{Moment(booking.startDate).format("MMM D")} - {Moment(booking.endDate).format("MMM D, YYYY")}</p>
                         </div>
                     </div>
                 ))}
