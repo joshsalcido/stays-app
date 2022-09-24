@@ -4,7 +4,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_ALL_BOOKINGS = 'bookings/getAllBookings';
 const CREATE_BOOKING = 'bookings/createBooking';
-// const DELETE_BOOKING = 'bookingd/deleteBooking';
+const DELETE_BOOKING = 'bookingd/deleteBooking';
 // const UPDATE_BOOKING = 'booking/updateBooking';
 
 
@@ -21,12 +21,12 @@ export const actionCreateBooking = (booking) => {
         booking
     }
 }
-// export const actionDeleteBooking = (booking) => {
-//     return {
-//         type: DELETE_BOOKING,
-//         booking
-//     }
-// }
+export const actionDeleteBooking = (bookingId) => {
+    return {
+        type: DELETE_BOOKING,
+        bookingId
+    }
+}
 
 // export const actionUpdateBooking = (booking) => {
 //     return {
@@ -63,17 +63,17 @@ export const thunkCreateBooking = (booking) => async (dispatch) => {
       return data
     }
 }
-// export const thunkDeletePost = (postId) => async (dispatch) => {
-//     const response = await fetch(`/api/posts/${postId}`, {
-//         method: "DELETE",
-//     })
+export const thunkDeleteBooking = (bookingId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
+        method: "DELETE",
+    })
 
-//     if (response.ok) {
-//         const deletedPost = await response.json();
-//         dispatch(actionDeletePost(postId))
-//         return deletedPost;
-//     }
-// }
+    if (response.ok) {
+        const deletedBooking = await response.json();
+        dispatch(actionDeleteBooking(bookingId))
+        return deletedBooking;
+    }
+}
 
 // export const thunkUpdatePost = (post) => async (dispatch) => {
 //     const response = await fetch(`/api/posts/${post.id}`, {
@@ -95,8 +95,6 @@ const bookingReducer = (state = {}, action) => {
     let newState = {...state}
     switch (action.type) {
         case GET_ALL_BOOKINGS:
-            // newState = {};
-            console.log(action, "GET BOOKINGS ACTION")
             action.userId.forEach(booking => {
                 newState[`Booking ${booking.id}`] = booking
             });
@@ -104,12 +102,9 @@ const bookingReducer = (state = {}, action) => {
         case CREATE_BOOKING:
             newState[action.bookings.id] = action.bookings
             return newState
-        // case DELETE_BOOKING:
-        //     delete newState[action.postId]
-        //     return newState
-        // case UPDATE_BOOKING:
-        //     newState[action.post.id] = action.post
-        //     return newState
+        case DELETE_BOOKING:
+            delete newState[`Booking ${action.bookingId}`]
+            return newState
         default:
             return state;
     }

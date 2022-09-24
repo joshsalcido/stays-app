@@ -43,19 +43,19 @@ router.post('/newbooking', asyncHandler(async (req, res) => {
 //     return res.json(updateSpot);
 // }))
 
-// // delete spot
+// delete spot
 
-// router.delete('/:id', asyncHandler(async(req, res)=> {
-//     const spotId = req.params.id
-//     const badSpot = await Spot.findByPk(spotId)
-//     if (badSpot) {
-//         await badSpot.destroy()
-//         res.json(badSpot)
-//     } else {
-//         res.json({message: 'Fail'})
-//     }
-//     // console.log(badSpot, " <==== DELETED SPOT");
-// }))
+router.delete('/:id', asyncHandler(async(req, res)=> {
+    const bookingId = req.params.id
+    const badBooking = await Booking.findByPk(bookingId)
+    if (badBooking) {
+        await badBooking.destroy()
+        res.json(badBooking)
+    } else {
+        res.json({message: 'Fail'})
+    }
+    // console.log(badSpot, " <==== DELETED SPOT");
+}))
 
 
 

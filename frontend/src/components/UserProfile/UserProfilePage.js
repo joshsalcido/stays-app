@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../../store/spots";
-import { thunkGetAllBookings } from "../../store/bookings";
+import { thunkGetAllBookings,  thunkDeleteBooking } from "../../store/bookings";
 import EditSpotForm from "../EditSpotForm";
 import CreateReview from "../createReview";
 import './UserProfile.css'
@@ -276,7 +276,7 @@ export default function UserProfilePage(){
                         <div className="booking-info-div">
                             <div style={{display: 'flex', width: '100%'}}>
                                 <p className="booked-info-city">{booking.Spot.city}</p>
-                                <button className="cancel-trip-btn" onClick={() => {}}>Cancel Trip</button>
+                                <button className="cancel-trip-btn" onClick={() => {dispatch(thunkDeleteBooking(booking.id))}}>Cancel Trip</button>
                             </div>
                             <p className="booked-info-p-tag"> Hosted by
                             <text className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</text>
