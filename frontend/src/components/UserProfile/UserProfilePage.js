@@ -7,6 +7,7 @@ import EditSpotForm from "../EditSpotForm";
 import CreateReview from "../createReview";
 import './UserProfile.css'
 import Moment from 'moment';
+import CreateListingForm from "./createListingForm";
 
 export default function UserProfilePage(){
     const currState = useSelector(state => state)
@@ -157,82 +158,8 @@ export default function UserProfilePage(){
 
     return (
         <div className="profile-page-container">
-           {showForm && (
-            <form className="spot-form" onSubmit={handleSubmit}>
-                {hasSubmitted && validationErrors.length > 0 && <ul className="errors">
-                  {validationErrors.map((errors)=> (
-                      <li className="errors" key={errors}>{errors}</li>
-                      ))}
-                </ul>}
-                <label>Title:</label>
-                <input
-                onChange={(e)=> setName(e.target.value)}
-                value={name}
-                required={true}
-                />
-                <label>Address:</label>
-                <input
-                onChange={(e)=> setAddress(e.target.value)}
-                value={address}
-                required={true}
-                />
-                <label>City:</label>
-                <input
-                onChange={(e)=> setCity(e.target.value)}
-                value={city}
-                required={true}
-                />
-                <label>State:</label>
-                <input
-                onChange={(e)=> setState(e.target.value)}
-                value={state}
-                required={true}
-                />
-                <label>Country:</label>
-                <input
-                onChange={(e)=> setCountry(e.target.value)}
-                value={country}
-                required={true}
-                />
-                <label>Price Per Night:</label>
-                <input
-                placeholder="numbers only"
-                onChange={(e)=> setPrice(e.target.value)}
-                value={price}
-                required={true}
-                />
-                 <label>Add Images:</label>
-                <input
-                required
-                onChange={(e)=> setUrl1(e.target.value)}
-                value={url1}
-                placeholder="(this image will be displayed in your listings) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <input
-                onChange={(e)=> setUrl2(e.target.value)}
-                value={url2}
-                placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <input
-                onChange={(e)=> setUrl3(e.target.value)}
-                value={url3}
-                placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <input
-                onChange={(e)=> setUrl4(e.target.value)}
-                value={url4}
-                placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <input
-                onChange={(e)=> setUrl5(e.target.value)}
-                value={url5}
-                placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <button type="submit">Submit Listing</button>
-                <button onClick={revealCreateForm}>Cancel</button>
-            </form>)
-            }
             <div className="listings-div">
+            <CreateListingForm></CreateListingForm>
                 {userId && showForm === false && <button onClick={revealCreateForm}>{buttonName}</button>}
                 {userSpotsSelector && showForm === false && <h2 className="your-listing">{yourListings}</h2>}
                 <div className="all-your-listings">

@@ -8,7 +8,7 @@
     width: auto;
     height: auto;
     display: flex;
-    padding-top: 7rem;
+    padding-top: 4rem;
 }
 /* LISTINGS SECTION DIV */
 .listings-div{
@@ -16,6 +16,7 @@
     width: 30rem;
     height: auto;
     margin: auto;
+    margin-top: 0;
 
 }
 .all-your-listings {
@@ -39,6 +40,7 @@
     width: 32rem;
     height: auto;
     margin: auto;
+    margin-top: 0px;
 }
 .no-trips-yet-h2{
     margin: auto;
@@ -66,7 +68,7 @@
     width: 100%;
     height: auto;
     margin: 0px;
-    margin-left: 5px;
+    margin-left: 9px;
     margin-right: 0px;
 }
 .cancel-trip-btn{
@@ -110,7 +112,7 @@
 
 /* THE SPOT FORM */
 .spot-form{
-    width: 45rem
+    width: auto
 }
 .edit-spotForm{
     width: auto
