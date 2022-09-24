@@ -4,7 +4,7 @@
 }
 /* MAIN PROFILE PAGE DIV */
 .profile-page-container{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: auto;
     height: auto;
     display: flex;
@@ -56,6 +56,8 @@
     /* border: 1px solid pink; */
     width: 9rem;
     height: 9rem;
+    min-width: 9rem;
+    min-height: 9rem;
     border-radius: 5%;
     object-fit: cover;
 }
@@ -63,7 +65,19 @@
     /* border: 1px solid red; */
     width: 100%;
     height: auto;
-    margin: 10px;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 0px;
+}
+.cancel-trip-btn{
+    width: 7rem;
+    /* height: 2.5rem; */
+    padding: 0px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    /* margin: auto;
+    margin-left: 8rem; */
 }
 .booked-info-city{
     font-family: 'Montserrat', sans-serif;
@@ -71,6 +85,7 @@
     font-size: 20px;
     margin-top: 0;
     color: rgb(0, 0, 0);
+    width: 100%;
     /* border: 1px solid orange; */
 }
 .booked-info-username-tag{

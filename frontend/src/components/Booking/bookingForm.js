@@ -1,8 +1,17 @@
 import { useState } from 'react';
+import { thunkCreateBooking } from '../../store/bookings';
 import '../Booking/bookingform.css'
 import Moment from 'moment';
+import { useDispatch, useSelector} from 'react-redux';
 
 export default function BookingForm({indSpot}){
+    const dispatch= useDispatch()
+
+
+    const spotId = indSpot.id
+    const userId = useSelector(state => state.session?.user?.id)
+
+
     const [checkOutOn, setCheckOutOn] = useState(true)
     const [checkIn, setCheckIn] = useState('')
     const [checkOut,  setCheckOut] = useState('')
@@ -16,12 +25,23 @@ export default function BookingForm({indSpot}){
     const checkOutMin = checkInDate.setDate(checkInDate.getDate() + 2)
     const checkOutMinFormatted = Moment(checkOutMin).format("YYYY-MM-DD")
 
+    async function handleSubmit(e) {
 
+        const newBooking = {
+            userId,
+            spotId,
+            startDate: checkIn,
+            endDate: checkOut
+        }
+
+        dispatch(thunkCreateBooking(newBooking))
+
+    }
     // console.log(checkOutMinFormatted, "CHECKIN VALUE")
 
     return (
         <>
-        <form className='booking-form'>
+        <form className='booking-form' onSubmit={handleSubmit}>
             <h4 className="span-price">${parseInt(indSpot.price).toLocaleString("en-Us")} <span>night</span></h4>
             <div className="checkin-out-div-container">
                 <div className="checkin-div">

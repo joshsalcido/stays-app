@@ -152,8 +152,8 @@ export default function UserProfilePage(){
         dispatch(thunkGetAllBookings(userId))
     }, [dispatch])
 
-    console.log(Object.values(currState.bookingReducer), "BookingReducer")
-    console.log(currState, "currentState")
+    // console.log(Object.values(currState.bookingReducer), "BookingReducer")
+    console.log(userBookings, "User Bookings")
 
     return (
         <div className="profile-page-container">
@@ -274,7 +274,10 @@ export default function UserProfilePage(){
                     <div className="indv-booking-div">
                         <img className="booking-img" src={booking.Spot.url1}></img>
                         <div className="booking-info-div">
-                            <p className="booked-info-city">{booking.Spot.city}</p>
+                            <div style={{display: 'flex', width: '100%'}}>
+                                <p className="booked-info-city">{booking.Spot.city}</p>
+                                <button className="cancel-trip-btn" onClick={() => {}}>Cancel Trip</button>
+                            </div>
                             <p className="booked-info-p-tag"> Hosted by
                             <text className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</text>
                             </p>
