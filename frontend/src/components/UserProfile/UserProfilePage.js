@@ -8,6 +8,9 @@ import CreateReview from "../createReview";
 import './UserProfile.css'
 import Moment from 'moment';
 import CreateListingForm from "./createListingForm";
+import ReactModal from 'react-modal'
+
+ReactModal.setAppElement('body')
 
 export default function UserProfilePage(){
     const currState = useSelector(state => state)
@@ -36,6 +39,8 @@ export default function UserProfilePage(){
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     const [showEditButton, setShowEditButton] = useState(true);
+    const [cancelCheck, setCancelCheck] = useState(false);
+    const [selectBooking, setSelectBooking] = useState('')
 
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -153,6 +158,25 @@ export default function UserProfilePage(){
         dispatch(thunkGetAllBookings(userId))
     }, [dispatch])
 
+    const customStyles = {
+        overlay: {
+            background: 'rgba(0,0,0,0.03)'
+          },
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            borderRadius: '15px',
+
+        }
+    }
+
+
+
+
     // console.log(Object.values(currState.bookingReducer), "BookingReducer")
     console.log(userBookings, "User Bookings")
 
@@ -203,7 +227,11 @@ export default function UserProfilePage(){
                         <div className="booking-info-div">
                             <div style={{display: 'flex', width: '100%'}}>
                                 <p className="booked-info-city">{booking.Spot.city}</p>
-                                <button className="cancel-trip-btn" onClick={() => {dispatch(thunkDeleteBooking(booking.id))}}>Cancel Trip</button>
+                                <button className="cancel-trip-btn" onClick={() => {setCancelCheck(true); setSelectBooking(booking.id)}} >Cancel Trip</button>
+                                <ReactModal isOpen={cancelCheck} style={customStyles} onRequestClose={() => setCancelCheck(false)}  shouldCloseOnOverlayClick={true}>
+                                    <p style={{fontFamily: 'Montserrat'}}>Are you sure you want to Cancel this trip?</p>
+                                    <button style={{width:'8rem', marginLeft: '30%'}} onClick={() => {dispatch(thunkDeleteBooking(selectBooking)); setCancelCheck(false)}}>Cancel Trip</button>
+                                </ReactModal>
                             </div>
                             <p className="booked-info-p-tag"> Hosted by
                             <span className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</span>
