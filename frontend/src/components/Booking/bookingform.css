@@ -1,16 +1,17 @@
 .booking-form{
     width: auto;
     height: auto;
+    padding-bottom: 9px;
 }
 .checkin-out-div-container{
-    border: 1px solid #77aa97;
+    border: 1px solid #b4d8cb;
     display: flex;
     border-radius: 0.5rem ;
 }
 .checkin-div{
     /* border: 1px solid #77aa97; */
     padding-right: 3.5px;
-    border-right: 0.2px solid #77aa97;
+    border-right: 0.2px solid #b4d8cb;
 }
 .checkin-label{
     /* border: 1px solid #77aa97; */
@@ -55,4 +56,44 @@
 }
 .checkout-input:hover{
     cursor: pointer;
+}
+
+/* PRICE ROUND UP SECTION */
+
+.nights-total{
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-top: 9px;
+}
+.span-nights-total{
+    /* border: 1px solid blue; */
+    float: right;
+}
+.cleaning-fee{
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-top: 9px;
+}
+.span-cleaning-fee{
+    /* border: 1px solid blue; */
+    /* margin-right: 0px; */
+    float: right;
+}
+.service-fee{
+    /* border: 1px solid red; */
+    margin: 0;
+    margin-top: 9px;
+}
+.span-service-fee{
+    /* border: 1px solid blue; */
+    float: right;
+}
+.grand-total{
+    /* border: 1px solid red; */
+    padding-top: 15px;
+    border-top: 1px solid rgb(206, 206, 206);
+}
+.span-grand-total{
+    /* border: 1px solid blue; */
+    float: right;
 }
