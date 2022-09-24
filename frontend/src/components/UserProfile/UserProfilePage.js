@@ -13,7 +13,7 @@ export default function UserProfilePage(){
     const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
-    const userBookings = Object.values(currState.bookingReducer)
+    const userBookings = Object.values(currState.bookingReducer).reverse()
 
     const dispatch = useDispatch();
     const [name, setName] = useState('')
@@ -154,7 +154,7 @@ export default function UserProfilePage(){
     }, [dispatch])
 
     // console.log(Object.values(currState.bookingReducer), "BookingReducer")
-    // console.log(userBookings, "User Bookings")
+    console.log(userBookings, "User Bookings")
 
     return (
         <div className="profile-page-container">
@@ -206,7 +206,7 @@ export default function UserProfilePage(){
                                 <button className="cancel-trip-btn" onClick={() => {dispatch(thunkDeleteBooking(booking.id))}}>Cancel Trip</button>
                             </div>
                             <p className="booked-info-p-tag"> Hosted by
-                            <text className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</text>
+                            <span className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</span>
                             </p>
                             <p className="booked-info-p-tag">{Moment(booking.startDate).format("MMM D")} - {Moment(booking.endDate).format("MMM D, YYYY")}</p>
                         </div>

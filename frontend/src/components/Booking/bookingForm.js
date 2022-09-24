@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
-import { thunkCreateBooking } from '../../store/bookings';
+import { thunkCreateBooking, thunkGetAllBookings } from '../../store/bookings';
 import '../Booking/bookingform.css'
 import Moment from 'moment';
 import { useDispatch, useSelector} from 'react-redux';
+import {NavLink, Redirect} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 export default function BookingForm({indSpot}){
     const dispatch= useDispatch()
+    const history = useHistory()
 
+    const currState = useSelector(state => state)
     const spotId = indSpot.id
     const userId = useSelector(state => state.session?.user?.id)
 
@@ -41,6 +45,7 @@ export default function BookingForm({indSpot}){
     }
 
     async function handleSubmit(e) {
+        e.preventDefault()
 
         const newBooking = {
             userId,
@@ -49,7 +54,11 @@ export default function BookingForm({indSpot}){
             endDate: checkOut
         }
 
-        dispatch(thunkCreateBooking(newBooking))
+        await dispatch(thunkCreateBooking(newBooking))
+        await dispatch(thunkGetAllBookings(userId))
+
+        // console.log(currState, "CURR STATE")
+        return history.push(`/user/${userId}`);
 
     }
 
@@ -67,7 +76,8 @@ export default function BookingForm({indSpot}){
         }
 
     }, [differenceInDays])
-    console.log(checkOut.length, "CHECKIN VALUE")
+
+
 
     return (
         <>
@@ -83,7 +93,9 @@ export default function BookingForm({indSpot}){
                 <input className="checkout-input" type="date" min={checkOutMinFormatted} value={checkOut}  disabled={checkIn.length === 0} onChange={(e) => setCheckOut(e.target.value)}></input>
                 </div>
             </div>
-            <button disabled={checkOut.length === 0} style={disableButton}>Reserve</button>
+
+                <button disabled={checkOut.length === 0} style={disableButton}>Reserve</button>
+
             {isNaN(differenceInDays) === false && (<p className='nights-total'>${indSpot.price} x {differenceInDays} nights<span className='span-nights-total'>${nightTotal.toLocaleString("en-Us")}</span></p>)}
             <p className='cleaning-fee'>Cleaning Fee<span className='span-cleaning-fee'>${cleaningFee}</span></p>
             <p className='service-fee'>Service Fee<span className='span-service-fee'>${serviceFee}</span></p>
