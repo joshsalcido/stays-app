@@ -148,7 +148,7 @@ export default function UserProfilePage(){
     if (showForm){
         buttonName = "Cancel"
     }
-    let yourListings = "Your Listings:";
+    let yourListings = "Your Listings";
     if (Object.values(currState.userSpots).length === 0) {
         yourListings = "You have no Listings, Create one!"
     }
@@ -157,6 +157,10 @@ export default function UserProfilePage(){
     useEffect(() => {
         dispatch(thunkGetAllBookings(userId))
     }, [dispatch])
+
+    function toggleListingForm(){
+        setShowForm(!showForm)
+    }
 
     const customStyles = {
         overlay: {
@@ -182,64 +186,66 @@ export default function UserProfilePage(){
 
     return (
         <div className="profile-page-container">
-            <div className="listings-div">
-            <CreateListingForm></CreateListingForm>
-                {userId && showForm === false && <button onClick={revealCreateForm}>{buttonName}</button>}
-                {userSpotsSelector && showForm === false && <h2 className="your-listing">{yourListings}</h2>}
-                <div className="all-your-listings">
-                    {userId && spots.map(spot => (
-                        <div key={spot.id}>
-                            {selectedSpot === spot.id && showEditSpotForm && (
-                            <div className="edit-spot-form">
-                                <EditSpotForm
-                                spot={spot}
-                                hideform={()=> setShowEditSpotForm(false)}
-                                />
-                            </div>
-                            )}
-                            {spot.userId === userId && spot.userId && (
-                                <div className="full-listing" key={spot.id}>
-                                <h4 className="span-name">{spot.name}</h4>
-                                <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
-                                <br></br>
-                                <span className="your-address">{spot.address}</span>
-                                <br/>
-                                <span className="your-city">{spot.city}, {spot.state}, {spot.country}</span>
-                                <br/>
-                                <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
-                                <div className="edit/delete">
-                                        <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
-                                        {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot.id)}}>Edit Listing</button>)}
+            <div className="inner-middle-container-UserProfile">
+                <div className="listings-div">
+                {showForm && (<CreateListingForm toggleListingForm={toggleListingForm}></CreateListingForm>)}
+                {showEditSpotForm && (
+                <div className="edit-spot-form">
+                    <EditSpotForm
+                    spot={selectedSpot}
+                    hideform={()=> setShowEditSpotForm(false)}
+                    />
+                </div>
+                )}
+                    {userSpotsSelector && showForm === false && <h2 className="your-listing">{yourListings}</h2>}
+                    {userId && showForm === false && <button onClick={revealCreateForm}>{buttonName}</button>}
+                    <div className="all-your-listings">
+                        {userId && spots.map(spot => (
+                            <div key={spot.id}>
+                                {spot.userId === userId && spot.userId && (
+                                    <div className="full-listing" key={spot.id}>
+                                    <h4 className="span-name">{spot.name}</h4>
+                                    <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
+                                    <br></br>
+                                    <span className="your-address">{spot.address}</span>
+                                    <br/>
+                                    <span className="your-city">{spot.city}, {spot.state}, {spot.country}</span>
+                                    <br/>
+                                    <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
+                                    <div className="edit/delete">
+                                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
+                                            {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot)}}>Edit Listing</button>)}
+                                    </div>
+                                    <br/>
                                 </div>
-                                <br/>
+                                )}
                             </div>
-                            )}
+                        ))}
+                    </div>
+                </div>
+                <div className="bookings-containder-div">
+                    {userBookings.length === 0 && (<h2 className="no-trips-yet-h2">No trips booked...yet!</h2>)}
+                    {userBookings.length > 0 && (<h2 className="no-trips-yet-h2">Booked Trips</h2>)}
+                    {userBookings.map(booking => (
+                        <div className="indv-booking-div">
+                            <img className="booking-img" src={booking.Spot.url1}></img>
+                            <div className="booking-info-div">
+                                <div style={{display: 'flex', width: '100%'}}>
+                                    <p className="booked-info-city">{booking.Spot.city}</p>
+                                    <button className="cancel-trip-btn" onClick={() => {setCancelCheck(true); setSelectBooking(booking.id)}} >Cancel Trip</button>
+                                    <ReactModal isOpen={cancelCheck} style={customStyles} onRequestClose={() => setCancelCheck(false)}  shouldCloseOnOverlayClick={true}>
+                                        <p style={{fontFamily: 'Montserrat'}}>Are you sure you want to Cancel this trip?</p>
+                                        <button style={{width:'8rem', marginLeft: '30%'}} onClick={() => {dispatch(thunkDeleteBooking(selectBooking)); setCancelCheck(false)}}>Cancel Trip</button>
+                                    </ReactModal>
+                                </div>
+                                <p className="booked-info-p-tag"> Hosted by
+                                <span className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</span>
+                                </p>
+                                <p className="booked-info-p-tag">{Moment(booking.startDate).format("MMM D")} - {Moment(booking.endDate).format("MMM D, YYYY")}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
-            </div>
-            <div className="bookings-containder-div">
-                {userBookings.length === 0 && (<h2 className="no-trips-yet-h2">No trips booked...yet!</h2>)}
-                {userBookings.length > 0 && (<h2 className="no-trips-yet-h2">Booked Trips</h2>)}
-                {userBookings.map(booking => (
-                    <div className="indv-booking-div">
-                        <img className="booking-img" src={booking.Spot.url1}></img>
-                        <div className="booking-info-div">
-                            <div style={{display: 'flex', width: '100%'}}>
-                                <p className="booked-info-city">{booking.Spot.city}</p>
-                                <button className="cancel-trip-btn" onClick={() => {setCancelCheck(true); setSelectBooking(booking.id)}} >Cancel Trip</button>
-                                <ReactModal isOpen={cancelCheck} style={customStyles} onRequestClose={() => setCancelCheck(false)}  shouldCloseOnOverlayClick={true}>
-                                    <p style={{fontFamily: 'Montserrat'}}>Are you sure you want to Cancel this trip?</p>
-                                    <button style={{width:'8rem', marginLeft: '30%'}} onClick={() => {dispatch(thunkDeleteBooking(selectBooking)); setCancelCheck(false)}}>Cancel Trip</button>
-                                </ReactModal>
-                            </div>
-                            <p className="booked-info-p-tag"> Hosted by
-                            <span className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</span>
-                            </p>
-                            <p className="booked-info-p-tag">{Moment(booking.startDate).format("MMM D")} - {Moment(booking.endDate).format("MMM D, YYYY")}</p>
-                        </div>
-                    </div>
-                ))}
             </div>
         </div>
     )

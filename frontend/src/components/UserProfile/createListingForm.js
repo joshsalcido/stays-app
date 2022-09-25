@@ -4,7 +4,7 @@ import { thunkCreateSpot, thunkDeleteSpot, thunkGetUserSpots } from "../../store
 import '../UserProfile/UserProfile.css'
 
 
-export default function CreateListingForm(){
+export default function CreateListingForm({toggleListingForm}){
     const currState = useSelector(state => state)
     const userId = useSelector(state => state.session?.user?.id)
     const userSpotsSelector = useSelector(state => state.userSpots)
@@ -26,7 +26,7 @@ export default function CreateListingForm(){
 
 
 
-    const [showForm, setShowForm] = useState(false);
+    // let [showForm, setShowForm] = useState(false);
     const [showEditSpotForm, setShowEditSpotForm] = useState(false);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -82,7 +82,7 @@ export default function CreateListingForm(){
 
         dispatch(thunkCreateSpot(newSpot))
 
-        setShowForm(false);
+        toggleListingForm()
         setName('')
         setAddress('')
         setCity('')
@@ -101,22 +101,22 @@ export default function CreateListingForm(){
     async function onDelete(spotId){
         dispatch(thunkDeleteSpot(spotId))
     }
-    async function revealCreateForm(e) {
-        e.preventDefault()
-        setShowForm(!showForm)
-        setName('')
-        setAddress('')
-        setCity('')
-        setState('')
-        setCountry('')
-        setPrice('')
-        setUrl1('')
-        setUrl2('')
-        setUrl3('')
-        setUrl4('')
-        setUrl5('')
-        setValidationErrors([])
-    }
+    // async function revealCreateForm(e) {
+    //     e.preventDefault()
+    //     setShowForm(!showForm)
+    //     setName('')
+    //     setAddress('')
+    //     setCity('')
+    //     setState('')
+    //     setCountry('')
+    //     setPrice('')
+    //     setUrl1('')
+    //     setUrl2('')
+    //     setUrl3('')
+    //     setUrl4('')
+    //     setUrl5('')
+    //     setValidationErrors([])
+    // }
     useEffect(()=> {
         setShowEditSpotForm(false);
     }, [userId])
@@ -127,7 +127,7 @@ export default function CreateListingForm(){
 
     return (
         <>
-        { showForm && (
+        { (
             <form className="spot-form" onSubmit={handleSubmit}>
                 {hasSubmitted && validationErrors.length > 0 && <ul className="errors">
                   {validationErrors.map((errors)=> (
@@ -199,7 +199,7 @@ export default function CreateListingForm(){
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
                 <button type="submit">Submit Listing</button>
-                <button onClick={revealCreateForm}>Cancel</button>
+                <button onClick={toggleListingForm}>Cancel</button>
             </form>)
             }
         </>

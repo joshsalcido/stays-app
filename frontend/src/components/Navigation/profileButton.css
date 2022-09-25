@@ -7,3 +7,56 @@
     align-content: center;
     margin: 3px 30px 22px 10px;
 }
+.menu-btn:hover{
+    box-shadow: 2px  2px 8px #888888;
+    transition: 0.4s ;
+}
+.profile-dropdown{
+    /* border: 1px solid blue; */
+    width: 10rem;
+    background-color: white;
+    float: right;
+    padding: 0px;
+    position: absolute;
+    margin: 0px;
+    left: 79%;
+    top: 8%;
+    box-shadow: 2px  2px 8px #888888;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.my-profile-bttn{
+    margin: 0px;
+    color: #77aa97;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+.my-profile-bttn:hover{
+    margin: 0px;
+    color: white;
+    background-color: #77aa97;
+}
+.booked-trips{
+    margin: 0px;
+    color: #77aa97;
+    background-color: white;
+    border-radius: 0px;
+}
+.booked-trips:hover{
+    margin: 0px;
+    color: white;
+    background-color: #77aa97;
+}
+.logout-bttn{
+    margin: 0px;
+    color: #77aa97;
+    background-color: white;
+    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+.logout-bttn:hover{
+    margin: 0px;
+    color: white;
+    background-color: #77aa97;
+}

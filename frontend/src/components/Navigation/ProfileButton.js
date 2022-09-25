@@ -40,16 +40,18 @@ function ProfileButton({ user }) {
         </div>
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <div className="profile-dropdown">
           <Link to={`/user/${user.id}`}>
-          <button type="button">My Profile</button>
+          <button className="my-profile-bttn" type="button">My Profile</button>
           </Link>
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
+          <Link>
+          <button className="booked-trips">Booked Trips</button>
+          </Link>
+          <Link>
+          <button className="booked-trips">Your Listings</button>
+          </Link>
+            <button className="logout-bttn" onClick={logout}>Log Out</button>
+        </div>
       )}
     </>
   );
