@@ -24,6 +24,7 @@ function LoginFormPage({toggleModal}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    toggleModal()
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
@@ -33,10 +34,11 @@ function LoginFormPage({toggleModal}) {
   const demoSubmit = async (e) => {
     e.preventDefault();
     dispatch(sessionActions.login({credential: "Demo-User", password: "password"}))
+    toggleModal()
   }
   const customStyles = {
     overlay: {
-        background: 'rgba(0,0,0,0.03)'
+        background: 'rgba(0,0,0,0.05)'
       },
     content: {
         top: '50%',
@@ -46,6 +48,7 @@ function LoginFormPage({toggleModal}) {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         borderRadius: '15px',
+        padding: '0px'
 
     }
 }
@@ -54,6 +57,7 @@ function LoginFormPage({toggleModal}) {
   return (
     <ReactModal isOpen={true} style={customStyles} onRequestClose={() => toggleModal()}  shouldCloseOnOverlayClick={true}>
       <form onSubmit={handleSubmit}>
+        <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '0', marginRight:'0', marginLeft:'auto', cursor:'pointer'}} onClick={toggleModal}>x</p>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
