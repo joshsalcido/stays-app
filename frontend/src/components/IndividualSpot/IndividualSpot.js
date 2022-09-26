@@ -100,7 +100,8 @@ export default function IndividualSpot(){
                         <p className="staycover-description-details">Booking Protection ∙ Check-in Guarantee ∙ Get-What-You-Booked ∙ 24-hour Safety Line</p>
                     </div>
                     {<div className="review-button-div">
-                        {showReviewForm === false && (<button className="leave-a-review-bttn" onClick={() => setShowReviewForm(true)}>Leave a Review!</button>)}
+                        {showReviewForm === false && userId && (<button className="leave-a-review-bttn" onClick={() => setShowReviewForm(true)}>Leave a Review!</button>)}
+                        {userId === undefined && (<h4>Log In or Sign Up to leave a Review!</h4>)}
                         {showReviewForm && userId && (<CreateReview spotId={id} toggleReviewForm={toggleReviewForm}/>)}
                     </div>}
                 </div>
@@ -136,6 +137,5 @@ export default function IndividualSpot(){
                 ))}
             </div>
         </div>
-
     )
 };

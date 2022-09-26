@@ -35,7 +35,9 @@ export default function BookingForm({indSpot}){
     const [nightTotal, setNightTotal] = useState('')
     const [total, setTotal] = useState(cleaningFee + serviceFee + parseInt(indSpot.price))
 
-    const [disableButton, setDisableButton] = useState(null)
+    const [disableButtonStyling, setDisableButtonStyling] = useState(null)
+    const [disableButton, setDisableButton] = useState(true)
+    const [logInMessage, setLogInMessage] = useState(false)
 
     // console.log(nightTotal)
 
@@ -70,10 +72,15 @@ export default function BookingForm({indSpot}){
             setTotal(cleaningFee + serviceFee + parseInt(indSpot.price))
         }
         if (checkOut.length === 0){
-            setDisableButton({backgroundColor: '#b4d8cb'})
+            setDisableButtonStyling({backgroundColor: '#b4d8cb'})
+            setDisableButton(true)
+        } else if (checkOut.length > 0 && userId !== undefined) {
+            setDisableButton(false)
+            setDisableButtonStyling(null)
         } else {
-            setDisableButton(null)
+            setLogInMessage(true)
         }
+
 
     }, [differenceInDays])
 
@@ -93,9 +100,8 @@ export default function BookingForm({indSpot}){
                 <input className="checkout-input" type="date" min={checkOutMinFormatted} value={checkOut}  disabled={checkIn.length === 0} onChange={(e) => setCheckOut(e.target.value)}></input>
                 </div>
             </div>
-
-                <button disabled={checkOut.length === 0} style={disableButton}>Reserve</button>
-
+                {logInMessage && (<h4 style={{margin: 'auto', marginTop: '15px', marginBottom: '15px', color: '#77aa97'}}>Log in or Sign up to reserve this Stay!</h4>)}
+                <button disabled={disableButton} style={disableButtonStyling}>Reserve</button>
             {isNaN(differenceInDays) === false && (<p className='nights-total'>${indSpot.price} x {differenceInDays} nights<span className='span-nights-total'>${nightTotal.toLocaleString("en-Us")}</span></p>)}
             <p className='cleaning-fee'>Cleaning Fee<span className='span-cleaning-fee'>${cleaningFee}</span></p>
             <p className='service-fee'>Service Fee<span className='span-service-fee'>${serviceFee}</span></p>

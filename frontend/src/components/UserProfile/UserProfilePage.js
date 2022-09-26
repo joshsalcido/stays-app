@@ -182,7 +182,7 @@ export default function UserProfilePage(){
 
 
     // console.log(Object.values(currState.bookingReducer), "BookingReducer")
-    console.log(userBookings, "User Bookings")
+    // console.log(userBookings, "User Bookings")
 
     return (
         <div className="profile-page-container">
