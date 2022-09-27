@@ -64,7 +64,7 @@ const EditSpotForm = ({ spot, hideform}) => {
 
         setValidationErrors(errors);
 
-    }, [name,address, city, state, country, price, url1, url2, url3, url4, url5])
+    }, [name,address, city, state, country, description, price, url1, url2, url3, url4, url5])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -152,33 +152,42 @@ const EditSpotForm = ({ spot, hideform}) => {
                     required
                     value={city}
                     onChange={updateCity}/>
-                <label>State:</label>
-                <input
-                    required
-                    value={state}
-                    onChange={updateState}/>
-                <label>Country:</label>
-                <input
-                    required
-                    value={country}
-                    onChange={updateCountry}/>
+                <div style={{padding: '0', marginTop: '10px', marginBottom: '10px'}}>
+                    <label>State:</label>
+                    <input
+                        style={{marginRight:'22.5px'}}
+                        className="create-listing-inputs"
+                        required
+                        value={state}
+                        onChange={updateState}/>
+                    <label>Country:</label>
+                    <input
+                        required
+                        value={country}
+                        onChange={updateCountry}/>
+                </div>
                 <label>Description</label>
                 <textarea
                     required
+                    className="description-textarea"
                     value={description}
-                    onchange={updateDescription}
+                    onChange={updateDescription}
                 ></textarea>
-                <label>Price:</label>
-                <input
-                    required
-                    value={price}
-                    onChange={updatePrice}/>
-                <label>Images:</label>
-                <input
-                onChange={updateUrl1}
-                value={url1}
-                placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
+                <div style={{ marginTop: '10px'}}>
+                    <label>Price/Night</label>
+                    <input
+                        className="create-listing-inputs-price"
+                        required
+                        value={price}
+                        onChange={updatePrice}/>
+                    <label>Add Image</label>
+                    <input
+                    className="create-listing-inputs-firstImage"
+                    onChange={updateUrl1}
+                    value={url1}
+                    placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                    />
+                </div>
                 <input
                 onChange={updateUrl2}
                 value={url2}
@@ -199,8 +208,10 @@ const EditSpotForm = ({ spot, hideform}) => {
                 value={url5}
                 placeholder="image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
-                <button type="submit">Submit</button>
-                <button type="button" onClick={handleCancelClick}>Cancel</button>
+                <div style={{display: 'flex'}}>
+                    <button type="submit" style={{width: '50%', marginRight: '12px'}}>Submit</button>
+                    <button type="button" style={{width: '50%'}} onClick={handleCancelClick}>Cancel</button>
+                </div>
             </form>
         </section>)}
         </>

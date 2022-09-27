@@ -113,6 +113,7 @@ export default function UserListings(){
 
     async function onDelete(spotId){
         dispatch(thunkDeleteSpot(spotId))
+        setCancelCheck(false)
     }
     async function revealCreateForm(e) {
         e.preventDefault()
@@ -170,7 +171,7 @@ export default function UserListings(){
             background: 'rgba(0,0,0,0.2)'
           },
         content: {
-            top: '50%',
+            top: '47%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
@@ -193,6 +194,7 @@ export default function UserListings(){
         <ReactModal isOpen={showForm} style={customStyles} onRequestClose={() => setShowForm(false)} shouldCloseOnOverlayClick={true}>
             <CreateListingForm toggleListingForm={toggleListingForm}></CreateListingForm>
         </ReactModal>
+
          <div className="listing-page-container">
             <div className="inner-middle-container-listing">
                 <div className="listings-div">
@@ -205,31 +207,36 @@ export default function UserListings(){
                         {Object.values(currState.userSpots).length > 0 && (
                         <div style={{display: 'flex'}}>
                             <h2 style={{padding: '0px', width: '11rem', marginLeft: '17px', marginRight: '20px'}}>Your Listings</h2>
-                            <button style={{padding: '0px', height: '3rem', margin: 'auto', width: '9rem'}}>Create New Listing</button>
+                            <button style={{padding: '0px', height: '3rem', margin: 'auto', width: '9rem'}} onClick={revealCreateForm}>Create New Listing</button>
                         </div>)}
                         {userId && spots.map(spot => (
-                            <div key={spot.id}>
-                                {spot.userId === userId && spot.userId && (
-                                    <div className="full-listing" key={spot.id}>
-                                        <div style={{display: 'grid', marginLeft: '0px', float:'left', padding: "0px"}}>
-                                            <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
-                                            <div className="edit-delete">
-                                                    <button className='delete-listing-button' type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
-                                                    {!showEditSpotForm && (<button className='edit-listing-bttn' type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot)}}>Edit Listing</button>)}
+                          <>
+                          <ReactModal isOpen={cancelCheck} style={customStyles} onRequestClose={() => setCancelCheck(false)} shouldCloseOnOverlayClick={true}>
+                                <p style={{fontFamily: 'Montserrat'}}>Are you sure you want to delete this listing?</p>
+                                <button style={{width:'8rem', marginLeft: '30%', fontSize: '15px'}} onClick={() => onDelete(spot.id)}>Delete</button>
+                            </ReactModal><div key={spot.id}>
+                                    {spot.userId === userId && spot.userId && (
+                                        <div className="full-listing" key={spot.id}>
+                                            <div style={{ display: 'grid', marginLeft: '0px', float: 'left', padding: "0px" }}>
+                                                <img className="your-listing-img" alt="airbnb-Image" src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
+                                                <div className="edit-delete">
+                                                    <button className='delete-listing-button' type='button' onClick={() => setCancelCheck(true)}>Delete Listing</button>
+                                                    <button className='edit-listing-bttn' type='button' onClick={() => { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot); } }>Edit Listing</button>
+                                                </div>
                                             </div>
+                                            <div className='listing-info-div'>
+                                                <h4 className="span-name">{spot.name}</h4>
+                                                <p className="p-tag-descritpion">{spot.description}</p>
+                                                <label className='address-label-listing'>Address:</label>
+                                                <p className="your-address">{spot.address}</p>
+                                                <p className="your-city">{spot.city}, {spot.state}, {spot.country}</p>
+                                                <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
+                                            </div>
+                                            <br />
                                         </div>
-                                        <div className='listing-info-div'>
-                                            <h4 className="span-name">{spot.name}</h4>
-                                            <p className="p-tag-descritpion">{spot.description}</p>
-                                            <label className='address-label-listing'>Address:</label>
-                                            <p className="your-address">{spot.address}</p>
-                                            <p className="your-city">{spot.city}, {spot.state}, {spot.country}</p>
-                                            <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
-                                        </div>
-                                    <br/>
-                                    </div>
-                                )}
-                            </div>
+                                    )}
+                                </div>
+                                </>
                         ))}
                     </div>
                 </div>

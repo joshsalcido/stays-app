@@ -139,6 +139,7 @@ export default function CreateListingForm({toggleListingForm}){
                 </ul>}
                 <label>Title</label>
                 <input
+                maxLength={60}
                 className="create-listing-inputs"
                 onChange={(e)=> setName(e.target.value)}
                 value={name}

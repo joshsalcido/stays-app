@@ -17,6 +17,11 @@
     width: 55rem;
     margin: auto;
     margin-top: 0px;
+    height: auto;
+    max-height: 45rem;
+    overflow: scroll;
+    border-radius: 15px;
+    box-shadow: 2px  2px 8px #888888;
 }
 /* LISTINGS SECTION DIV */
 .friends-img{
@@ -135,7 +140,11 @@
     display: grid;
 }
 .edit-spotForm{
-    width: auto
+    width: 30rem;
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    /* border: 1px solid red; */
+    display: grid;
 }
 
 .create-listing-inputs {
