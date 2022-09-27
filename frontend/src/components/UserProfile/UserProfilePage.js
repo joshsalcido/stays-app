@@ -33,7 +33,7 @@ export default function UserProfilePage(){
                     <h2 className='welcome-user'>Welcome {username}!</h2>
                     <p className="user-email">{email}</p>
                     <img className="work-in-progress" src={workInProgress}></img>
-                    <p className='no-info-yet'>Not much to see here...yet! Feel free to explore our stays, leave a review, book one and create your own! </p>
+                    <p className='no-info-yet'>Not much to see here...yet! Feel free to start exploring our stays, leave a review, book one and create your own! </p>
                     <NavLink to="/">
                         <button className='explore-bttn'>Explore</button>
                     </NavLink>
