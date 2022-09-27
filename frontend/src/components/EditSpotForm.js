@@ -15,6 +15,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     const [city, setCity] = useState(spot.city)
     const [state, setState] = useState(spot.state)
     const [country, setCountry] = useState(spot.country)
+    const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
     const [url1, setUrl1] = useState(spot.url1 || '')
     const [url2, setUrl2] = useState(spot.url2 || '')
@@ -32,6 +33,7 @@ const EditSpotForm = ({ spot, hideform}) => {
     const updateCity = (e) => setCity(e.target.value);
     const updateState = (e) => setState(e.target.value);
     const updateCountry = (e) => setCountry(e.target.value);
+    const updateDescription = (e) => setDescription(e.target.value);
     const updatePrice = (e) => setPrice(e.target.value);
     const updateUrl1 = (e) => setUrl1(e.target.value);
     const updateUrl2 = (e) => setUrl2(e.target.value);
@@ -72,6 +74,7 @@ const EditSpotForm = ({ spot, hideform}) => {
             city,
             state,
             country,
+            description,
             price,
             url1,
             url2,
@@ -97,6 +100,7 @@ const EditSpotForm = ({ spot, hideform}) => {
         setCity('')
         setState('')
         setCountry('')
+        setDescription('')
         setPrice(0)
         setUrl1('')
         setUrl2('')
@@ -158,6 +162,12 @@ const EditSpotForm = ({ spot, hideform}) => {
                     required
                     value={country}
                     onChange={updateCountry}/>
+                <label>Description</label>
+                <textarea
+                    required
+                    value={description}
+                    onchange={updateDescription}
+                ></textarea>
                 <label>Price:</label>
                 <input
                     required

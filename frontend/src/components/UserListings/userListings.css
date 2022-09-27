@@ -3,29 +3,43 @@
     list-style: circle;
     color:rgb(255, 0, 0)
 }
-/* MAIN PROFILE PAGE DIV */
-.profile-page-container{
+/* MAIN LISTING PAGE DIV */
+.listing-page-container{
     /* border: 1px solid blue; */
     width: auto;
     height: auto;
     display: flex;
     padding-top: 2rem;
 }
-.inner-middle-container-UserProfile{
+.inner-middle-container-listing{
     display: flex;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    width: 55rem;
     margin: auto;
     margin-top: 0px;
 }
 /* LISTINGS SECTION DIV */
+.friends-img{
+    height: auto;
+    width: 29rem;
+    border-radius: 0px 12px 12px 0px;
+}
+.create-listing-bttn{
+    width: 10rem;
+    padding: 15px;
+    margin-top: 130px;
+    margin-left: 25px;
+}
 .listings-div{
-    border: 1px solid red;
-    width: 28rem;
+    /* border: 1px solid red; */
+    border-radius: 12px;
+    box-shadow: 2px  2px 8px #888888;
+    display: flex;
+    width: auto;
+    max-width: 55rem;
     height: auto;
     margin: auto;
     margin-top: 0;
-    margin-right: 20px;
-
 }
 .all-your-listings {
     position: relative;
@@ -35,62 +49,127 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
     /* margin: 3rem 3rem 2rem 3rem; */
     /* align-items: center;
     justify-content: center; */
 }
-/* BOOKINGS SECTION DIV */
+
+.full-listing {
+    /* border: solid 1px blue; */
+    width: 52.5rem;
+    height:fit-content;
+    /* border: solid 1px green; */
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center;
+    justify-content: center; */
+    margin: 1rem;
+    padding: 0px;
+}
+.your-listing-h2-message {
+    margin-left: 25px;
+    margin-top: 30px;
+    /* border: solid 1px blue; */
+    color: #77aa97;
+}
+
+.your-listing-img {
+    /* border: solid 1px blue; */
+    width: 18rem;
+    height: 15rem;
+    border-radius: 2%;
+    object-fit: cover;
+    margin: 0px;
+    margin-left: 0px;
+    float: left;
+}
+.listing-info-div{
+    /* border: 1px solid pink; */
+    width: 32.99rem;
+    padding-left: 10px;
+}
+.span-name {
+    /* border: 1px solid purple; */
+    margin: 0px;
+}
+.p-tag-descritpion{
+    /* border: 1px solid red; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 13px
+}
+.address-label-listing{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    /* border: 1px solid blue; */
+}
+.your-city {
+    /* border: solid 1px blue; */
+    margin-top: 0rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+}
+.your-address {
+    /* border: solid 1px blue; */
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    margin: 0px;
+    margin-top: 15px;
+
+}
+.your-price {
+    /* border: solid 1px blue; */
+}
 
 
+/* CREATE LISTING FORM */
 
-/* THE SPOT FORM */
 .spot-form{
-    width: auto
+    width: 30rem;
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    /* border: 1px solid red; */
+    display: grid;
 }
 .edit-spotForm{
     width: auto
 }
 
-
-.full-listing {
-    /* border: solid 1px blue; */
-    width: min-content;
-    height: min-content;
-    border: solid 1px blue;
+.create-listing-inputs {
+    margin: .5rem;
+    padding: .5rem;
+    border: 0.1rem solid #77aa97;
+    border-radius: 1rem;
+    width: auto;
+  }
+.description-textarea{
+    margin: .5rem;
+    padding: .5rem;
+    border: 0.1rem solid #77aa97;
+    border-radius: 1rem;
+}
+.create-listing-inputs-price{
+    width: 2.3rem;
+}
+.create-listing-inputs-firstImage{
+    width: 11.5rem;
+}
+/* DIV HOLDING EDIT AND DELETE */
+.edit-delete{
+    /* border: 1px solid blue; */
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem;
-    padding-bottom: -3rem;
+    height: 4rem;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0px;
 }
-.your-listing {
-    text-align: center;
-    border: solid 1px blue;
+.delete-listing-button{
+    width: 50%;
+    margin-right: 10px;
 }
-
-.your-listing-img {
-    border: solid 1px blue;
-    width: 18rem;
-    height: 15rem;
-    border-radius: 2%;
-    object-fit: cover;
+.edit-listing-bttn{
+    width: 50%;
 }
-.your-city {
-    border: solid 1px blue;
-    margin-top: 1rem;
-}
-.your-address {
-    border: solid 1px blue;
-    font-size: .8rem;
-    position: relative;
-    bottom: -.5rem;
-}
-.your-price {
-    border: solid 1px blue;
-    position: relative;
-    bottom: -1rem;
-    margin-bottom: 2rem;
-}
-

@@ -9,6 +9,7 @@ import CreateReview from "../createReview";
 import Moment from 'moment';
 import CreateListingForm from "../UserListings/createListingForm.js";
 import ReactModal from 'react-modal'
+import friends from './friends-hanging.jpg'
 
 ReactModal.setAppElement('body')
 
@@ -147,9 +148,9 @@ export default function UserListings(){
 
 
     let buttonName = "Create a New Listing!";
-    if (showForm){
-        buttonName = "Cancel"
-    }
+    // if (showForm){
+    //     buttonName = "Cancel"
+    // }
     let yourListings = "Your Listings";
     if (Object.values(currState.userSpots).length === 0) {
         yourListings = "You have no Listings, Create one!"
@@ -166,7 +167,7 @@ export default function UserListings(){
 
     const customStyles = {
         overlay: {
-            background: 'rgba(0,0,0,0.03)'
+            background: 'rgba(0,0,0,0.2)'
           },
         content: {
             top: '50%',
@@ -181,39 +182,52 @@ export default function UserListings(){
     }
     return (
         <>
-         <div className="profile-page-container">
-            <div className="inner-middle-container-UserProfile">
+        <ReactModal isOpen={showEditSpotForm} style={customStyles}>
+            <div className="edit-spot-form">
+                <EditSpotForm
+                spot={selectedSpot}
+                hideform={()=> setShowEditSpotForm(false)}
+                />
+            </div>
+        </ReactModal>
+        <ReactModal isOpen={showForm} style={customStyles} onRequestClose={() => setShowForm(false)} shouldCloseOnOverlayClick={true}>
+            <CreateListingForm toggleListingForm={toggleListingForm}></CreateListingForm>
+        </ReactModal>
+         <div className="listing-page-container">
+            <div className="inner-middle-container-listing">
                 <div className="listings-div">
-                {showForm && (<CreateListingForm toggleListingForm={toggleListingForm}></CreateListingForm>)}
-                {showEditSpotForm && (
-                <div className="edit-spot-form">
-                    <EditSpotForm
-                    spot={selectedSpot}
-                    hideform={()=> setShowEditSpotForm(false)}
-                    />
-                </div>
-                )}
-                    {userSpotsSelector && showForm === false && <h2 className="your-listing">{yourListings}</h2>}
-                    {userId && showForm === false && <button onClick={revealCreateForm}>{buttonName}</button>}
+                    <div>
+                    {Object.values(currState.userSpots).length === 0 && <h2 className="your-listing-h2-message">{yourListings}</h2>}
+                    {userId && Object.values(currState.userSpots).length === 0 && <button className='create-listing-bttn' onClick={revealCreateForm}>{buttonName}</button>}
+                    </div>
+                    {Object.values(currState.userSpots).length === 0 && (<img className='friends-img' src={friends}></img>)}
                     <div className="all-your-listings">
+                        {Object.values(currState.userSpots).length > 0 && (
+                        <div style={{display: 'flex'}}>
+                            <h2 style={{padding: '0px', width: '11rem', marginLeft: '17px', marginRight: '20px'}}>Your Listings</h2>
+                            <button style={{padding: '0px', height: '3rem', margin: 'auto', width: '9rem'}}>Create New Listing</button>
+                        </div>)}
                         {userId && spots.map(spot => (
                             <div key={spot.id}>
                                 {spot.userId === userId && spot.userId && (
                                     <div className="full-listing" key={spot.id}>
-                                    <h4 className="span-name">{spot.name}</h4>
-                                    <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
-                                    <br></br>
-                                    <span className="your-address">{spot.address}</span>
+                                        <div style={{display: 'grid', marginLeft: '0px', float:'left', padding: "0px"}}>
+                                            <img className="your-listing-img" alt="airbnb-Image"  src={spot.url1 === '' ? "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" : spot.url1}></img>
+                                            <div className="edit-delete">
+                                                    <button className='delete-listing-button' type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
+                                                    {!showEditSpotForm && (<button className='edit-listing-bttn' type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot)}}>Edit Listing</button>)}
+                                            </div>
+                                        </div>
+                                        <div className='listing-info-div'>
+                                            <h4 className="span-name">{spot.name}</h4>
+                                            <p className="p-tag-descritpion">{spot.description}</p>
+                                            <label className='address-label-listing'>Address:</label>
+                                            <p className="your-address">{spot.address}</p>
+                                            <p className="your-city">{spot.city}, {spot.state}, {spot.country}</p>
+                                            <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
+                                        </div>
                                     <br/>
-                                    <span className="your-city">{spot.city}, {spot.state}, {spot.country}</span>
-                                    <br/>
-                                    <h4 className="your-price">Price: ${parseInt(spot.price).toLocaleString("en-Us")}/ Night</h4>
-                                    <div className="edit/delete">
-                                            <button type='button' onClick={()=> onDelete(spot.id)}>Delete Listing</button>
-                                            {!showEditSpotForm && (<button type='button' onClick={()=> { setShowEditSpotForm(true); setShowEditButton(false); setSelectedSpot(spot)}}>Edit Listing</button>)}
                                     </div>
-                                    <br/>
-                                </div>
                                 )}
                             </div>
                         ))}

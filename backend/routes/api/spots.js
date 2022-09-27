@@ -22,10 +22,10 @@ router.get('/user/:id', asyncHandler(async(req, res) => {
 // create spot
 router.post('/:id', asyncHandler(async (req, res) => {
 
-    const { name, address, city, country, price, state, url1, url2, url3, url4, url5} = req.body;
+    const { name, address, city, country, description, price, state, url1, url2, url3, url4, url5} = req.body;
     const id = req.params.id;
     const newSpot = await Spot.create({
-         address, city, state, country, name, price, url1, url2, url3, url4, url5, userId: id
+         address, city, state, country, description, name, price, url1, url2, url3, url4, url5, userId: id
     });
 
     return res.json(newSpot)
@@ -35,11 +35,11 @@ router.post('/:id', asyncHandler(async (req, res) => {
 
 router.put('/:id', asyncHandler(async(req, res)=> {
     const spotId = req.params.id
-    const {name, address, city, country, price, state, url1, url2, url3, url4, url5 } = req.body;
+    const {name, address, city, country, description, price, state, url1, url2, url3, url4, url5 } = req.body;
     // console.log(spotId, "We HERE *** $$$$$ ");
     const spotToUpdate = await Spot.findByPk(spotId);
     const updateSpot = await spotToUpdate.update({
-        name, address, city, country, price, state, url1, url2, url3, url4, url5}
+        name, address, city, country, description, price, state, url1, url2, url3, url4, url5}
     );
     // console.log(updateSpot, "BACKEND updateSPOT")
     return res.json(updateSpot);

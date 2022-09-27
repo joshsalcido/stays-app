@@ -24,7 +24,7 @@ export default function UserProfilePage(){
 
 
     // console.log(Object.values(currState.bookingReducer), "BookingReducer")
-    console.log(email, "User Bookings")
+    // console.log(email, "User Bookings")
 
     return (
         <div className="main-profile-container">

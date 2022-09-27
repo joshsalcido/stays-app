@@ -16,6 +16,7 @@ export default function CreateListingForm({toggleListingForm}){
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
+    const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [url1, setUrl1] = useState('')
     const [url2, setUrl2] = useState('')
@@ -68,6 +69,7 @@ export default function CreateListingForm({toggleListingForm}){
             city,
             state,
             country,
+            description,
             price,
             url1,
             url2,
@@ -88,6 +90,7 @@ export default function CreateListingForm({toggleListingForm}){
         setCity('')
         setState('')
         setCountry('')
+        setDescription('')
         setPrice('')
         setUrl1('')
         setUrl2('')
@@ -134,72 +137,99 @@ export default function CreateListingForm({toggleListingForm}){
                       <li className="errors" key={errors}>{errors}</li>
                       ))}
                 </ul>}
-                <label>Title:</label>
+                <label>Title</label>
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setName(e.target.value)}
                 value={name}
                 required={true}
                 />
-                <label>Address:</label>
+                <label>Address</label>
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setAddress(e.target.value)}
                 value={address}
                 required={true}
                 />
-                <label>City:</label>
+                <label>City</label>
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setCity(e.target.value)}
                 value={city}
                 required={true}
                 />
-                <label>State:</label>
-                <input
-                onChange={(e)=> setState(e.target.value)}
-                value={state}
+                <div style={{padding: '0', marginTop: '10px', marginBottom: '10px'}}>
+                    <label>State</label>
+                    <input
+                    style={{marginRight:'22.5px'}}
+                    className="create-listing-inputs"
+                    onChange={(e)=> setState(e.target.value)}
+                    value={state}
+                    required={true}
+                    />
+                    <label>Country</label>
+                    <input
+                    className="create-listing-inputs"
+                    onChange={(e)=> setCountry(e.target.value)}
+                    value={country}
+                    required={true}
+                    />
+                </div>
+                <label>Description</label>
+                <textarea
+                maxLength={2000}
+                className="description-textarea"
+                onChange={(e)=> setDescription(e.target.value)}
+                value={description}
                 required={true}
-                />
-                <label>Country:</label>
+                ></textarea>
+                <div style={{ marginTop: '10px'}}>
+                    <label>Price/Night</label>
+                    <input
+                    className="create-listing-inputs-price"
+                    placeholder="digits"
+                    onChange={(e)=> setPrice(e.target.value)}
+                    value={price}
+                    required={true}
+                    />
+                    <label>Add Image</label>
+                    <input
+                    className="create-listing-inputs-firstImage"
+                    required
+                    onChange={(e)=> setUrl1(e.target.value)}
+                    value={url1}
+                    placeholder="this image will be displayed 1st, image url ending in .jpg,.jpeg,.gif,.tiff,.png"
+                    />
+                </div>
+                <label>Aditional Images</label>
                 <input
-                onChange={(e)=> setCountry(e.target.value)}
-                value={country}
-                required={true}
-                />
-                <label>Price Per Night:</label>
-                <input
-                placeholder="numbers only"
-                onChange={(e)=> setPrice(e.target.value)}
-                value={price}
-                required={true}
-                />
-                 <label>Add Images:</label>
-                <input
-                required
-                onChange={(e)=> setUrl1(e.target.value)}
-                value={url1}
-                placeholder="(this image will be displayed in your listings) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
-                />
-                <input
+                className="create-listing-inputs"
                 onChange={(e)=> setUrl2(e.target.value)}
                 value={url2}
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setUrl3(e.target.value)}
                 value={url3}
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setUrl4(e.target.value)}
                 value={url4}
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
                 <input
+                className="create-listing-inputs"
                 onChange={(e)=> setUrl5(e.target.value)}
                 value={url5}
                 placeholder="(optional) image url ending in .jpg,.jpeg,.gif,.tiff,.png"
                 />
-                <button type="submit">Submit Listing</button>
-                <button onClick={toggleListingForm}>Cancel</button>
+                <div style={{display: 'flex'}}>
+                    <button style={{width: '50%', marginRight: '12px'}} type="submit">Submit Listing</button>
+                    <button style={{width: '50%'}} onClick={toggleListingForm}>Cancel</button>
+                </div>
             </form>)
             }
         </>
