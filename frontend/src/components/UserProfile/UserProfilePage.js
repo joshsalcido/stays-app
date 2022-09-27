@@ -223,29 +223,6 @@ export default function UserProfilePage(){
                         ))}
                     </div>
                 </div>
-                <div className="bookings-containder-div">
-                    {userBookings.length === 0 && (<h2 className="no-trips-yet-h2">No trips booked...yet!</h2>)}
-                    {userBookings.length > 0 && (<h2 className="no-trips-yet-h2">Booked Trips</h2>)}
-                    {userBookings.map(booking => (
-                        <div className="indv-booking-div">
-                            <img className="booking-img" src={booking.Spot.url1}></img>
-                            <div className="booking-info-div">
-                                <div style={{display: 'flex', width: '100%'}}>
-                                    <p className="booked-info-city">{booking.Spot.city}</p>
-                                    <button className="cancel-trip-btn" onClick={() => {setCancelCheck(true); setSelectBooking(booking.id)}} >Cancel Trip</button>
-                                    <ReactModal isOpen={cancelCheck} style={customStyles} onRequestClose={() => setCancelCheck(false)}  shouldCloseOnOverlayClick={true}>
-                                        <p style={{fontFamily: 'Montserrat'}}>Are you sure you want to Cancel this trip?</p>
-                                        <button style={{width:'8rem', marginLeft: '30%'}} onClick={() => {dispatch(thunkDeleteBooking(selectBooking)); setCancelCheck(false)}}>Cancel Trip</button>
-                                    </ReactModal>
-                                </div>
-                                <p className="booked-info-p-tag"> Hosted by
-                                <span className="booked-info-username-tag"> {booking.Spot.User.username.charAt(0).toUpperCase() + booking.Spot.User.username.slice(1)}</span>
-                                </p>
-                                <p className="booked-info-p-tag">{Moment(booking.startDate).format("MMM D")} - {Moment(booking.endDate).format("MMM D, YYYY")}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
             </div>
         </div>
     )

@@ -44,7 +44,7 @@ function ProfileButton({ user }) {
           <Link to={`/user/${user.id}`}>
           <button className="my-profile-bttn" type="button">My Profile</button>
           </Link>
-          <Link>
+          <Link to={`/bookedTrips/${user.id}`}>
           <button className="booked-trips">Booked Trips</button>
           </Link>
           <Link>

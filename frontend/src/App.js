@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import MainPage from "./components/allSpots";
 import IndividualSpot from "./components/IndividualSpot/IndividualSpot";
 import UserProfilePage from "./components/UserProfile/UserProfilePage";
+import BookedTrips from "./components/BookedTrips/BookedTrips";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/spot/:id">
             <IndividualSpot/>
+          </Route>
+          <Route path="/bookedTrips/:id">
+            <BookedTrips/>
           </Route>
         </Switch>
       )}

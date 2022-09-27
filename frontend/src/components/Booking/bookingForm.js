@@ -60,7 +60,7 @@ export default function BookingForm({indSpot}){
         await dispatch(thunkGetAllBookings(userId))
 
         // console.log(currState, "CURR STATE")
-        return history.push(`/user/${userId}`);
+        return history.push(`/bookedTrips/${userId}`);
 
     }
 
