@@ -10,6 +10,7 @@ import MainPage from "./components/allSpots";
 import IndividualSpot from "./components/IndividualSpot/IndividualSpot";
 import UserProfilePage from "./components/UserProfile/UserProfilePage";
 import BookedTrips from "./components/BookedTrips/BookedTrips";
+import UserListings from "./components/UserListings/UserListings";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/bookedTrips/:id">
             <BookedTrips/>
+          </Route>
+          <Route path="/userListings/:id">
+            <UserListings/>
           </Route>
         </Switch>
       )}

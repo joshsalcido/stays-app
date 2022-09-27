@@ -1,0 +1,96 @@
+
+.errors {
+    list-style: circle;
+    color:rgb(255, 0, 0)
+}
+/* MAIN PROFILE PAGE DIV */
+.profile-page-container{
+    /* border: 1px solid blue; */
+    width: auto;
+    height: auto;
+    display: flex;
+    padding-top: 2rem;
+}
+.inner-middle-container-UserProfile{
+    display: flex;
+    border: 1px solid blue;
+    margin: auto;
+    margin-top: 0px;
+}
+/* LISTINGS SECTION DIV */
+.listings-div{
+    border: 1px solid red;
+    width: 28rem;
+    height: auto;
+    margin: auto;
+    margin-top: 0;
+    margin-right: 20px;
+
+}
+.all-your-listings {
+    position: relative;
+    width: auto;
+    height: auto;
+    /* max-width: 90rem; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: solid 1px blue;
+    /* margin: 3rem 3rem 2rem 3rem; */
+    /* align-items: center;
+    justify-content: center; */
+}
+/* BOOKINGS SECTION DIV */
+
+
+
+/* THE SPOT FORM */
+.spot-form{
+    width: auto
+}
+.edit-spotForm{
+    width: auto
+}
+
+
+.full-listing {
+    /* border: solid 1px blue; */
+    width: min-content;
+    height: min-content;
+    border: solid 1px blue;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding-bottom: -3rem;
+}
+.your-listing {
+    text-align: center;
+    border: solid 1px blue;
+}
+
+.your-listing-img {
+    border: solid 1px blue;
+    width: 18rem;
+    height: 15rem;
+    border-radius: 2%;
+    object-fit: cover;
+}
+.your-city {
+    border: solid 1px blue;
+    margin-top: 1rem;
+}
+.your-address {
+    border: solid 1px blue;
+    font-size: .8rem;
+    position: relative;
+    bottom: -.5rem;
+}
+.your-price {
+    border: solid 1px blue;
+    position: relative;
+    bottom: -1rem;
+    margin-bottom: 2rem;
+}
+

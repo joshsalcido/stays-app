@@ -1,6 +1,6 @@
 /* BOOKINGS SECTION DIV */
 .bookings-containder-div{
-    border: 1px solid rgb(225, 225, 225);
+    /* border: 1px solid rgb(225, 225, 225); */
     /* border: 1px solid green; */
     border-radius: 15px;
     width: 55rem;
@@ -9,6 +9,7 @@
     overflow: scroll;
     margin: auto;
     margin-top: 10px;
+    box-shadow: 2px  2px 8px #888888;
 }
 .no-bookings-message-container{
     display: flex;
@@ -51,13 +52,13 @@
     float: right;
     /* border: 1px solid red; */
 }
-.booked-trips-div{
+/* .booked-trips-div{ */
     /* border: 1px solid blue; */
     /* position: absolute;
     overflow: hidden;
     background-color: white;
     z-index: 1; */
-}
+/* } */
 .booked-trips-h2{
     margin: 0;
     margin-top: 30px;

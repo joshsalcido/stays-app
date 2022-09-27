@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
           <Link to={`/bookedTrips/${user.id}`}>
           <button className="booked-trips">Booked Trips</button>
           </Link>
-          <Link>
+          <Link to={`/userListings/${user.id}`}>
           <button className="booked-trips">Your Listings</button>
           </Link>
             <button className="logout-bttn" onClick={logout}>Log Out</button>
