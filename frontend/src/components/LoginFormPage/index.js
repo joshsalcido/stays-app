@@ -61,7 +61,7 @@ function LoginFormPage({toggleModal}) {
     <ReactModal closeTimeoutMS={2000} isOpen={true} style={customStyles} onRequestClose={() => toggleModal()}  shouldCloseOnOverlayClick={true}>
       <form onSubmit={handleSubmit} className="login-form">
         <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '0', marginRight:'0', marginLeft:'auto', cursor:'pointer'}} onClick={toggleModal}>x</p>
-      <ul className='errors' style={{fontSize: '13.5px', margin: 'auto', marginBottom: '10px', padding: '0'}}>
+      <ul className='errors' style={{fontSize: '18px', margin: 'auto', marginBottom: '10px', padding: '0'}}>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>

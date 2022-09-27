@@ -53,14 +53,14 @@ function SignupFormPage({toggleModalSignUp}) {
         transform: 'translate(-50%, -50%)',
         borderRadius: '15px',
         padding: '0px',
-        height: '32rem',
-
+        height: 'auto',
     }
 }
 
   return (
     <ReactModal isOpen={true} style={customStyles} onRequestClose={() => toggleModalSignUp()}  shouldCloseOnOverlayClick={true}>
       <form className="sign-up-form" onSubmit={handleSubmit}>
+      <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '0', marginRight:'0', marginLeft:'auto', cursor:'pointer'}} onClick={toggleModalSignUp}>x</p>
         <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>

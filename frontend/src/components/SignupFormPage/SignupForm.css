@@ -3,13 +3,13 @@
 
 .sign-up-form {
   font-family: 'Montserrat', sans-serif;
-  width: 20rem;
-  height: 25rem;
-  max-height: 50rem;
+  width: 25rem;
+  height: auto;
+  /* max-height: 50rem; */
   border: 1px solid #f1f1f1;
   border-radius: 12px;
   /* box-shadow: 2px  2px 8px #888888; */
-  padding: 20px 20px 50px 20px;
+  padding: 10px 20px 50px 20px;
   display: grid;
   align-items: center;
   /* margin: auto; */

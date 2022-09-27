@@ -77,12 +77,13 @@ export default function BookingForm({indSpot}){
         } else if (checkOut.length > 0 && userId !== undefined) {
             setDisableButton(false)
             setDisableButtonStyling(null)
+            setLogInMessage(false)
         } else {
             setLogInMessage(true)
         }
 
 
-    }, [differenceInDays])
+    }, [differenceInDays, userId, logInMessage])
 
 
 

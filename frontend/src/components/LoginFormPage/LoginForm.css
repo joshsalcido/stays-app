@@ -3,8 +3,8 @@
 
 .login-form {
     font-family: 'Montserrat', sans-serif;
-    width: 20rem;
-    height: 18.5rem;
+    width: 25rem;
+    height: auto;
     max-height: 19rem;
     border: 1px solid #f1f1f1;
     border-radius: 12px;
