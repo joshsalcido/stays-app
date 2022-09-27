@@ -1,9 +1,9 @@
 
 
 
-form {
+.login-form {
     font-family: 'Montserrat', sans-serif;
-    width: fit-content;
+    width: 20rem;
     height: 18.5rem;
     max-height: 19rem;
     border: 1px solid #f1f1f1;

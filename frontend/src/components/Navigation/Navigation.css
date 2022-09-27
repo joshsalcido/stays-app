@@ -28,7 +28,15 @@ li .login, .signup{
     padding: 14px 16px 30px;
     text-decoration: none;
     font-size: 17px;
+    cursor: pointer;
+    margin: auto;
+    margin-bottom: 16px;
+    padding: 10px;
+    padding-right: 20px;
+    padding-top: 15px;
+    /* border: 1px solid blue; */
 }
+
 .home {
     color: #77aa97;
     float: left;
@@ -37,4 +45,5 @@ li .login, .signup{
     text-decoration: none;
     font-size: 30px;
     font-weight: 700;
+    /* border: 1px solid red; */
 }
