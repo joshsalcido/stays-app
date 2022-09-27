@@ -20,7 +20,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <p className="login" onClick={()=> setShowLogin(true)}>Log In</p>
-        <NavLink to="/signup" className="signup">Sign Up</NavLink>
+        <p className="signup">Sign Up</p>
       </>
     );
   }
