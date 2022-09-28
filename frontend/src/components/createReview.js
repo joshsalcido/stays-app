@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { csrfFetch } from "../store/csrf";
 import { thunkCreateReview, thunkGetReviews } from "../store/reviews";
 import './review.css'
+import { Rating } from 'react-simple-star-rating'
 
 
 export default function CreateReview({spotId, toggleReviewForm}){
@@ -12,7 +13,7 @@ export default function CreateReview({spotId, toggleReviewForm}){
 
     const dispatch = useDispatch();
     const [review, setReview] = useState('')
-    const [rating, setRating] = useState(1);
+    const [rating, setRating] = useState(0);
     const [reviews, setReviews] = useState([])
 
     const [showForm, setShowForm] = useState(true);
@@ -44,14 +45,15 @@ export default function CreateReview({spotId, toggleReviewForm}){
         setHasSubmitted(true);
         if (validationErrors.length) return alert("Please leave a longer review")
 
-       dispatch(thunkCreateReview(newReview))
-            //   .then(dispatch(thunkGetReviews(spotId)))
-        // dispatch(thunkGetReviews(spotId))
+       await dispatch(thunkCreateReview(newReview))
+       await dispatch(thunkGetReviews(spotId))
+           
 
         toggleReviewForm();
         setReview('')
         setRating(1)
     }
+
     useEffect(()=> {
         dispatch(thunkGetReviews(spotId))
     }, [dispatch, userId])
@@ -61,6 +63,10 @@ export default function CreateReview({spotId, toggleReviewForm}){
         setReviewForm(!reviewForm)
         setReview('')
         setRating(1)
+    }
+    function handleRating(rate){
+        let starRate = rate / 20
+        setRating(starRate)
     }
 
     let reviewButton = "Leave a Review!"
@@ -80,14 +86,15 @@ export default function CreateReview({spotId, toggleReviewForm}){
                       <li key={errors}>{errors}</li>
                       ))}
              </ul>)}
-            <label className="review-label">Review:</label>
+            {/* <label className="review-label">Review:</label> */}
+            <Rating onClick={handleRating} ratingValue={rating}></Rating>
             <textarea placeholder="Write a Review"
             onChange={(e)=> setReview(e.target.value)}
             value={review}
             required={true}
             />
-            <label className="rating-label">Rating:</label>
-            <select
+            {/* <label className="rating-label">Rating:</label> */}
+            {/* <select
             className="rating-dropdown-menu"
             onChange={(e)=> setRating(e.target.value)}
             value={rating}
@@ -97,7 +104,7 @@ export default function CreateReview({spotId, toggleReviewForm}){
                 <option value={3}>3</option>
                 <option value={4}>4</option>
                 <option value={5}>5</option>
-            </select>
+            </select> */}
             <div className="review-form-bttns-div">
                 <button className="submit-review-btn" type="submit">Submit Review</button>
                 <button className="cancel-review-btn" type="button" onClick={() => toggleReviewForm()}>Cancel Review</button>

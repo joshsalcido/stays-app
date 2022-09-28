@@ -2,11 +2,18 @@ textarea {
     font-family: 'Montserrat';
     resize: none;
     height: 50px;
+    border-radius: 10px;
+    border: 1px solid #77aa97;
 }
 
 .review-form {
-    width: 27rem;
-    padding-bottom: 10px;
+    font-family: 'Montserrat';
+    display: grid;
+    width: 32rem;
+    padding: 10px;
+    /* border: 1px solid brown; */
+    border-radius: 12px;
+    box-shadow: 2px  2px 8px #888888;
 }
 .review-label{
     margin-bottom: 5px;

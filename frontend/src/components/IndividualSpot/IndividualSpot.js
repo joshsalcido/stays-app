@@ -5,7 +5,7 @@ import { csrfFetch } from "../../store/csrf";
 import { thunkGetUserSpots, thunkCreateSpot, thunkDeleteSpot } from "../../store/spots";
 import EditSpotForm from "../EditSpotForm";
 import { thunkGetIndividualSpot } from "../../store/spot";
-
+import { Rating } from 'react-simple-star-rating'
 import { thunkDeleteReview, thunkGetReviews } from "../../store/reviews";
 import { Link, useParams } from "react-router-dom";
 import CreateReview from "../createReview";
@@ -25,6 +25,7 @@ export default function IndividualSpot(){
 
     const reviewsObj = useSelector(state => state.reviewReducer)
     const reviews = Object.values(reviewsObj);
+    // const reviewer = reviews.filter(userId === idNum)
 
     const [showReviewForm, setShowReviewForm] = useState(false)
 
@@ -113,8 +114,11 @@ export default function IndividualSpot(){
         </div>
         }
             <div className="Review-section-div">
-                {reviews && (
-                    <h4>{reviewsTitle}</h4>
+                {reviews.length > 0 && (
+                    <h4>{reviews.length} Reviews</h4>
+                )}
+                {reviews.length === 0 && (
+                    <h4>Be the first to Leave a Review!</h4>
                 )}
                 { reviews && reviews.map((review) => (
                     <div className="review-container" key={review.id}>
@@ -123,8 +127,10 @@ export default function IndividualSpot(){
                         <div className="reviewBox">
                             {/* <h5>{user.username}</h5> */}
                             {/* {userId && review.userId === userId && */}
-                            <h5>Rating: {review.rating}</h5>
-                            <span>{review.review}</span>
+                            {/* <h5>{review.rating}</h5> */}
+                            <h5 style={{margin:"0px", marginTop: "15px"}}>{review.User?.username}</h5>
+                            <Rating style={{margin: "0px",marginTop: '3px'}} size={18} readonly ratingValue={review.rating * 20}></Rating>
+                            <p>{review.review}</p>
                         </div>
                         <div className="delete-review-button-div">
                             {userId && userId === review.userId && (
@@ -135,6 +141,8 @@ export default function IndividualSpot(){
                     )}
                 </div>
                 ))}
+            </div>
+            <div style={{width:"10rem",marginBottom:"50px"}}>
             </div>
         </div>
     )
