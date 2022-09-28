@@ -11,6 +11,7 @@ import IndividualSpot from "./components/IndividualSpot/IndividualSpot";
 import UserProfilePage from "./components/UserProfile/UserProfilePage";
 import BookedTrips from "./components/BookedTrips/BookedTrips";
 import UserListings from "./components/UserListings/UserListings";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }
