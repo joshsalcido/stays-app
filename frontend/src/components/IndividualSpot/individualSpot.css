@@ -241,10 +241,11 @@ div .reviewBox {
 }
 .delete-review-button-div{
     /* border: 1px solid red; */
-    margin-right: 5px;
+    margin-right: 0px;
 }
 .delete-review-bttn{
     width: 7rem;
+    padding: 10px;
     margin-top: 19px;
     margin-bottom: 0;
 }

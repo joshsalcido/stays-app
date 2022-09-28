@@ -100,7 +100,6 @@ const bookingReducer = (state = {}, action) => {
             });
             return newState;
         case CREATE_BOOKING:
-            console.log(action, "CREATE BOOKING")
             newState[`Booking ${action.booking.id}`] = action.booking
             return newState
         case DELETE_BOOKING:

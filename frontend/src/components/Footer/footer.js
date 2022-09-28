@@ -29,6 +29,7 @@ function Footer(){
             <p>Sequelize</p>
             <p>CSS</p>
         </div>
+        
     </div> */}
     </>
   );

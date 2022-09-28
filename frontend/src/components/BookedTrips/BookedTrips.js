@@ -28,7 +28,7 @@ export default function BookedTrips(){
 
     const customStyles = {
         overlay: {
-            background: 'rgba(0,0,0,0.2)'
+            background: 'rgba(0,0,0,0.06)'
           },
         content: {
             top: '35%',

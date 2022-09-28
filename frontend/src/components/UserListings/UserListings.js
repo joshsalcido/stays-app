@@ -171,7 +171,7 @@ export default function UserListings(){
             background: 'rgba(0,0,0,0.2)'
           },
         content: {
-            top: '47%',
+            top: '49%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
@@ -207,7 +207,7 @@ export default function UserListings(){
                         {Object.values(currState.userSpots).length > 0 && (
                         <div style={{display: 'flex'}}>
                             <h2 style={{padding: '0px', width: '11rem', marginLeft: '17px', marginRight: '20px'}}>Your Listings</h2>
-                            <button style={{padding: '0px', height: '3rem', margin: 'auto', width: '9rem'}} onClick={revealCreateForm}>Create New Listing</button>
+                            <button style={{padding: '0px', height: '2.5rem', margin: 'auto', width: '9rem'}} onClick={revealCreateForm}>Create New Listing</button>
                         </div>)}
                         {userId && spots.map(spot => (
                           <>

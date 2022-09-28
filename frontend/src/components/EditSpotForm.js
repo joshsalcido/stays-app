@@ -137,31 +137,32 @@ const EditSpotForm = ({ spot, hideform}) => {
                       <li key={errors}>{errors}</li>
                       ))}
                 </ul>}
-                <label>Title:</label>
+                <label>Title</label>
                 <input
                     required
                     value={name}
                     onChange={updateName}/>
-                <label>Address:</label>
+                <label>Address</label>
                 <input
                     required
                     value={address}
                     onChange={updateAddress}/>
-                <label>City:</label>
+                <label>City</label>
                 <input
                     required
                     value={city}
                     onChange={updateCity}/>
                 <div style={{padding: '0', marginTop: '10px', marginBottom: '10px'}}>
-                    <label>State:</label>
+                    <label>State</label>
                     <input
-                        style={{marginRight:'22.5px'}}
+                        style={{marginRight:'22px'}}
                         className="create-listing-inputs"
                         required
                         value={state}
                         onChange={updateState}/>
-                    <label>Country:</label>
+                    <label>Country</label>
                     <input
+                        className="create-listing-inputs-country"
                         required
                         value={country}
                         onChange={updateCountry}/>

@@ -134,7 +134,7 @@ export default function IndividualSpot(){
                         </div>
                         <div className="delete-review-button-div">
                             {userId && userId === review.userId && (
-                                <button className="delete-review-bttn" onClick={() => onDelete(review.id)}>Delete Your Review!</button>
+                                <button className="delete-review-bttn" onClick={() => onDelete(review.id)}>Delete Review</button>
                             )}
                         </div>
                         </>

@@ -162,7 +162,7 @@ export default function CreateListingForm({toggleListingForm}){
                 <div style={{padding: '0', marginTop: '10px', marginBottom: '10px'}}>
                     <label>State</label>
                     <input
-                    style={{marginRight:'22.5px'}}
+                    style={{marginRight:'22px'}}
                     className="create-listing-inputs"
                     onChange={(e)=> setState(e.target.value)}
                     value={state}
@@ -170,7 +170,7 @@ export default function CreateListingForm({toggleListingForm}){
                     />
                     <label>Country</label>
                     <input
-                    className="create-listing-inputs"
+                    className="create-listing-inputs-country"
                     onChange={(e)=> setCountry(e.target.value)}
                     value={country}
                     required={true}
