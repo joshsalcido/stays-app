@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/joshsalcido/authenticate-me-skeleton/issues"
   },
-  "homepage": "https://github.com/joshsalcido/authenticate-me-skeleton#readme"
+  "homepage": "https://github.com/joshsalcido/authenticate-me-skeleton#readme",
+  "dependencies": {
+    "newrelic": "^9.4.0"
+  }
 }

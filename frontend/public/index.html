@@ -4,6 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <!-- Browser agent configuration -->
+    <script type="text/javascript">
+      window.NREUM||(NREUM={});
+      NREUM.info={
+        "licenseKey":"example",
+        "applicationID": 123,
+        "agent": "http://localhost:8080/nr-spa.js"
+      };
+    </script>
+    <!-- Browser agent loader script -->
+    <script src="http://localhost:8080/nr-loader-spa.js"></script>
     <title>Stays!</title>
     <!-- <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/> -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
