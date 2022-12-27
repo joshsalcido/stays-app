@@ -82,7 +82,6 @@ export default function BookingForm({indSpot}){
             setLogInMessage(true)
         }
 
-
     }, [differenceInDays, userId, logInMessage])
 
 

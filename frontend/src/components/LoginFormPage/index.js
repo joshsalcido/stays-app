@@ -53,6 +53,9 @@ function LoginFormPage({toggleModal}) {
         transform: 'translate(-50%, -50%)',
         borderRadius: '15px',
         padding: '0px',
+        border: '1px solid blue',
+        height: '26rem',
+        heightMax: '75rem',
     }
 }
 // console.log( "TOGGLE MODAL", showLogin)
@@ -60,8 +63,10 @@ function LoginFormPage({toggleModal}) {
   return (
     <ReactModal closeTimeoutMS={2000} isOpen={true} style={customStyles} onRequestClose={() => toggleModal()}  shouldCloseOnOverlayClick={true}>
       <form onSubmit={handleSubmit} className="login-form">
-        <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '0', marginRight:'0', marginLeft:'auto', cursor:'pointer'}} onClick={toggleModal}>x</p>
-      <ul className='errors' style={{fontSize: '18px', margin: 'auto', marginBottom: '10px', padding: '0'}}>
+        <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '280px', marginRight:'0', marginLeft:'250px',position: 'absolute' , cursor:'pointer', border: '1px solid green'}} onClick={toggleModal}>x</p>
+      <h3 className='login-title'>Welcome to stays!</h3>
+      <p className='login-subtext'>Log-In to an exsisting account or try out our stays features with our Demo login button!</p>
+      <ul className='login-errors' style={{ margin: 'auto', marginBottom: '10px', padding: '0'}}>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>

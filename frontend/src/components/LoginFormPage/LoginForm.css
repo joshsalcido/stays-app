@@ -3,21 +3,39 @@
 
 .login-form {
     font-family: 'Montserrat', sans-serif;
-    width: 25rem;
+    width: auto;
     height: auto;
     max-height: 19rem;
-    border: 1px solid #f1f1f1;
+    /* border: 1px solid #eb1b1b; */
     border-radius: 12px;
-    box-shadow: 2px  2px 8px #888888;
+    /* box-shadow: 2px  2px 8px #888888; */
     padding: 20px 20px 50px 20px;
     display: grid;
     align-items: center;
     margin: auto
 }
+.login-errors{
+    color: red;
+    font-size: 15px;
+    text-decoration: ;
+}
+.login-title{
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.login-subtext{
+    /* border: 1px solid blue; */
+    max-width: 20rem;
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+    margin: 0px;
+    margin-bottom: 15px;
+}
 
 
 input[type=text], input[type=password] {
-    width: 20em;
+    width: 100%;
     padding: 10px 20px;
     margin: 10px 0;
     display: grid;
