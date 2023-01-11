@@ -61,6 +61,8 @@ function SignupFormPage({toggleModalSignUp}) {
     <ReactModal isOpen={true} style={customStyles} onRequestClose={() => toggleModalSignUp()}  shouldCloseOnOverlayClick={true}>
       <form className="sign-up-form" onSubmit={handleSubmit}>
       <p style={{fontWeight:'100',fontSize: '25px',float:'right', marginTop:'0px', marginBottom: '0', marginRight:'0', marginLeft:'auto', cursor:'pointer'}} onClick={toggleModalSignUp}>x</p>
+      <h3 className='login-title'>Welcome to stays!</h3>
+      <p className='login-subtext'>Sign-Up for your own stays account or try out our stays features with our Demo login button!</p>
         <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
